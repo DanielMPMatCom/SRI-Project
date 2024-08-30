@@ -1,130 +1,62 @@
 import numpy as np
 
-ranking_ui: dict = {  # key -> user, value -> { key -> item, value -> rating }
-    0: {
-        1: 1,
-        2: 2,
-        3: 2,
-        4: 5,
-        6: 4,
-        7: 3,
-        8: 5,
-    },
-    1: {
-        0: 1,
-        1: 5,
-        2: 3,
-        4: 2,
-        5: 3,
-        6: 4,
-        7: 3,
-    },
-    2: {
-        0: 1,
-        1: 1,
-        2: 2,
-        4: 2,
-        5: 4,
-        6: 4,
-        7: 5,
-    },
-    3: {
-        0: 3,
-        1: 2,
-        2: 2,
-        3: 3,
-        5: 1,
-        6: 3,
-        7: 2,
-    },
-    4: {
-        0: 5,
-        1: 1,
-        2: 5,
-        3: 5,
-        4: 4,
-        5: 4,
-        6: 5,
-        7: 2,
-    },
-}
 
-
-def nbcf(ranking_ui: dict, alpha: float, r: float):
-    # initialize
-    pup = {}
-    pip = {}
-    cup = {}
-    cip = {}
-
-    # tmp
-    uc = {}
-    ic = {}
-    ijc = {}
-    uvc = {}
-
-    # R = max([max(ranking_ui[u].values()) for u in ranking_ui])  # max rating
-
-    ranking_ui_inverse = {}
-
-    for user in ranking_ui:
-        for item in ranking_ui[user]:
-            if item not in ranking_ui_inverse:
-                ranking_ui_inverse[item] = set()
-            ranking_ui_inverse[item].add(user)
-
+def nbcf(rating: np.ndarray, alpha, r):
+    # user based approach
+    users, movies = rating.shape
     r_alpha = r * alpha
 
-    pup = np.full((len(ranking_ui), r + 1), alpha)
-    uc = np.full(len(ranking_ui), r_alpha)
-    pip = np.full((len(ranking_ui_inverse), r + 1), alpha)
-    ic = np.full(len(ranking_ui_inverse), r_alpha)
+    pu = np.zeros((users, r + 1))
+    pi = np.zeros((movies, r + 1))
 
-    cip = np.full(
-        (len(ranking_ui_inverse), r + 1, len(ranking_ui_inverse), r + 1), alpha
-    )
-    ijc = np.full((len(ranking_ui_inverse), len(ranking_ui_inverse), r + 1), r_alpha)
-    cup = np.full((len(ranking_ui), r + 1, len(ranking_ui), r + 1), alpha)
-    uvc = np.full((len(ranking_ui), len(ranking_ui), r + 1), r_alpha)
+    for movie in range(movies):
+        movie_users = np.sum(rating[:, movie] != -1) + r_alpha
+        for qualified in range(r + 1):
+            pi[movie, qualified] = (
+                np.sum(rating[:, movie] == qualified) + alpha
+            ) / movie_users
 
-    for user in ranking_ui:
-        for item in ranking_ui[user]:
-            y = ranking_ui[user][item]
+    for user in range(users):
+        user_movie = np.sum(rating[user, :] != -1) + r_alpha
+        for qualified in range(r + 1):
+            pu[user, qualified] = (
+                np.sum(rating[user, :] == qualified) + alpha
+            ) / user_movie
 
-            pup[user][y] = (uc[user] * pup[user][y] + 1) / (uc[user] + 1)
-            uc[user] = uc[user] + 1
-            pip[item][y] = (ic[item] * pip[item][y] + 1) / (ic[item] + 1)
-            ic[item] = ic[item] + 1
+    item_likehood = np.zeros((movies, r + 1, movies, r + 1), 0)
 
-            for j_item in ranking_ui[user]:
-                # if j_item == item:  # check if the item is the same
-                #     continue
+    for imovie in range(movie):
+        for ir in range(r + 1):
+            count_user_ir = np.sum(rating[:, imovie] == ir)
+            for jmovie in range(movie):
+                for jr in range(r + 1):
+                    count_user_jr = np.sum(rating[:, jmovie] == jr)
+                    
 
-                k = ranking_ui[user][j_item]
-
-                cip[j_item][k][item][y] = (
-                    ijc[j_item][item][y] * cip[j_item][k][item][y] + 1
-                ) / (ijc[j_item][item][y] + 1)
-
-                ijc[j_item][item][y] = ijc[j_item][item][y] + 1
-
-            for v_user in ranking_ui_inverse[item]:
-                # if v_user == user:  # check if the user is the same
-                #     continue
-
-                k = ranking_ui[v_user][item]
-
-                cup[v_user][k][user][y] = (
-                    uvc[v_user][user][y] * cup[v_user][k][user][y] + 1
-                ) / (uvc[v_user][user][y] + 1)
-                uvc[v_user][user][y] = uvc[v_user][user][y] + 1
-
-    return pup, pip, cup, cip
+    return pu, pi
 
 
-a, b, c, d = nbcf(ranking_ui, 0.01, 5)
+rating = np.array(
+    [
+        [-1, 1, 2, 2, 5, -1, 4, 3, 5],
+        [1, 5, 3, -1, 2, 4, 4, 5, -1],
+        [1, 1, 2, -1, 2, 4, 4, 5, -1],
+        [3, 2, 2, 3, -1, 1, 3, 2, -1],
+        [5, 1, 5, 5, 4, 4, 5, 2, -1],
+    ]
+)
 
-print("PUP\n", a)
-print("PIP\n", b)
-# print("CUP\n", c)
-# print("CIP\n", d)
+ALPHA = 0.01
+R = 5
+
+a, b = nbcf(rating=rating, alpha=ALPHA, r=R)
+print(a)
+print(" - - - - - ")
+print(b)
+
+print(" =========================================")
+
+a, b = nbcf_paper(rating=rating, alpha=ALPHA, r=R)
+print(a)
+print(" - - - -- ")
+print(b)
