@@ -1,8 +1,22 @@
 import numpy as np
 
 
-def nbcf(rating: np.ndarray, alpha, r):
-    # user based approach
+def nbcf(rating: np.ndarray, alpha: float, r: int):
+    """
+    NBCF (Naive Bayes Collaborative Filtering) algorithm implementation.
+
+    Args:
+        rating (np.ndarray): 2D array representing the user-item rating matrix.
+        alpha (float): Smoothing parameter for Laplace smoothing.
+        r (int): Number of rating levels.
+
+    Returns:
+        pu (np.ndarray): 2D array representing the user latent factors.
+        pi (np.ndarray): 2D array representing the item latent factors.
+        item_likelihood (np.ndarray): 4D array representing the item-item likelihoods.
+        user_likelihood (np.ndarray): 4D array representing the user-user likelihoods.
+    """
+
     users, movies = rating.shape
     r_alpha = r * alpha
 
@@ -83,7 +97,20 @@ def nbcf(rating: np.ndarray, alpha, r):
     return pu, pi, item_likelihood, user_likelihood
 
 
-def predict_item(rating: np.ndarray, pi: np.ndarray, item_likelihood, r):
+def predict_item(rating: np.ndarray, pi: np.ndarray, item_likelihood, r: int):
+    """
+    Predicts the rating of items based on user ratings and item likelihood.
+
+    Args:
+        rating (np.ndarray): Array of user ratings.
+        pi (np.ndarray): Array of item probabilities.
+        item_likelihood (np.ndarray): The likelihood of items.
+        r (int): The number of qualified items.
+
+    Returns:
+        np.ndarray: Array of predicted ratings.
+    """
+
     users, movies = rating.shape
     prediction = np.zeros((users, movies, r))
     for user in range(users):
@@ -98,7 +125,19 @@ def predict_item(rating: np.ndarray, pi: np.ndarray, item_likelihood, r):
     return prediction
 
 
-def predict_user(rating: np.ndarray, pu: np.ndarray, user_likelihood, r):
+def predict_user(rating: np.ndarray, pu: np.ndarray, user_likelihood, r: int):
+    """
+    Predicts the rating of users based on item ratings and user likelihood.
+
+    Args:
+        rating (np.ndarray): Array of item ratings.
+        pu (np.ndarray): Array of user probabilities.
+        user_likelihood (np.ndarray): The likelihood of users.
+        r (int): The number of qualified users.
+
+    Returns:
+        np.ndarray: Array of predicted ratings.
+    """
     users, movies = rating.shape
     prediction = np.zeros((users, movies, r))
     for user in range(users):
