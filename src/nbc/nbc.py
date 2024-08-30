@@ -113,6 +113,22 @@ def predict_user(rating: np.ndarray, pu: np.ndarray, user_likelihood, r):
     return prediction
 
 
+def hybrid(rating: np.ndarray, r, predict_item, predict_user):
+    users, movies = rating.shape
+    prediction = np.zeros((users, movies, r))
+    for user in range(users):
+        for movie in range(movies):
+            ui = np.sum(rating[:, movie] != -1)
+            iu = np.sum(rating[user, :] != -1)
+            for qualified in range(r):
+                prediction[user, movie, qualified] = predict_user[
+                    user, movie, qualified
+                ] ** (1 / (1 + ui)) * predict_item[user, movie, qualified] ** (
+                    1 / (1 + iu)
+                )
+    return prediction
+
+
 rating = np.array(
     [
         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
@@ -142,5 +158,15 @@ print(d[0, 0, 0])
 
 print(" =========================================")
 
-p = predict_item(rating, b, c, R)
-print(p[0, 0])
+pi = predict_item(rating, b, c, R)
+print(pi[0, 0])
+
+print(" =========================================")
+
+pu = predict_user(rating, a, d, R)
+print(pu[0, 0])
+
+print(" =========================================")
+
+ph = hybrid(rating, R, pi, pu)
+print(ph[0, 0])
