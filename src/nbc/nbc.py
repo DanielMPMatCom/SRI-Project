@@ -126,5 +126,5 @@ a, b, c, d = nbcf(ranking_ui, 0.01, 5)
 
 print("PUP\n", a)
 print("PIP\n", b)
-print("CUP\n", c)
-print("CIP\n", d)
+# print("CUP\n", c)
+# print("CIP\n", d)
