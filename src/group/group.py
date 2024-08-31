@@ -57,6 +57,13 @@ def item_group_singularity(rating: np.ndarray, group: np.ndarray, movie: int):
         else 0
     )
 
+def normalized_rating(rating: np.ndarray):
+    rating_min = np.min(rating[rating != -1])
+    rating_max = np.max(rating[rating != -1])
+    normalized = (rating - rating_min) / (rating_max - rating_min)
+    normalized[rating == -1] = -1  # Restaurar los valores -1
+    return normalized
+
 
 rating = np.array(
     [
@@ -104,3 +111,10 @@ group = groups[0]
 #         for i in range(rating.shape[1])
 #     ]
 # )
+
+# # Test 5 Normalized rating
+# print(normalized_rating(rating))
+
+# # Required for following tests
+nr = normalized_rating(rating)
+
