@@ -79,6 +79,38 @@ def mean_square_difference_group_rating(
         ]
     ) / len(group_movie)
 
+def singularity_dot(rating: np.ndarray, group: np.ndarray, user: int, movie: int):
+    movie_group = [u for u in group if rating[u, movie] != -1]
+    return (
+        user_singularity(rating=rating, user=user, movie=movie)
+        * item_group_singularity(rating=rating, group=group, movie=movie)
+        * len(movie_group)
+    )
+
+def smgu(
+    rating: np.ndarray,
+    normalized_rating: np.ndarray,
+    group: np.ndarray,
+    user: int,
+    alpha: float,
+):
+    interception = interception_movies_group_user(rating=rating, group=group, user=user)
+
+    n = 0
+    d = 0
+
+    for i in range(rating.shape[1]):
+        if interception[i]:
+            weight = singularity_dot(rating=rating, group=group, user=user, movie=i)
+            n += weight * mean_square_difference_group_rating(
+                rating_normalized=normalized_rating, group=group, user=user, movie=i
+            )
+
+            d += weight
+    y = 1 - n / d
+    x = user_group_similarity(rating=rating, group=group, user=user)
+
+    return np.power(x, alpha) * np.power(y, 1 - alpha)
 
 rating = np.array(
     [
@@ -147,3 +179,19 @@ nr = normalized_rating(rating)
 #                 for i in range(rating.shape[1])
 #             ]
 #         )
+
+# # Test 7 Final similarity (SMGU)
+# for alpha in [0, 0.25, 0.5, 0.75, 1]:
+#     print(
+#         [
+#             smgu(
+#                 rating=rating,
+#                 normalized_rating=nr,
+#                 group=group,
+#                 user=u,
+#                 alpha=1 - alpha,
+#             )
+#             for u in range(rating.shape[0])
+#             if u not in group
+#         ]
+#     )
