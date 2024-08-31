@@ -40,6 +40,23 @@ def user_singularity(rating: np.ndarray, user: int, movie: int):
         np.logical_and(movie_users, rating[:, movie] != rating[user, movie])
     ) / np.sum(movie_users)
 
+def item_group_singularity(rating: np.ndarray, group: np.ndarray, movie: int):
+    movie_users_in_group = [user for user in group if rating[user][movie] != -1]
+
+    return (
+        np.power(
+            np.prod(
+                [
+                    user_singularity(rating=rating, user=u, movie=movie)
+                    for u in movie_users_in_group
+                ]
+            ),
+            (1 / len(movie_users_in_group)),
+        )
+        if len(movie_users_in_group) > 0
+        else 0
+    )
+
 
 rating = np.array(
     [
@@ -79,3 +96,11 @@ group = groups[0]
 #             if rating[u, i] != -1
 #         ]
 #     )
+
+# # Test 4 Item group singularity
+# print(
+#     [
+#         item_group_singularity(rating=rating, group=group, movie=i)
+#         for i in range(rating.shape[1])
+#     ]
+# )
