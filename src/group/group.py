@@ -34,6 +34,12 @@ def user_group_similarity(
         [unpopular(rating=rating, movie=i) for i in range(rating.shape[1]) if union[i]]
     )
 
+def user_singularity(rating: np.ndarray, user: int, movie: int):
+    movie_users = rating[:, movie] != -1
+    return np.sum(
+        np.logical_and(movie_users, rating[:, movie] != rating[user, movie])
+    ) / np.sum(movie_users)
+
 
 rating = np.array(
     [
@@ -63,3 +69,13 @@ group = groups[0]
 #         if u not in group
 #     ]
 # )
+
+# # Test 3 User singularity
+# for u in range(rating.shape[0]):
+#     print(
+#         [
+#             (i + 1, user_singularity(rating=rating, user=u, movie=i))
+#             for i in range(rating.shape[1])
+#             if rating[u, i] != -1
+#         ]
+#     )
