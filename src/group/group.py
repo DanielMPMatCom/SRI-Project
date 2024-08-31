@@ -64,6 +64,21 @@ def normalized_rating(rating: np.ndarray):
     normalized[rating == -1] = -1  # Restaurar los valores -1
     return normalized
 
+def mean_square_difference_group_rating(
+    rating_normalized: np.ndarray, group: np.ndarray, user: int, movie: int
+):
+    group_movie = [u for u in group if rating_normalized[u, movie] != -1]
+
+    if rating_normalized[user, movie] == -1 or len(group_movie) == 0:
+        return None
+
+    return np.sum(
+        [
+            np.power(rating_normalized[u, movie] - rating_normalized[user, movie], 2)
+            for u in group_movie
+        ]
+    ) / len(group_movie)
+
 
 rating = np.array(
     [
@@ -118,3 +133,17 @@ group = groups[0]
 # # Required for following tests
 nr = normalized_rating(rating)
 
+# # Test 6 Mean square difference group rating
+# for u in range(rating.shape[0]):
+#     if u not in group:
+#         print(
+#             [
+#                 mean_square_difference_group_rating(
+#                     rating_normalized=nr,
+#                     group=group,
+#                     user=u,
+#                     movie=i,
+#                 )
+#                 for i in range(rating.shape[1])
+#             ]
+#         )
