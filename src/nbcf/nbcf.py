@@ -178,34 +178,34 @@ rating = np.array(
     ]
 )
 
-ALPHA = 0.01
-R = 5
+# ALPHA = 0.01
+# R = 5
 
-a, b, c, d = nbcf(rating=rating, alpha=ALPHA, r=R)
-print(a)
-print(" - - - - - ")
-print(b)
+# a, b, c, d = nbcf(rating=rating, alpha=ALPHA, r=R)
+# print(a)
+# print(" - - - - - ")
+# print(b)
 
-print(" =========================================")
+# print(" =========================================")
 
-print(c[0, 0, 0])
+# print(c[0, 0, 0])
 
-print(" =========================================")
+# print(" =========================================")
 
-print(d[0, 0, 0])
+# print(d[0, 0, 0])
 
 
-print(" =========================================")
+# print(" =========================================")
 
-pi = predict_item(rating, b, c, R)
-print(pi[0, 0])
+# pi = predict_item(rating, b, c, R)
+# print(pi[0, 0])
 
-print(" =========================================")
+# print(" =========================================")
 
-pu = predict_user(rating, a, d, R)
-print(pu[0, 0])
+# pu = predict_user(rating, a, d, R)
+# print(pu[0, 0])
 
-print(" =========================================")
+# print(" =========================================")
 
-ph = predict_hybrid(rating, R, pi, pu)
-print(ph[0, 0])
+# ph = predict_hybrid(rating, R, pi, pu)
+# print(ph[0, 0])

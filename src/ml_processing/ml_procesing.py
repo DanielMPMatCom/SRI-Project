@@ -27,13 +27,13 @@ class MovieLensProcessing:
         self._ratings = pd.read_table(
             self.rating_csv, sep="::", header=None, names=columns, engine="python"
         )
-        print(self._ratings)
+        # print(self._ratings)
 
     def get_ratings(self) -> pd.DataFrame:
         return self._ratings
 
     def numpy_user_movie_matrix(self) -> np.ndarray:
-        print("Loading user_movie_matrix")
+        print("Loading user_movie_matrix ...")
         user_movie_matrix = (
             self._ratings.pivot_table(
                 index="userId", columns="movieId", values="rating"
@@ -42,12 +42,12 @@ class MovieLensProcessing:
             .to_numpy()
         )
         print("user_movie_matrix loaded")
-        print(user_movie_matrix)
+        # print(user_movie_matrix)
         return user_movie_matrix
 
 
-myClass = MovieLensProcessing(
-    rating_path="./datasets/ml-1m/ratings.dat",
-)
+# myClass = MovieLensProcessing(
+#     rating_path="./datasets/ml-1m/ratings.dat",
+# )
 
-A = myClass.numpy_user_movie_matrix()
+# A = myClass.numpy_user_movie_matrix()
