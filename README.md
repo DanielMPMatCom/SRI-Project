@@ -1,88 +1,22 @@
-# SRI-Project
+# Hibridación de Técnicas en Sistemas de Recomendación: Ventajas del Enfoque Probabilístico y Expansión del Algoritmo NBCF
 
-# Hybrid Recommendation System for Cuban Audiovisual Products
+## Autores
+- **Daniel Machado Pérez** - [@DanielMPMatCom](https://github.com/DanielMPMatCom)
+- **Osvaldo R. Moreno Prieto** - [@Val020213](https://github.com/Val020213)
+- **Daniel Toledo Martínez** - [@Phann020126](https://github.com/Phann020126)
 
-## Overview
+## Descripción del Problema
 
-This project is a hybrid recommendation system designed to recommend audiovisual products, specifically tailored for the Cuban audience. The system combines collaborative filtering and content-based filtering techniques to improve the relevance of recommendations. Additionally, it adapts recommendations to the Cuban context by incorporating local preferences.
+En la era digital contemporánea, la sobrecarga de información es uno de los principales desafíos a los que se enfrentan los usuarios al interactuar con plataformas que ofrecen una gran cantidad de contenidos, como servicios de streaming, bibliotecas digitales, y tiendas de comercio electrónico. Los sistemas de recomendación han surgido como una solución eficaz a este problema, permitiendo a los usuarios descubrir y acceder a productos que se alinean con sus intereses y preferencias.
 
-## Authors
-- Daniel Machado Pérez C311
-- Osvaldo R. Moreno Prieto C311
-- Daniel Toledo Martínez C311
+Dentro de los enfoques más prominentes en el desarrollo de sistemas de recomendación, el **filtrado colaborativo** se ha consolidado como uno de los más efectivos. Sin embargo, los métodos tradicionales, como la **factorización matricial**, aunque altamente precisos, presentan limitaciones en términos de interpretabilidad, lo que dificulta la explicación de las recomendaciones a los usuarios.
 
-## Problem Statement
+Para superar estas limitaciones, se ha propuesto el uso de enfoques **probabilísticos** como el **Naive Bayes Collaborative Filtering (NBCF)**, que no solo iguala o supera la precisión de la factorización matricial, sino que también mejora significativamente la capacidad del sistema para explicar las recomendaciones generadas. Además, la expansión del algoritmo NBCF para realizar recomendaciones a grupos de usuarios representa un avance significativo en la personalización colectiva de contenidos, un área que aún requiere un mayor desarrollo dentro del campo.
 
-In an environment where users are presented with a vast number of audiovisual products, it is crucial to have a system that can efficiently recommend content that matches user preferences. This project aims to develop a hybrid recommendation system that leverages multiple recommendation techniques to deliver more accurate and contextually relevant recommendations.
+Este proyecto tiene como objetivo la implementación y evaluación de un sistema de recomendación híbrido que combina técnicas probabilísticas y de filtrado colaborativo, con un enfoque especial en la adaptabilidad y explicabilidad de las recomendaciones. Se utilizará el dataset **MovieLens**, ampliamente reconocido en la comunidad de investigación, para validar el rendimiento del sistema propuesto y compararlo con enfoques tradicionales.
 
-## Requirements
+El proyecto también se basa en el trabajo previo desarrollado en varias tesis doctorales y artículos académicos, que exploran tanto las ventajas de los enfoques probabilísticos como las posibilidades de expansión del NBCF para recomendaciones grupales, proporcionando una base sólida para la investigación y desarrollo de sistemas de recomendación más robustos y adaptativos.
 
-- Python 3.8+
-- See `requirements.txt` for a list of required Python packages.
-
-## APIs
-
-This project may use external APIs for data retrieval or additional functionalities, which should be specified in the respective modules.
-
-## How to Run the Project
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/DanielMPMatCom/SRI-Project.git
-    cd SRI-Project
-    ```
-
-2. **Set up the virtual environment:**
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-
-3. **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. **Run the project:**
-    ```bash
-    ./startup.sh
-    ```
-
-## Project Structure
-
-. ├── data/ │ ├── users.csv │ ├── items.csv ├── datasets/ │ ├── users.csv ├── src/ │ ├── config.py │ ├── main.py │ ├── data_processing/ │ │ ├── data_loader.py │ │ ├── preprocessing.py │ ├── recommendation/ │ │ ├── collaborative_filtering.py │ │ ├── content_based.py │ │ ├── hybrid.py │ │ ├── cuban_context.py │ ├── evaluation/ │ │ ├── metrics.py ├── tests/ │ ├── test_collaborative_filtering.py │ ├── test_content_based.py │ ├── test_hybrid.py │ ├── test_cuban_context.py │ ├── test_metrics.py ├── startup.sh ├── requirements.txt ├── README.md
-
-
-## New Features
-
-### 1. User Data Generation
-
-A script has been added to generate random user data and save it into a CSV file named `users.csv`. This file contains columns such as `name`, `last_name`, `nationality`, `age`, `gender`, `mood`, `favorite_movies`, and `recently_watched_movies`. The generated data is saved in the path `../../datasets/`.
-
-#### How to Generate User Data
-
-The user data generation script is part of the project's data preparation steps. The following steps outline how to generate the user data:
-
-1. **Generate User Data:**
-    - The script automatically generates random data for a specified number of users.
-    - It saves the resulting data in a CSV file in the `../../datasets/` directory.
-
-2. **User Data File Structure:**
-    - The CSV file includes the following columns:
-      - `name`: First name of the user.
-      - `last_name`: Last name of the user.
-      - `nationality`: Nationality of the user.
-      - `age`: Age of the user.
-      - `gender`: Gender of the user.
-      - `mood`: Current mood of the user.
-      - `favorite_movies`: A list of the user's favorite movies.
-      - `recently_watched_movies`: A list of the last 5 movies watched by the user.
-
-### 2. Enhanced Recommendation Features
-
-- **Emotion-Based Recommendations:** The system now incorporates an analysis of user emotions, adjusting recommendations based on the user's current mood (e.g., comedies for happiness, action for excitement, dramas for sadness).
-- **Avoiding Repeated Recommendations:** The system tracks movies already watched by the user and avoids recommending them again as primary options. This feature is designed to improve user experience by providing more relevant recommendations.
-
-## License
-
-This project is licensed under the MIT License.
+## Requerimientos
+## APIs utilizadas
+## Modo de uso
