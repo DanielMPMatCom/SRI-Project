@@ -1,16 +1,12 @@
 \documentclass[twocolumn, fontsize=10pt]{article}
 \usepackage[margin=0.70in]{geometry}
 \usepackage{lipsum,mwe,abstract}
-% \usepackage[T1]{fontenc} 
 \usepackage[english]{babel} 
-
 \usepackage{fancyhdr} % Custom headers and footers
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} 
 \fancyfoot[C]{\thepage} % Page numbering for right footer
-\usepackage{lipsum}
 \setlength\parindent{0pt} 
-
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage{wrapfig}
 \usepackage{graphicx}
@@ -21,7 +17,13 @@
 \usepackage{cuted}
 \usepackage{sectsty} % Allows customizing section commands
 \usepackage{xcolor} % For colored text
-\usepackage{amsmath}
+\usepackage{hyperref} % Package for links
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    }
 \allsectionsfont{\normalfont \normalsize \scshape} % Section names in small caps and normal fonts
 
 \renewenvironment{abstract} % Change how the abstract look to remove margins
@@ -40,8 +42,10 @@
 \renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt} % Change how the title looks like
 \begin{flushleft}
   \begin{center}
-    {\color{blue} \Large Facultad de Matemática y Computación. Universidad de La Habana. \\
-    \color{black} Sistemas de Recuperación de Información. \vspace{10pt}}
+    {\color{black} \Large Facultad de Matemática y Computación. Universidad de La Habana. \\
+    \color{black} Sistemas de Recuperación de Información. \\ \vspace{10pt}}
+    \href{https://github.com/DanielMPMatCom/SRI-Project.git}{Repositorio del Proyecto en GitHub} % Add GitHub link here
+    \vspace{10pt}
   \end{center}
   \textbf{\@title}
   \@author \\ 

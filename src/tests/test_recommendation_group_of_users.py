@@ -32,8 +32,10 @@ def test_group_of_users():
     groups = np.array([[0, 1, 2]])
     group = groups[0]
 
+    gr = GroupRecomendation(rating, group)
+
     attempt(
-        [unpopular(rating, i) for i in range(rating.shape[1])],
+        [gr.unpopular(i) for i in range(rating.shape[1])],
         [
             0.4444444444444444,
             0.11111111111111116,
@@ -53,7 +55,7 @@ def test_group_of_users():
     # Test 2 User group similarity
     attempt(
         [
-            user_group_similarity(rating=rating, group=group, user=u)
+            gr.user_group_similarity(user=u)
             for u in range(rating.shape[0])
             if u not in group
         ],
@@ -121,7 +123,7 @@ def test_group_of_users():
         if u not in group:
             attempt(
                 [
-                    (i + 1, user_singularity(rating=rating, user=u, movie=i))
+                    (i + 1, gr.user_singularity(user=u, movie=i))
                     for i in range(rating.shape[1])
                     if rating[u, i] != -1
                 ],
@@ -133,7 +135,7 @@ def test_group_of_users():
     # Test 4 Item group singularity
     attempt(
         [
-            item_group_singularity(rating=rating, group=group, movie=i)
+            gr.item_group_singularity(movie=i)
             for i in range(rating.shape[1])
         ],
         [
@@ -153,15 +155,13 @@ def test_group_of_users():
         "item_group_singularity",
     )
 
-    # # Test 5 Normalized rating
-    # attempt(
-    #     normalized_rating(rating),
-    #     normalized_rating(rating),
-    #     "normalized_rating",
-    # )
+    # # # Test 5 Normalized rating
+    # # attempt(
+    # #     normalized_rating(rating),
+    # #     normalized_rating(rating),
+    # #     "normalized_rating",
+    # # )
 
-    # Required for following tests
-    nr = normalized_rating(rating)
 
     # Test 6 Mean square difference group rating
 
@@ -244,9 +244,7 @@ def test_group_of_users():
         if u not in group:
             attempt(
                 [
-                    mean_square_difference_group_rating(
-                        rating_normalized=nr,
-                        group=group,
+                    gr.mean_square_difference_group_rating(
                         user=u,
                         movie=i,
                     )
@@ -297,10 +295,7 @@ def test_group_of_users():
     for alpha in [0, 0.25, 0.5, 0.75, 1]:
         attempt(
             [
-                smgu(
-                    rating=rating,
-                    normalized_rating=nr,
-                    group=group,
+                gr.smgu(
                     user=u,
                     alpha=1 - alpha,
                 )
