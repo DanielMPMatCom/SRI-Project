@@ -1,13 +1,9 @@
 import numpy as np
 
-
 def group_prediction(
     rating: np.ndarray,
     group: np.ndarray,
-    ip: np.ndarray,
-    up: np.ndarray,
     hp: np.ndarray,
-    alpha: float,
     r: int,
 ):
     

@@ -152,7 +152,7 @@ def predict_user(rating: np.ndarray, pu: np.ndarray, user_likelihood, r: int):
     return prediction
 
 
-def hybrid(rating: np.ndarray, r, predict_item, predict_user):
+def predict_hybrid(rating: np.ndarray, r, predict_item, predict_user):
     users, movies = rating.shape
     prediction = np.zeros((users, movies, r))
     for user in range(users):
@@ -207,5 +207,5 @@ print(pu[0, 0])
 
 print(" =========================================")
 
-ph = hybrid(rating, R, pi, pu)
+ph = predict_hybrid(rating, R, pi, pu)
 print(ph[0, 0])
