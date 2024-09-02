@@ -43,6 +43,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                 len(u_collaborative_filtering[(user, qualified)]) + alpha
             ) / user_movies[user]
 
+    
+    print("Calculating predictions ...")
     # Calculate predictions
     item_prediction = np.full((users, movies, r), -1, float)
     user_prediction = np.full((users, movies, r), -1, float)
@@ -88,6 +90,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                     tmp *= (numerator + alpha) / (denominator + r_alpha)
 
                 user_prediction[user, movie, qualified] = tmp
+    
+    print("Calculated Predictions ...")
 
     return user_prediction, item_prediction
 
@@ -110,29 +114,29 @@ def predict_hybrid(rating: np.ndarray, r, predict_item, predict_user):
                 
 ## Test
 
-rating = np.array(
-    [
-        [-1, 1, 2, 2, 5, -1, 4, 3, 5],
-        [1, 5, 3, -1, 2, 4, 4, 3, -1],
-        [1, 1, 2, -1, 2, 4, 4, 5, -1],
-        [3, 2, 2, 3, -1, 1, 3, 2, -1],
-        [5, 1, 5, 5, 4, 4, 5, 2, -1],
-    ]
-)
+# rating = np.array(
+#     [
+#         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
+#         [1, 5, 3, -1, 2, 4, 4, 3, -1],
+#         [1, 1, 2, -1, 2, 4, 4, 5, -1],
+#         [3, 2, 2, 3, -1, 1, 3, 2, -1],
+#         [5, 1, 5, 5, 4, 4, 5, 2, -1],
+#     ]
+# )
 
-ALPHA = 0.01
-R = 5
+# ALPHA = 0.01
+# R = 5
 
-pu, pi = nbcf(rating=rating, alpha=ALPHA, r=R)
+# pu, pi = nbcf(rating=rating, alpha=ALPHA, r=R)
 
-print(" =========================================")
+# print(" =========================================")
 
-print(pi[0, 0])
+# print(pi[0, 0])
 
-print(" =========================================")
+# print(" =========================================")
 
-print(pu[0, 0])
+# print(pu[0, 0])
 
-ph = predict_hybrid(rating=rating, r=R, predict_item=pi, predict_user=pu)
+# ph = predict_hybrid(rating=rating, r=R, predict_item=pi, predict_user=pu)
 
-print(ph[0, 0])
+# print(ph[0, 0])

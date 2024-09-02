@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 from extended_naive_bayes.nbp import group_prediction
-from nbcf.nbcf import nbcf, predict_item, predict_user, predict_hybrid
+from nbcf.nbcf_opt import nbcf, predict_hybrid
 from ml_processing.ml_procesing import MovieLensProcessing
 
 def main():
@@ -14,9 +14,8 @@ def main():
     alpha = 0.01
     r = 5
     
-    prior_user, prior_item, item_likelihood, user_likelihood = nbcf(rating=rating, alpha=alpha, r=r)
-    user_prediction = predict_user(rating=rating, pu=prior_user, user_likelihood=user_likelihood, r=r)
-    item_prediction = predict_item(rating=rating, pi=prior_item, item_likelihood=item_likelihood, r=r)
+    user_prediction, item_prediction = nbcf(rating=rating, alpha=alpha, r=r)
+    
     hybrid_prediction = predict_hybrid(rating=rating, r=r, predict_item=item_prediction, predict_user=user_prediction)
 
     # Group recommender
