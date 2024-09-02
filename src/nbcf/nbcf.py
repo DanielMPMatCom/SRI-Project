@@ -106,6 +106,7 @@ class MemorizationNBCF:
         try:
             item_likelihood = self.serialized.load_object("item_likelihood")
             print("loading item likelihood success")
+            
         except FileNotFoundError:
             print("calculating, item likelihood not found")
             for user in range(users):
