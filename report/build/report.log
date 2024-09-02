@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  1 SEP 2024 00:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  1 SEP 2024 20:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -539,7 +539,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 160--172
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4013) has occurred while \output is active []
 
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -550,86 +550,85 @@ Underfull \hbox (badness 10000) in paragraph at lines 173--183
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 190--202
+Underfull \hbox (badness 1939) in paragraph at lines 201--213
 \OT1/cmr/m/n/10 del al-go-ritmo NBCF, se ha se-lec-cionado el dataset
  []
 
 [2]
-Underfull \hbox (badness 1303) in paragraph at lines 293--311
+Underfull \hbox (badness 1303) in paragraph at lines 304--322
 []\OT1/cmr/bx/n/10 Factorizaci^^Son Ma-tri-cial\OT1/cmr/m/n/10 : Esta t^^Secnica ha de-
  []
 
-
-Underfull \hbox (badness 1189) in paragraph at lines 345--357
-\OT1/cmr/m/n/10 daci^^Son a gru-pos de usuar-ios us-ando el con-cepto de
- []
-
-
-Underfull \hbox (badness 3068) in paragraph at lines 398--398
+[3]
+Underfull \hbox (badness 3068) in paragraph at lines 419--419
 []\OT1/cmr/m/sc/10 Formulaci[]on Matem[]atica del Al-go-ritmo
  []
 
-[3]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 428.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 449.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 428.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 449.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 426--435
+Underfull \hbox (badness 10000) in paragraph at lines 447--456
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
 []\OT1/cmr/m/n/10 Ganancia acu-mu-lada de-scon-tada nor-mal-izada
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 552--558
+Underfull \hbox (badness 1776) in paragraph at lines 573--579
 []\OT1/cmr/bx/n/10 MovieLens\OT1/cmr/m/n/10 : El en-foque h^^S^^Pbrido de NBCF ha
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 558--564
+Underfull \hbox (badness 1509) in paragraph at lines 579--585
 \OT1/cmr/m/n/10 cuando au-menta el n^^Sumero de re-comen-da-ciones,
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 571--580
+Underfull \hbox (badness 1048) in paragraph at lines 592--601
 \OT1/cmr/m/n/10 proveen mejores re-sul-ta-dos para nDCG en com-
  []
 
 
-Underfull \hbox (badness 2460) in paragraph at lines 615--616
+Underfull \hbox (badness 2653) detected at line 648
+ []$[]  \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 ) = []$ [][]  
+ []
+
+[5]
+Underfull \hbox (badness 2460) in paragraph at lines 755--756
 []\OT1/cmr/m/n/10 Valdiviezo, P. M. (2019). Sis-tema re-comen-dador
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 628.
-[5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 628.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 768.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 768.
  (build/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 628.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 628.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 768.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 768.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 510E99A092702E7798C91DEF88689FAD;1435.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 628.
+(rerunfilecheck)             Checksum: 567B73EAFA89BA7844B350ED6CA27DAD;1715.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 768.
  ) 
 Here is how much of TeX's memory you used:
- 10111 strings out of 483121
- 160976 string characters out of 5964354
- 548369 words of memory out of 5000000
- 24901 multiletter control sequences out of 15000+600000
+ 10119 strings out of 483121
+ 161038 string characters out of 5964354
+ 548346 words of memory out of 5000000
+ 24904 multiletter control sequences out of 15000+600000
  537489 words of font info for 43 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 48i,11n,46p,391b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on build/report.pdf (5 pages, 223019 bytes).
+ 48i,11n,46p,487b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on build/report.pdf (6 pages, 241310 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

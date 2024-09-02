@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1725166627 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1725166628
+["pdflatex"] 1725236902 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1725236903
   "/etc/texmf/web2c/texmf.cnf" 1680493193 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1725126041 11524 38ee159fd2a2343870490c70e5b60d25 ""
-  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1725166626 27433 6fa4947baef08cfe7a1dbde6d4ded805 ""
+  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1725236902 33831 963989f1fd26cb6eb1260f42c5bb97d3 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -31,6 +31,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1248133631 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
@@ -115,11 +116,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1685568860 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710446285 4850205 dce2d7021669d03cb436ec914d5b521e ""
-  "build/report.aux" 1725166628 4438 c0495214664490b172380ee23a98d138 "pdflatex"
-  "build/report.out" 1725166628 1435 510e99a092702e7798c91def88689fad "pdflatex"
-  "report.tex" 1725166626 27433 6fa4947baef08cfe7a1dbde6d4ded805 ""
+  "build/report.aux" 1725236903 4873 02975db996ec5108229748bb672946f9 "pdflatex"
+  "build/report.out" 1725236903 1715 567b73eafa89ba7844b350ed6ca27dad "pdflatex"
+  "report.tex" 1725236902 33831 963989f1fd26cb6eb1260f42c5bb97d3 ""
   (generated)
-  "build/report.log"
-  "build/report.aux"
   "build/report.pdf"
+  "build/report.aux"
+  "build/report.log"
   "build/report.out"

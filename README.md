@@ -1,6 +1,7 @@
 # Hibridación de Técnicas en Sistemas de Recomendación: Ventajas del Enfoque Probabilístico y Expansión del Algoritmo NBCF
 
 ## Autores
+
 - **Daniel Machado Pérez** - [@DanielMPMatCom](https://github.com/DanielMPMatCom)
 - **Osvaldo R. Moreno Prieto** - [@Val020213](https://github.com/Val020213)
 - **Daniel Toledo Martínez** - [@Phann020126](https://github.com/Phann020126)
@@ -13,10 +14,12 @@ Dentro de los enfoques más prominentes en el desarrollo de sistemas de recomend
 
 Para superar estas limitaciones, se ha propuesto el uso de enfoques **probabilísticos** como el **Naive Bayes Collaborative Filtering (NBCF)**, que no solo iguala o supera la precisión de la factorización matricial, sino que también mejora significativamente la capacidad del sistema para explicar las recomendaciones generadas. Además, la expansión del algoritmo NBCF para realizar recomendaciones a grupos de usuarios representa un avance significativo en la personalización colectiva de contenidos, un área que aún requiere un mayor desarrollo dentro del campo.
 
-Este proyecto tiene como objetivo la implementación y evaluación de un sistema de recomendación híbrido que combina técnicas probabilísticas y de filtrado colaborativo, con un enfoque especial en la adaptabilidad y explicabilidad de las recomendaciones. Se utilizará el dataset **MovieLens**, ampliamente reconocido en la comunidad de investigación, para validar el rendimiento del sistema propuesto y compararlo con enfoques tradicionales.
+Este proyecto tiene como objetivo la implementación y evaluación de un sistema de recomendación híbrido que combina técnicas probabilísticas y de filtrado colaborativo, con un enfoque especial en la adaptabilidad y explicabilidad de las recomendaciones. Se basa en el trabajo previo desarrollado en varias tesis doctorales y artículos académicos, que exploran las ventajas de los enfoques probabilísticos , proporcionando una base sólida para la investigación y desarrollo de sistemas de recomendación más robustos y adaptativos. Siguiendo la sugerencia de una de las tesis analizadas, se propondrá un método para expandir el NBCF y realizar recomendaciones a grupos de usuarios combinándolo con una técnica existente en la literatura (NBP).
 
-El proyecto también se basa en el trabajo previo desarrollado en varias tesis doctorales y artículos académicos, que exploran tanto las ventajas de los enfoques probabilísticos como las posibilidades de expansión del NBCF para recomendaciones grupales, proporcionando una base sólida para la investigación y desarrollo de sistemas de recomendación más robustos y adaptativos.
+Se utilizará el dataset **MovieLens**, ampliamente reconocido en la comunidad de investigación, para validar el rendimiento del sistema propuesto y compararlo con enfoques tradicionales.
 
 ## Requerimientos
+
 ## APIs utilizadas
+
 ## Modo de uso

@@ -96,10 +96,10 @@ Osvaldo R. Moreno Prieto - osvaldo0202013@gmail.com}
 \end{abstract}
 
 % --------------- KEYWORDS
-\noindent \textbf{Palabras Clave}: Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), Recomendación para Grupos.
+\noindent \textbf{Palabras Clave}: Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), \textit{Naive Pooling} (NBP).
 
 \rule{\linewidth}{0.5pt}
-
++
 % --------------- MAIN CONTENT
 
 \section{Introducción}
@@ -181,9 +181,20 @@ recomendaciones de la tesis doctoral, para adaptarlo
 a la recomendación grupal, un desafío significativo 
 en la personalización colectiva.\\
 
-
-
-!!!!!!!!!!!!!!!!!!!  EXPLICAR SOLUCION NUESTRA !!!!!!!!!!!
+Para extender el algoritmo NBCF a la recomendación de 
+grupos, se adoptará la idea del \textit{Naive Pooling} (NBP) 
+propuesta en el artículo \textit{"Extended Naïve Bayes for 
+Group Based Classification"}\cite{nbp}. El método NBP utiliza 
+las probabilidades calculadas (en nuestro caso las ya 
+con NBCF) y las 
+combina de manera que se maximice la probabilidad 
+conjunta para un grupo de usuarios, permitiendo así 
+una clasificación efectiva de grupos con una alta 
+coherencia en las recomendaciones. Este enfoque se 
+considera particularmente adecuado para garantizar 
+que todos los miembros del grupo reciban 
+recomendaciones que reflejen tanto las preferencias 
+individuales como las del colectivo.
 
 \subsection{Dataset Seleccionado}
 
@@ -342,18 +353,28 @@ beneficios del filtrado colaborativo basado en modelos
 probabilísticos con técnicas de filtrado basado en 
 contenido.
 
-Otra tesis doctoral relevante es la titulada 
-"Recomendación a grupos de usuarios usando el concepto 
-de singularidades"\cite{tesis_recomendacion_grupos}. En este trabajo, se introduce un 
-enfoque innovador para realizar recomendaciones a 
-grupos de usuarios, considerando las preferencias 
-individuales dentro del grupo, pero ajustando las 
-recomendaciones para maximizar la satisfacción 
-colectiva. Este tipo de investigación es crucial 
-para la expansión del algoritmo NBCF, que se centra 
-en recomendaciones individuales, hacia escenarios 
-donde las recomendaciones deben adaptarse a un 
-colectivo de usuarios con preferencias diversas.
+En el paper titulado \textit{"Extended Naïve 
+Bayes for Group Based Classification"}\cite{nbp}, los autores 
+presentan una extensión del clásico modelo 
+\textit{Naive Bayes}, adaptándolo para su aplicación 
+en la clasificación basada en grupos. Uno de los 
+enfoques tratados, 
+denominado \textit{Naive Pooling} (NBP), se centra en la 
+agregación de probabilidades individuales para 
+generar una probabilidad conjunta que permita la 
+clasificación efectiva de grupos de usuarios. La 
+metodología propuesta combina las probabilidades 
+individuales de cada miembro del grupo para maximizar 
+la coherencia y relevancia de la clasificación final. 
+Este método resulta particularmente útil en contextos 
+donde se deben generar recomendaciones o decisiones 
+que reflejen tanto las preferencias individuales 
+como la dinámica grupal. La capacidad de NBP para 
+mantener la simplicidad del modelo Naive Bayes, 
+al tiempo que amplía su aplicabilidad a escenarios 
+grupales, lo convierte en una herramienta poderosa 
+para la personalización colectiva en sistemas de 
+recomendación.
 
 Además, en el paper \textit{"A Collaborative Filtering 
 Approach Based on Naive Bayes Classifier"}\cite{nbcf}, 
@@ -522,7 +543,7 @@ Este enfoque garantiza que el NBCF no solo sea
 eficiente, sino que también se adapte bien a problemas 
 de gran escala, manteniendo una complejidad 
 computacional similar a la de otros métodos avanzados, 
-como la factorización matricial \cite{tesis_recomendacion_grupos}.
+como la factorización matricial \cite{tesis_sistema_recomendador_hibrido}.
 
 \subsection{Resultados Experimentales y Comparativa}
 
@@ -594,6 +615,125 @@ recomendación.
 
 \section{Expansión del Algoritmo NBCF}
 
+\subsection{Algoritmo NBP. Formulación Matemática}
+En los sistemas de recomendación modernos, la 
+capacidad de realizar recomendaciones efectivas 
+no solo a usuarios individuales, sino también a grupos, 
+se ha vuelto un aspecto crucial. Contextos como la 
+recomendación de contenido para familias, equipos de 
+trabajo o grupos de amigos demandan un enfoque que 
+pueda considerar y equilibrar las preferencias 
+individuales dentro de un colectivo, maximizando la 
+satisfacción general del grupo. En respuesta a esta 
+necesidad, surge el algoritmo NBP, una extensión del 
+modelo clásico de \textit{Naive Bayes} adaptado 
+específicamente para la clasificación y recomendación 
+a grupos de usuarios.
+
+El algoritmo se fundamenta en la misma premisa básica 
+que el \textit{Naive Bayes}, es decir, la independencia 
+condicional de las características dadas las clases. 
+Sin embargo, lo que distingue a NBP es su capacidad 
+para combinar las probabilidades individuales de los 
+miembros de un grupo, produciendo una probabilidad 
+conjunta que guía la recomendación o clasificación 
+final para todo el grupo.
+
+Matemáticamente, la probabilidad conjunta para un 
+grupo $G$ de $n$ usuarios con respecto a una clase $C_l$ 
+se puede expresar como:
+
+\begin{multline}
+    P(C_l) = \frac{\prod_{k=1}^{n} P(C_l|x_k)}{\prod_{k=1}^{n} P(c_l|x_k) + \prod_{k=1}^{n} (1-P(c_l|x_k))}
+\end{multline} \cite{nbp}
+
+Donde:
+\begin{itemize}
+    \item $x_k$ es un usuario del grupo $G$,
+    \item $P(C_l|x_k)$ es la probabilidad de la 
+    clase $C_l$ dada para el usuario individual $x_k$. 
+\end{itemize} 
+
+El algoritmo NBP maximiza esta probabilidad conjunta, 
+seleccionando la clase $C_l$ que mayor valor obtenga, 
+lo que se traduce en una recomendación para el grupo 
+que refleje un consenso entre las preferencias 
+individuales.
+
+\subsection{Ventajas y Desventajas de NBP}
+
+El algoritmo Naive Pooling presenta varias ventajas notables:
+\begin{itemize}
+    \item \textbf{Simplicidad y Eficiencia}: 
+    Al estar basado en el modelo \textit{Naive Bayes}, 
+    NBP hereda la simplicidad computacional y la 
+    eficiencia del mismo, lo que permite su 
+    implementación en sistemas a gran escala sin 
+    requerir un costo computacional elevado.
+    \item \textbf{Interpretabilidad}:
+    Una de las fortalezas del enfoque probabilístico 
+    es su capacidad para proporcionar una explicación 
+    clara de las recomendaciones basadas en 
+    probabilidades. Esto facilita la interpretación de 
+    por qué un grupo recibió una recomendación 
+    específica.
+    \item \textbf{Adaptabilidad}:
+    NBP es altamente adaptable y puede integrarse con 
+    facilidad en sistemas de recomendación existentes 
+    que ya utilicen el enfoque \textit{Naive Bayes} 
+    para recomendaciones individuales. Esto permite a 
+    los desarrolladores extender sus sistemas a la 
+    recomendación grupal sin necesidad de una 
+    reingeniería significativa.
+\end{itemize}
+
+A pesar de sus ventajas, el algoritmo NBP también 
+presenta algunas limitaciones que deben ser consideradas:
+
+\begin{itemize}
+    \item \textbf{Suposición de Independencia}:
+    Al igual que \textit{Naive Bayes}, NBP asume que 
+    las preferencias de los usuarios dentro del grupo 
+    son condicionalmente independientes, lo cual puede 
+    no reflejar adecuadamente la realidad, donde las 
+    preferencias de los usuarios pueden estar 
+    correlacionadas.
+    \item \textbf{Equidad en la Recomendación}:
+    NBP no tiene en cuenta explícitamente la equidad 
+    entre las preferencias individuales dentro del 
+    grupo. Es decir, podría favorecer las preferencias 
+    de algunos usuarios sobre otros, especialmente si 
+    las probabilidades individuales de ciertos miembros 
+    del grupo son mucho más altas que las de los demás.
+    \item \textbf{Escalabilidad con Grupos Grandes}:
+    Aunque eficiente, a medida que el tamaño del grupo 
+    aumenta, la combinación de probabilidades puede 
+    llevar a situaciones donde las recomendaciones 
+    sean dominadas por usuarios con preferencias 
+    extremas, lo que podría reducir la diversidad y la 
+    satisfacción global del grupo.
+\end{itemize}
+
+\subsection{Aplicación del Algoritmo NBP en la Expansión de NBCF}
+
+En el contexto de esta investigación, el algoritmo 
+\textit{Naive Pooling} se integrará con el modelo 
+\textit{Naive Bayes Collaborative Filtering} (NBCF). 
+Teniendo previamente calculados los valores de las 
+probabilidades para cada usuario con NBCF, ya sea con 
+su enfoque basado en usuario, basado en ítems o híbrido,
+se puede efectuar la fórmula de NBP y obtener el resultado 
+que se quiere. De esta forma, se extiende 
+la funcionalidad del NBCF para proporcionar 
+recomendaciones no solo a individuos, sino también a 
+grupos de usuarios, conservando la precisión y 
+explicabilidad del enfoque probabilístico. 
+Esta expansión permitirá que el sistema no solo 
+mantenga la calidad en las recomendaciones 
+individuales, sino que también pueda satisfacer las 
+necesidades de colectivos en situaciones donde la 
+personalización grupal es esencial.
+
 \section{Evaluación de los resultados}
 
 \section{Conclusiones}
@@ -614,8 +754,8 @@ recomendación.
     \bibitem{tesis_sistema_recomendador_hibrido}
     Valdiviezo, P. M. (2019). Sistema recomendador híbrido basado en modelos probabilísticos (Doctoral dissertation, Universidad Politécnica de Madrid).
 
-    \bibitem{tesis_recomendacion_grupos}
-    Ortiz, R. H. (2020). Recomendación a grupos de usuarios usando el concepto de singularidades. (Doctoral dissertation, Universidad Politécnica de Madrid).
+    \bibitem{nbp}
+    Samsudin, N. A., \& Bradley, A. P. (2014). Extended naïve bayes for group based classification. In Recent Advances on Soft Computing and Data Mining: Proceedings of The First International Conference on Soft Computing and Data Mining (SCDM-2014) Universiti Tun Hussein Onn Malaysia, Johor, MalaysiaJune 16th-18th, 2014 (pp. 497-505). Springer International Publishing.
 
     \bibitem{movielens}
     Harper, F. M., \& Konstan, J. A. (2015). The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS), 5(4), 1-19. https://doi.org/10.1145/2827872
