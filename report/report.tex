@@ -37,6 +37,18 @@
   }
   \item\relax}
  {\endlist}
+
+ \newenvironment{englishabstract} % Abstract en inglés
+ {\small
+  \begin{center}
+  \bfseries Abstract \vspace{-.5em}\vspace{0pt}
+  \end{center}
+  \list{}{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }
+  \item\relax}
+ {\endlist}
  
 \makeatletter
 \renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt} % Change how the title looks like
@@ -64,7 +76,7 @@
 \date{\today}
 \author{Daniel Machado Pérez - daniel.machado.0206@gmail.com \\
 Daniel Toledo Martínez - daniel020126@gmail.com \\
-Osvaldo R. Moreno Prieto - osvaldo0202013@gmail.com}
+Osvaldo R. Moreno Prieto - osvaldo020213@gmail.com}
 
 \begin{document}
 
@@ -94,6 +106,31 @@ Osvaldo R. Moreno Prieto - osvaldo0202013@gmail.com}
     para ofrecer recomendaciones personalizadas y 
     comprensibles, tanto a individuos como a grupos.
 \end{abstract}
+
+\begin{englishabstract}
+    This work explores the hybridization of techniques 
+    in recommendation systems, focusing on the 
+    advantages of the probabilistic approach over 
+    matrix factorization in collaborative filtering. 
+    It highlights how the probabilistic approach, 
+    by providing an explicit representation of 
+    uncertainties, improves the interpretability and 
+    explanation of the generated recommendations. 
+    In particular, the Naive Bayes Collaborative 
+    Filtering (NBCF) algorithm is implemented, 
+    combining the simplicity of the Naive Bayes model 
+    with the power of collaborative filtering, 
+    allowing for precise and explanatory 
+    recommendations. Additionally, this algorithm is 
+    expanded to adapt to group recommendations, 
+    addressing a key area in the collective 
+    personalization of content. The results 
+    demonstrate that the probabilistic approach not 
+    only offers a robust alternative to matrix 
+    factorization but also enhances the system's 
+    ability to deliver personalized and understandable 
+    recommendations to both individuals and groups.
+\end{englishabstract}
 
 % --------------- KEYWORDS
 \noindent \textbf{Palabras Clave}: Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), \textit{Naive Pooling} (NBP).
