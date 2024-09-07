@@ -5,7 +5,7 @@ import numpy as np
 class MovieLensProcessing:
     ROOT = "./src/ml_processing/"
 
-    def __init__(self, rating_path) -> None:
+    def __init__(self, rating_path, delete_rows_every=2) -> None:
 
         self.rating_csv = rating_path
 
