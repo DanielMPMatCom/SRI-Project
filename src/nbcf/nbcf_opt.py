@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 
 def nbcf(rating: np.ndarray, alpha: float, r: int):
@@ -18,6 +19,9 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
     user_map = [set() for i in range(users)]
     movie_map = [set() for i in range(movies)]
 
+    d = time.time()
+    print("0 Mapping movies and users ...")
+
     # Map movies and users for faster navegation
     for user in range(users):
         user_map[user] = set()
@@ -26,6 +30,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                 user_map[user].add(movie)
                 movie_map[movie].add(user)
 
+    print(time.time() - d, " Mapped movies and users ...")
+    d = time.time()
     # Prior probability user based
     for movie in range(movies):
         movie_users[movie] = len(movie_map[movie]) + r_alpha
@@ -37,6 +43,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                 len(m_collaborative_filtering[(movie, qualified)]) + alpha
             ) / movie_users[movie]
 
+    print(time.time() - d, " Prior probability user based End...")
+    d = time.time()
     # Prior probability item based
     for user in range(users):
         user_movies[user] = len(user_map[user]) + r_alpha
@@ -48,7 +56,9 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                 len(u_collaborative_filtering[(user, qualified)]) + alpha
             ) / user_movies[user]
 
-    print("Calculating predictions ...")
+    print(time.time() - d, " Prior probability item based End ...")
+    d = time.time()
+    print("Start Calculating Predictions ...")
     # Calculate predictions
     item_prediction = np.full((users, movies, r), -1, float)
     user_prediction = np.full((users, movies, r), -1, float)
@@ -95,7 +105,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
 
                 user_prediction[user, movie, qualified] = tmp
 
-    print("Calculated Predictions ...")
+    print(time.time() - d, " Calculated Predictions ...")
 
     return user_prediction, item_prediction, user_map, movie_map
 
