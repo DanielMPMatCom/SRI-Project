@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def nbcf(rating: np.ndarray, alpha: float, r: int):
 
     users, movies = rating.shape
@@ -27,23 +28,26 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
 
     # Prior probability user based
     for movie in range(movies):
-        movie_users[movie] = np.sum(rating[:, movie] != -1) + r_alpha
+        movie_users[movie] = len(movie_map[movie]) + r_alpha
         for qualified in range(r):
-            m_collaborative_filtering[(movie, qualified)] = [i for i in range(users) if rating[i, movie] == qualified + 1]
+            m_collaborative_filtering[(movie, qualified)] = [
+                i for i in range(users) if rating[i, movie] == qualified + 1
+            ]
             pi[movie, qualified] = (
                 len(m_collaborative_filtering[(movie, qualified)]) + alpha
             ) / movie_users[movie]
 
     # Prior probability item based
     for user in range(users):
-        user_movies[user] = np.sum(rating[user, :] != -1) + r_alpha
+        user_movies[user] = len(user_map[user]) + r_alpha
         for qualified in range(r):
-            u_collaborative_filtering[(user, qualified)] = [i for i in range(movies) if rating[user, i] == qualified + 1]
+            u_collaborative_filtering[(user, qualified)] = [
+                i for i in range(movies) if rating[user, i] == qualified + 1
+            ]
             pu[user, qualified] = (
                 len(u_collaborative_filtering[(user, qualified)]) + alpha
             ) / user_movies[user]
 
-    
     print("Calculating predictions ...")
     # Calculate predictions
     item_prediction = np.full((users, movies, r), -1, float)
@@ -51,15 +55,15 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
 
     for user in range(users):
         for movie in range(movies):
-            
+
             if rating[user][movie] != -1:
                 continue
 
             for qualified in range(r):
-                
+
                 # Item based prediction
                 tmp = pi[movie, qualified]
-                
+
                 for j_movie in user_map[user]:
                     numerator = 0
                     denominator = 0
@@ -69,14 +73,14 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                         denominator += 1
                         if rating[u, j_movie] == rating[user, j_movie]:
                             numerator += 1
-                    
+
                     tmp *= (numerator + alpha) / (denominator + r_alpha)
 
                 item_prediction[user, movie, qualified] = tmp
 
                 # User based prediction
                 tmp = pu[user, qualified]
-                
+
                 for j_user in movie_map[movie]:
                     numerator = 0
                     denominator = 0
@@ -90,20 +94,23 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
                     tmp *= (numerator + alpha) / (denominator + r_alpha)
 
                 user_prediction[user, movie, qualified] = tmp
-    
+
     print("Calculated Predictions ...")
 
-    return user_prediction, item_prediction
+    return user_prediction, item_prediction, user_map, movie_map
 
-def predict_hybrid(rating: np.ndarray, r, predict_item, predict_user):
+
+def predict_hybrid(
+    rating: np.ndarray, r, predict_item, predict_user, user_map, movie_map
+):
     users, movies = rating.shape
     prediction = np.zeros((users, movies, r))
     for user in range(users):
         for movie in range(movies):
             if rating[user][movie] != -1:
                 continue
-            ui = np.sum(rating[:, movie] != -1)
-            iu = np.sum(rating[user, :] != -1)
+            ui = len(movie_map[movie])
+            iu = len(user_map[user])
             for qualified in range(r):
                 prediction[user, movie, qualified] = predict_user[
                     user, movie, qualified
@@ -111,7 +118,8 @@ def predict_hybrid(rating: np.ndarray, r, predict_item, predict_user):
                     1 / (1 + iu)
                 )
     return prediction
-                
+
+
 ## Test
 
 # rating = np.array(

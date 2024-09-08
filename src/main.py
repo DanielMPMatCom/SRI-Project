@@ -85,7 +85,7 @@ def main():
     time = os.times()
     ml_processing = MovieLensProcessing(rating_path="./datasets/ml-1m/ratings.dat")
     rating = ml_processing.numpy_user_movie_matrix()
-    rating = rating[:250, :250]  # Reducir el tamaño de la matriz para pruebas
+    rating = rating[:100, :100]  # Reducir el tamaño de la matriz para pruebas
 
     # Convertir rating a tensor de PyTorch y mover a GPU si está disponible
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -98,10 +98,15 @@ def main():
     # Iniciar la medición del tiempo
     start_time.record()
 
-    pi, pu = nbcf(rating=rating_tensor, alpha=alpha, r=r)
+    pi, pu, user_map, movie_map = nbcf(rating=rating_tensor, alpha=alpha, r=r)
 
     hybrid_prediction = predict_hybrid(
-        rating=rating_tensor, r=r, predict_item=pi, predict_user=pu
+        rating=rating_tensor,
+        r=r,
+        predict_item=pi,
+        predict_user=pu,
+        user_map=user_map,
+        movie_map=movie_map,
     )
 
     # Finalizar la medición del tiempo
@@ -110,7 +115,7 @@ def main():
     # Sincronizar y calcular el tiempo transcurrido
     torch.cuda.synchronize()
     elapsed_time = start_time.elapsed_time(end_time)  # Tiempo en milisegundos
-    print(f"Tiempo de ejecución en GPU: {elapsed_time} ms")
+    print(f"Tiempo de ejecución en GPU: {elapsed_time/1000} s")
 
     # Mostrar el uso de memoria de la GPU
     print(
