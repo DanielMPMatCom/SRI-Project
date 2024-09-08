@@ -130,31 +130,81 @@ def predict_hybrid(
     return prediction
 
 
-## Test
+def attempt(value, expected, test_name=""):
+    try:
+        assert value == expected
+        print("\033[92m" + f"✅ Test {test_name} passed!" + "\033[0m")
+    except AssertionError as e:
+        raise AssertionError(
+            f"❌ Test failed! Expected {expected}, but got {value}"
+        ) from e
 
-# rating = np.array(
-#     [
-#         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
-#         [1, 5, 3, -1, 2, 4, 4, 3, -1],
-#         [1, 1, 2, -1, 2, 4, 4, 5, -1],
-#         [3, 2, 2, 3, -1, 1, 3, 2, -1],
-#         [5, 1, 5, 5, 4, 4, 5, 2, -1],
-#     ]
-# )
 
-# ALPHA = 0.01
-# R = 5
+# Test
 
-# pu, pi = nbcf(rating=rating, alpha=ALPHA, r=R)
+rating = np.array(
+    [
+        [-1, 1, 2, 2, 5, -1, 4, 3, 5],
+        [1, 5, 3, -1, 2, 4, 4, 3, -1],
+        [1, 1, 2, -1, 2, 4, 4, 5, -1],
+        [3, 2, 2, 3, -1, 1, 3, 2, -1],
+        [5, 1, 5, 5, 4, 4, 5, 2, -1],
+    ]
+)
 
-# print(" =========================================")
+ALPHA = 0.01
+R = 5
+
+pu, pi, um, mm = nbcf(rating=rating, alpha=ALPHA, r=R)
+
 
 # print(pi[0, 0])
 
-# print(" =========================================")
+attempt(
+    np.allclose(
+        pi[0, 0],
+        [
+            1.13551245e-05,
+            3.16049383e-08,
+            7.89407449e-11,
+            3.16049383e-08,
+            3.75908309e-12,
+        ],
+    ),
+    True,
+    "item prediction",
+)
+
 
 # print(pu[0, 0])
+attempt(
+    np.allclose(
+        pu[0, 0],
+        [
+            1.19040964e-07,
+            1.24921748e-05,
+            1.17862340e-09,
+            1.20231373e-05,
+            4.92571226e-08,
+        ],
+    ),
+    True,
+    "user prediction",
+)
 
-# ph = predict_hybrid(rating=rating, r=R, predict_item=pi, predict_user=pu)
+
+ph = predict_hybrid(
+    rating=rating, r=R, predict_item=pi, predict_user=pu, user_map=um, movie_map=mm
+)
+
+attempt(
+    np.allclose(
+        ph[0, 0],
+        [0.00993204, 0.01207249, 0.00089421, 0.01198044, 0.00128937],
+    ),
+    True,
+    "hybrid test",
+)
+
 
 # print(ph[0, 0])
