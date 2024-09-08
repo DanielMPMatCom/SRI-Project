@@ -1,19 +1,17 @@
-import numpy as np
 import time
+import torch
 
 
-def nbcf(rating: np.ndarray, alpha: float, r: int):
+def nbcf(rating, alpha: float, r: int):
 
     users, movies = rating.shape
     r_alpha = r * alpha
 
-    pu = np.zeros((users, r))
-    pi = np.zeros((movies, r))
+    pu = torch.zeros((users, r), device=rating.device)
+    pi = torch.zeros((movies, r), device=rating.device)
 
-    movie_users = {}
     m_collaborative_filtering = {}
 
-    user_movies = {}
     u_collaborative_filtering = {}
 
     user_map = [set() for i in range(users)]
@@ -34,34 +32,31 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
     d = time.time()
     # Prior probability user based
     for movie in range(movies):
-        movie_users[movie] = len(movie_map[movie]) + r_alpha
-        for qualified in range(r):
-            m_collaborative_filtering[(movie, qualified)] = [
-                i for i in range(users) if rating[i, movie] == qualified + 1
-            ]
-            pi[movie, qualified] = (
-                len(m_collaborative_filtering[(movie, qualified)]) + alpha
-            ) / movie_users[movie]
+        dm = len(movie_map[movie]) + r_alpha
+        ci = torch.zeros(r, device=rating.device)
+        for user in movie_map[movie]:
+            ci[rating[user, movie] - 1] += 1
+        m_collaborative_filtering[movie] = ci
+        pi[movie] = (m_collaborative_filtering[movie] + alpha) / dm
 
     print(time.time() - d, " Prior probability user based End...")
     d = time.time()
     # Prior probability item based
     for user in range(users):
-        user_movies[user] = len(user_map[user]) + r_alpha
-        for qualified in range(r):
-            u_collaborative_filtering[(user, qualified)] = [
-                i for i in range(movies) if rating[user, i] == qualified + 1
-            ]
-            pu[user, qualified] = (
-                len(u_collaborative_filtering[(user, qualified)]) + alpha
-            ) / user_movies[user]
+        du = len(user_map[user]) + r_alpha
+        cu = torch.zeros(r, device=rating.device)
+        for movie in user_map[user]:
+            cu[rating[user, movie] - 1] += 1
+        u_collaborative_filtering[user] = cu
+        pu[user] = (u_collaborative_filtering[user] + alpha) / du
 
     print(time.time() - d, " Prior probability item based End ...")
+
     d = time.time()
     print("Start Calculating Predictions ...")
     # Calculate predictions
-    item_prediction = np.full((users, movies, r), -1, float)
-    user_prediction = np.full((users, movies, r), -1, float)
+    item_prediction = torch.zeros((users, movies, r), device=rating.device)
+    user_prediction = torch.zeros((users, movies, r), device=rating.device)
 
     for user in range(users):
         for movie in range(movies):
@@ -73,36 +68,26 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
 
                 # Item based prediction
                 tmp = pi[movie, qualified]
-
+                denominator = m_collaborative_filtering[movie][qualified]
                 for j_movie in user_map[user]:
                     numerator = 0
-                    denominator = 0
-                    for u in m_collaborative_filtering[(movie, qualified)]:
-                        if rating[u, j_movie] == -1:
-                            continue
-                        denominator += 1
-                        if rating[u, j_movie] == rating[user, j_movie]:
-                            numerator += 1
-
+                    numerator = torch.sum(
+                        rating[torch.tensor(list(movie_map[j_movie])), j_movie]
+                        == rating[torch.tensor(list(movie_map[j_movie])), movie]
+                    )
                     tmp *= (numerator + alpha) / (denominator + r_alpha)
-
                 item_prediction[user, movie, qualified] = tmp
 
                 # User based prediction
                 tmp = pu[user, qualified]
+                denominator = u_collaborative_filtering[user][qualified]
 
                 for j_user in movie_map[movie]:
-                    numerator = 0
-                    denominator = 0
-                    for m in u_collaborative_filtering[(user, qualified)]:
-                        if rating[j_user, m] == -1:
-                            continue
-                        denominator += 1
-                        if rating[j_user, m] == rating[j_user, movie]:
-                            numerator += 1
-
+                    numerator = torch.sum(
+                        rating[j_user, torch.tensor(list(user_map[j_user]))]
+                        == rating[user, torch.tensor(list(user_map[j_user]))]
+                    )
                     tmp *= (numerator + alpha) / (denominator + r_alpha)
-
                 user_prediction[user, movie, qualified] = tmp
 
     print(time.time() - d, " Calculated Predictions ...")
@@ -110,11 +95,9 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
     return user_prediction, item_prediction, user_map, movie_map
 
 
-def predict_hybrid(
-    rating: np.ndarray, r, predict_item, predict_user, user_map, movie_map
-):
+def predict_hybrid(rating, r, predict_item, predict_user, user_map, movie_map):
     users, movies = rating.shape
-    prediction = np.zeros((users, movies, r))
+    prediction = torch.zeros((users, movies, r))
     for user in range(users):
         for movie in range(movies):
             if rating[user][movie] != -1:
@@ -132,7 +115,7 @@ def predict_hybrid(
 
 ## Test
 
-# rating = np.array(
+# rating = torch.array(
 #     [
 #         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
 #         [1, 5, 3, -1, 2, 4, 4, 3, -1],
