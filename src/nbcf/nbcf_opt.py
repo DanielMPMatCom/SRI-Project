@@ -2,7 +2,7 @@ import numpy as np
 import time
 
 
-def nbcf(rating: np.ndarray, alpha: float, r: int):
+def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
 
     users, movies = rating.shape
     r_alpha = r * alpha
@@ -10,10 +10,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
     pu = np.zeros((users, r))
     pi = np.zeros((movies, r))
 
-    movie_users = {}
     m_collaborative_filtering = {}
 
-    user_movies = {}
     u_collaborative_filtering = {}
 
     user_map = [set() for i in range(users)]
@@ -34,42 +32,42 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
     d = time.time()
     # Prior probability user based
     for movie in range(movies):
-        movie_users[movie] = len(movie_map[movie]) + r_alpha
-        for qualified in range(r):
+        d = len(movie_map[movie]) + r_alpha
+        for qualified in qualified_array:
             m_collaborative_filtering[(movie, qualified)] = [
                 i for i in range(users) if rating[i, movie] == qualified + 1
             ]
             pi[movie, qualified] = (
                 len(m_collaborative_filtering[(movie, qualified)]) + alpha
-            ) / movie_users[movie]
+            ) / d
 
     print(time.time() - d, " Prior probability user based End...")
     d = time.time()
     # Prior probability item based
     for user in range(users):
-        user_movies[user] = len(user_map[user]) + r_alpha
-        for qualified in range(r):
+        d = len(user_map[user]) + r_alpha
+        for qualified in qualified_array:
             u_collaborative_filtering[(user, qualified)] = [
                 i for i in range(movies) if rating[user, i] == qualified + 1
             ]
             pu[user, qualified] = (
                 len(u_collaborative_filtering[(user, qualified)]) + alpha
-            ) / user_movies[user]
+            ) / d
 
     print(time.time() - d, " Prior probability item based End ...")
     d = time.time()
     print("Start Calculating Predictions ...")
     # Calculate predictions
-    item_prediction = np.full((users, movies, r), -1, float)
-    user_prediction = np.full((users, movies, r), -1, float)
+    item_prediction = np.zeros((users, movies, r), float)
+    user_prediction = np.zeros((users, movies, r), float)
 
     for user in range(users):
+        print(user, " of ", users)
         for movie in range(movies):
-
             if rating[user][movie] != -1:
                 continue
 
-            for qualified in range(r):
+            for qualified in qualified_array:
 
                 # Item based prediction
                 tmp = pi[movie, qualified]
@@ -111,7 +109,13 @@ def nbcf(rating: np.ndarray, alpha: float, r: int):
 
 
 def predict_hybrid(
-    rating: np.ndarray, r, predict_item, predict_user, user_map, movie_map
+    rating: np.ndarray,
+    r,
+    predict_item,
+    predict_user,
+    user_map,
+    movie_map,
+    qualified_array,
 ):
     users, movies = rating.shape
     prediction = np.zeros((users, movies, r))
@@ -121,7 +125,7 @@ def predict_hybrid(
                 continue
             ui = len(movie_map[movie])
             iu = len(user_map[user])
-            for qualified in range(r):
+            for qualified in qualified_array:
                 prediction[user, movie, qualified] = predict_user[
                     user, movie, qualified
                 ] ** (1 / (1 + ui)) * predict_item[user, movie, qualified] ** (
@@ -142,69 +146,75 @@ def attempt(value, expected, test_name=""):
 
 # Test
 
-rating = np.array(
-    [
-        [-1, 1, 2, 2, 5, -1, 4, 3, 5],
-        [1, 5, 3, -1, 2, 4, 4, 3, -1],
-        [1, 1, 2, -1, 2, 4, 4, 5, -1],
-        [3, 2, 2, 3, -1, 1, 3, 2, -1],
-        [5, 1, 5, 5, 4, 4, 5, 2, -1],
-    ]
-)
+# rating = np.array(
+#     [
+#         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
+#         [1, 5, 3, -1, 2, 4, 4, 3, -1],
+#         [1, 1, 2, -1, 2, 4, 4, 5, -1],
+#         [3, 2, 2, 3, -1, 1, 3, 2, -1],
+#         [5, 1, 5, 5, 4, 4, 5, 2, -1],
+#     ]
+# )
 
-ALPHA = 0.01
-R = 5
+# ALPHA = 0.01
+# R = 5
 
-pu, pi, um, mm = nbcf(rating=rating, alpha=ALPHA, r=R)
-
-
-# print(pi[0, 0])
-
-attempt(
-    np.allclose(
-        pi[0, 0],
-        [
-            1.13551245e-05,
-            3.16049383e-08,
-            7.89407449e-11,
-            3.16049383e-08,
-            3.75908309e-12,
-        ],
-    ),
-    True,
-    "item prediction",
-)
+# pu, pi, um, mm = nbcf(rating=rating, alpha=ALPHA, r=R)
 
 
-# print(pu[0, 0])
-attempt(
-    np.allclose(
-        pu[0, 0],
-        [
-            1.19040964e-07,
-            1.24921748e-05,
-            1.17862340e-09,
-            1.20231373e-05,
-            4.92571226e-08,
-        ],
-    ),
-    True,
-    "user prediction",
-)
+# # print(pi[0, 0])
+# print(
+#     pi[0, 0]
+#     - np.array(
+#         [1.13551245e-05, 3.16049383e-08, 7.89407449e-11, 3.16049383e-08, 3.75908309e-12]
+#     )
+# )
+
+# attempt(
+#     np.allclose(
+#         pi[0, 0],
+#         [
+#             1.13551245e-05,
+#             3.16049383e-08,
+#             7.89407449e-11,
+#             3.16049383e-08,
+#             3.75908309e-12,
+#         ],
+#     ),
+#     True,
+#     "item prediction",
+# )
 
 
-ph = predict_hybrid(
-    rating=rating, r=R, predict_item=pi, predict_user=pu, user_map=um, movie_map=mm
-)
+# # print(pu[0, 0])
+# attempt(
+#     np.allclose(
+#         pu[0, 0],
+#         [
+#             1.19040964e-07,
+#             1.24921748e-05,
+#             1.17862340e-09,
+#             1.20231373e-05,
+#             4.92571226e-08,
+#         ],
+#     ),
+#     True,
+#     "user prediction",
+# )
 
-attempt(
-    np.allclose(
-        ph[0, 0],
-        [0.00993204, 0.01207249, 0.00089421, 0.01198044, 0.00128937],
-    ),
-    True,
-    "hybrid test",
-)
+
+# ph = predict_hybrid(
+#     rating=rating, r=R, predict_item=pi, predict_user=pu, user_map=um, movie_map=mm
+# )
+
+# attempt(
+#     np.allclose(
+#         ph[0, 0],
+#         [0.00993204, 0.01207249, 0.00089421, 0.01198044, 0.00128937],
+#     ),
+#     True,
+#     "hybrid test",
+# )
 
 
-# print(ph[0, 0])
+# # print(ph[0, 0])

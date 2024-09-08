@@ -3,13 +3,10 @@ import numpy as np
 
 
 class MovieLensProcessing:
-    ROOT = "./src/ml_processing/"
+    rating_csv = "./datasets/ml-1m/ratings.dat"
 
-    def __init__(self, rating_path, delete_rows_every=2) -> None:
+    def __init__(self, delete_rows_every=2) -> None:
 
-        self.rating_csv = rating_path
-
-        columns = ["userId", "movieId", "rating", "time"]
         self._ratings = pd.read_table(
             self.rating_csv, sep="::", header=None, engine="python"
         )
@@ -33,4 +30,4 @@ class MovieLensProcessing:
         )
         print("user_movie_matrix loaded")
         # print(user_movie_matrix)
-        return user_movie_matrix
+        return user_movie_matrix, range(0, 4.5, 0.5)

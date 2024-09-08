@@ -1,63 +1,63 @@
-import os
 import torch
 from extended_naive_bayes.nbp import group_prediction
 from nbcf.nbcf_opt import nbcf, predict_hybrid
 from ml_processing.ml_procesing import MovieLensProcessing
+from ft_processing.ft_procesing import FilmTrustProcessing
+import time
+import os
 
 
 def main():
-    # Verificar si PyTorch está utilizando la GPU
-    if torch.cuda.is_available():
-        print(f"Usando GPU: {torch.cuda.get_device_name(torch.cuda.current_device())}")
-    else:
-        print("No se está utilizando GPU. Usando CPU.")
+    # # Load data
+    # ml_processing = FilmTrustProcessing()
+    # rating, qualified = ml_processing.numpy_user_movie_matrix()
 
-    # Medir el tiempo de las operaciones
-    start_time = torch.cuda.Event(enable_timing=True)
-    end_time = torch.cuda.Event(enable_timing=True)
+    # # Create recommenders
+    # alpha = 0.01
+    # r = qualified[-1] + 1
+    # print("R", r)
+    # print("QUALIFIEDS", qualified)
+    # # Iniciar la medición del tiempo
+    # duration = time.time()
+    # # start_time.record()
+    # print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    # pi, pu, user_map, movie_map = nbcf(
+    #     rating=rating, alpha=alpha, r=r, qualified_array=qualified
+    # )
 
-    # Load data
-    time = os.times()
-    ml_processing = MovieLensProcessing(rating_path="./datasets/ml-1m/ratings.dat")
-    rating = ml_processing.numpy_user_movie_matrix()
-    rating = rating[:100, :100]  # Reducir el tamaño de la matriz para pruebas
+    # hybrid_prediction = predict_hybrid(
+    #     rating=rating,
+    #     r=r,
+    #     predict_item=pi,
+    #     predict_user=pu,
+    #     user_map=user_map,
+    #     movie_map=movie_map,
+    #     qualified_array=qualified,
+    # )
 
-    # Convertir rating a tensor de PyTorch y mover a GPU si está disponible
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # # save the model
+    # name = "hybrid_prediction_fm.pt"
+    # while os.path.exists(name):
+    #     print(
+    #         "\033[93mEl archivo ya existe. Escriba -name seguido de un nombre para guardar el archivo, o -r para remplazarlo. \033[0m"
+    #     )
+    #     name = input()
+    #     if name == "-r":
+    #         break
+    #     else:
+    #         name = name + ".pt"
 
-    # Create recommenders
-    alpha = 0.01
-    r = 5
+    # torch.save(hybrid_prediction, "hybrid_prediction_ft.pt")
 
-    # Iniciar la medición del tiempo
-    start_time.record()
+    # # Finalizar la medición del tiempo
+    # duration = time.time() - duration
 
-    pi, pu, user_map, movie_map = nbcf(rating=rating, alpha=alpha, r=r)
+    # print(f"Tiempo de ejecución : {duration} ")
 
-    hybrid_prediction = predict_hybrid(
-        rating=rating,
-        r=r,
-        predict_item=pi,
-        predict_user=pu,
-        user_map=user_map,
-        movie_map=movie_map,
-    )
-
-    # Finalizar la medición del tiempo
-    end_time.record()
-
-    # Sincronizar y calcular el tiempo transcurrido
-    torch.cuda.synchronize()
-    elapsed_time = start_time.elapsed_time(end_time)  # Tiempo en milisegundos
-    print(f"Tiempo de ejecución en GPU: {elapsed_time/1000} s")
-
-    # Mostrar el uso de memoria de la GPU
-    print(
-        f"Memoria utilizada en GPU: {torch.cuda.memory_allocated(device) / 1024**2} MB"
-    )
-    print(
-        f"Memoria reservada en GPU: {torch.cuda.memory_reserved(device) / 1024**2} MB"
-    )
+    # load the model
+    t = time.time()
+    hybrid_prediction = torch.load("hybrid_prediction_ft.pt")
+    print("Modelo cargado en ", time.time() - t)
 
 
 if __name__ == "__main__":
