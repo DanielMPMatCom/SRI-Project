@@ -1,2 +1,5 @@
 datasets
 papers
+model
+**/__pycache__/
+**/*.pyc
