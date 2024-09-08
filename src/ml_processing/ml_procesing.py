@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import cupy as cp
 
 
 class MovieLensProcessing:
@@ -22,7 +22,7 @@ class MovieLensProcessing:
     def get_ratings(self) -> pd.DataFrame:
         return self._ratings
 
-    def numpy_user_movie_matrix(self) -> np.ndarray:
+    def numpy_user_movie_matrix(self) -> cp.ndarray:
         print("Loading user_movie_matrix ...")
         user_movie_matrix = (
             self._ratings.pivot_table(
@@ -32,5 +32,5 @@ class MovieLensProcessing:
             .to_numpy()
         )
         print("user_movie_matrix loaded")
-        # print(user_movie_matrix)
+
         return user_movie_matrix
