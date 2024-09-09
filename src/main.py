@@ -1,63 +1,70 @@
-import torch
+import numpy as np
 from extended_naive_bayes.nbp import group_prediction
 from nbcf.nbcf_opt import nbcf, predict_hybrid
 from ml_processing.ml_procesing import MovieLensProcessing
 from ft_processing.ft_procesing import FilmTrustProcessing
 import time
-import os
 
 
 def main():
-    # # Load data
-    # ml_processing = FilmTrustProcessing()
-    # rating, qualified = ml_processing.numpy_user_movie_matrix()
+    # Load data
+    preprocessing = FilmTrustProcessing()
+    _, test = preprocessing.separate_data_for_test()
+    rating, qualified = preprocessing.numpy_user_movie_matrix(remove_data=test)
 
-    # # Create recommenders
-    # alpha = 0.01
-    # r = qualified[-1] + 1
-    # print("R", r)
-    # print("QUALIFIEDS", qualified)
-    # # Iniciar la medición del tiempo
-    # duration = time.time()
-    # # start_time.record()
-    # print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    # pi, pu, user_map, movie_map = nbcf(
-    #     rating=rating, alpha=alpha, r=r, qualified_array=qualified
-    # )
+    # Create recommenders
+    alpha = 0.001
+    r = qualified[-1] + 1
 
-    # hybrid_prediction = predict_hybrid(
-    #     rating=rating,
-    #     r=r,
-    #     predict_item=pi,
-    #     predict_user=pu,
-    #     user_map=user_map,
-    #     movie_map=movie_map,
-    #     qualified_array=qualified,
-    # )
+    # Iniciar la medición del tiempo
+    duration = time.time()
 
-    # # save the model
-    # name = "hybrid_prediction_fm.pt"
-    # while os.path.exists(name):
-    #     print(
-    #         "\033[93mEl archivo ya existe. Escriba -name seguido de un nombre para guardar el archivo, o -r para remplazarlo. \033[0m"
-    #     )
-    #     name = input()
-    #     if name == "-r":
-    #         break
-    #     else:
-    #         name = name + ".pt"
+    print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    pi, pu, user_map, movie_map = nbcf(
+        rating=rating, alpha=alpha, r=r, qualified_array=qualified
+    )
 
-    # torch.save(hybrid_prediction, "hybrid_prediction_ft.pt")
+    hybrid_prediction = predict_hybrid(
+        rating=rating,
+        r=r,
+        predict_item=pi,
+        predict_user=pu,
+        user_map=user_map,
+        movie_map=movie_map,
+        qualified_array=qualified,
+    )
 
-    # # Finalizar la medición del tiempo
-    # duration = time.time() - duration
+    np.save(
+        "hybrid_prediction_ft_data_train.npy",
+        hybrid_prediction,
+    )
+    np.save(
+        "hybrid_prediction_ft_data_test.npy",
+        test,
+    )
 
-    # print(f"Tiempo de ejecución : {duration} ")
+    print("Modelo guardado")
 
-    # load the model
-    t = time.time()
-    hybrid_prediction = torch.load("hybrid_prediction_ft.pt")
-    print("Modelo cargado en ", time.time() - t)
+    # Finalizar la medición del tiempo
+    duration = time.time() - duration
+
+    print(f"⏰ Tiempo de ejecución : {duration} ")
+    hybrid_prediction = np.load(
+        "hybrid_prediction_ft_data_train.npy",
+    )
+    test = np.load("hybrid_prediction_ft_data_test.npy")
+
+    print("Iniciando test...")
+    for u, m, r in test:
+        u, m = int(u), int(m)
+        print(
+            f"\033[93mPredicción para el usuario {u}, pelicula {m}: {hybrid_prediction[u, m].argmax()}, Real: {r}\033[0m"
+        )
+
+    # # load the model
+    # t = time.time()
+    # hybrid_prediction = torch.load("hybrid_prediction_ft.pt")
+    # print("Modelo cargado en ", time.time() - t)
 
 
 if __name__ == "__main__":

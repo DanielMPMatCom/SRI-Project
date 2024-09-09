@@ -18,7 +18,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
     movie_map = [set() for i in range(movies)]
 
     d = time.time()
-    print("0 Mapping movies and users ...")
+    print("0 ⏰ Mapping movies and users ...")
 
     # Map movies and users for faster navegation
     for user in range(users):
@@ -28,7 +28,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
                 user_map[user].add(movie)
                 movie_map[movie].add(user)
 
-    print(time.time() - d, " Mapped movies and users ...")
+    print(time.time() - d, "⏰ Mapped movies and users ...")
     d = time.time()
     # Prior probability user based
     for movie in range(movies):
@@ -41,7 +41,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
                 len(m_collaborative_filtering[(movie, qualified)]) + alpha
             ) / d
 
-    print(time.time() - d, " Prior probability user based End...")
+    print(time.time() - d, "⏰ Prior probability user based End...")
     d = time.time()
     # Prior probability item based
     for user in range(users):
@@ -54,7 +54,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
                 len(u_collaborative_filtering[(user, qualified)]) + alpha
             ) / d
 
-    print(time.time() - d, " Prior probability item based End ...")
+    print(time.time() - d, "⏰ Prior probability item based End ...")
     d = time.time()
     print("Start Calculating Predictions ...")
     # Calculate predictions
@@ -103,7 +103,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
 
                 user_prediction[user, movie, qualified] = tmp
 
-    print(time.time() - d, " Calculated Predictions ...")
+    print(time.time() - d, "⏰ Calculated Predictions ...")
 
     return user_prediction, item_prediction, user_map, movie_map
 
@@ -146,75 +146,83 @@ def attempt(value, expected, test_name=""):
 
 # Test
 
-# rating = np.array(
-#     [
-#         [-1, 1, 2, 2, 5, -1, 4, 3, 5],
-#         [1, 5, 3, -1, 2, 4, 4, 3, -1],
-#         [1, 1, 2, -1, 2, 4, 4, 5, -1],
-#         [3, 2, 2, 3, -1, 1, 3, 2, -1],
-#         [5, 1, 5, 5, 4, 4, 5, 2, -1],
-#     ]
-# )
+rating = np.array(
+    [
+        [-1, 1, 2, 2, 5, -1, 4, 3, 5],
+        [1, 5, 3, -1, 2, 4, 4, 3, -1],
+        [1, 1, 2, -1, 2, 4, 4, 5, -1],
+        [3, 2, 2, 3, -1, 1, 3, 2, -1],
+        [5, 1, 5, 5, 4, 4, 5, 2, -1],
+    ]
+)
 
-# ALPHA = 0.01
-# R = 5
+ALPHA = 0.01
+R = 5
 
-# pu, pi, um, mm = nbcf(rating=rating, alpha=ALPHA, r=R)
-
-
-# # print(pi[0, 0])
-# print(
-#     pi[0, 0]
-#     - np.array(
-#         [1.13551245e-05, 3.16049383e-08, 7.89407449e-11, 3.16049383e-08, 3.75908309e-12]
-#     )
-# )
-
-# attempt(
-#     np.allclose(
-#         pi[0, 0],
-#         [
-#             1.13551245e-05,
-#             3.16049383e-08,
-#             7.89407449e-11,
-#             3.16049383e-08,
-#             3.75908309e-12,
-#         ],
-#     ),
-#     True,
-#     "item prediction",
-# )
+pu, pi, um, mm = nbcf(
+    rating=rating, alpha=ALPHA, r=R, qualified_array=[i for i in range(R)]
+)
 
 
-# # print(pu[0, 0])
-# attempt(
-#     np.allclose(
-#         pu[0, 0],
-#         [
-#             1.19040964e-07,
-#             1.24921748e-05,
-#             1.17862340e-09,
-#             1.20231373e-05,
-#             4.92571226e-08,
-#         ],
-#     ),
-#     True,
-#     "user prediction",
-# )
+# print(pi[0, 0])
+print(
+    pi[0, 0]
+    - np.array(
+        [1.13551245e-05, 3.16049383e-08, 7.89407449e-11, 3.16049383e-08, 3.75908309e-12]
+    )
+)
+
+attempt(
+    np.allclose(
+        pi[0, 0],
+        [
+            1.13551245e-05,
+            3.16049383e-08,
+            7.89407449e-11,
+            3.16049383e-08,
+            3.75908309e-12,
+        ],
+    ),
+    True,
+    "item prediction",
+)
 
 
-# ph = predict_hybrid(
-#     rating=rating, r=R, predict_item=pi, predict_user=pu, user_map=um, movie_map=mm
-# )
+print(pu[0, 0])
+attempt(
+    np.allclose(
+        pu[0, 0],
+        [
+            1.19040964e-07,
+            1.24921748e-05,
+            1.17862340e-09,
+            1.20231373e-05,
+            4.92571226e-08,
+        ],
+    ),
+    True,
+    "user prediction",
+)
 
-# attempt(
-#     np.allclose(
-#         ph[0, 0],
-#         [0.00993204, 0.01207249, 0.00089421, 0.01198044, 0.00128937],
-#     ),
-#     True,
-#     "hybrid test",
-# )
+
+ph = predict_hybrid(
+    rating=rating,
+    r=R,
+    predict_item=pi,
+    predict_user=pu,
+    user_map=um,
+    movie_map=mm,
+    qualified_array=[i for i in range(R)],
+)
+
+attempt(
+    np.allclose(
+        ph[0, 0],
+        [0.00993204, 0.01207249, 0.00089421, 0.01198044, 0.00128937],
+    ),
+    True,
+    "hybrid test",
+)
 
 
-# # print(ph[0, 0])
+print(ph[0, 0])
