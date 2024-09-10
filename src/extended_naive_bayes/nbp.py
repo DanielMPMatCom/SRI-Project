@@ -4,21 +4,35 @@ def group_prediction(
     rating: np.ndarray,
     group: np.ndarray,
     hp: np.ndarray,
-    r: int,
+    
+    q: list[int]
 ):
     
     _, movies = rating.shape
-    group_prediction_hf = np.zeros(movies, r)
+    group_prediction_hf = np.zeros((movies, len(q)))
 
     for item in range(movies):
-        for qualified in range(r):
+        for qualified in q:
 
             hybrid_based = 1
             inverted_hybrid_based = 1
 
             for g_user in group:
+                print("HB", hybrid_based)
                 hybrid_based *= hp[g_user, item, qualified]
+                
+                if(hybrid_based == 0):
+                    print("++++++++++++++++++++++++++++++++")
+                    print(f"{g_user}, {item}, {qualified}: {hp[g_user, item, qualified]}")
+                    raise 
+                
+                print("IHB", inverted_hybrid_based)
                 inverted_hybrid_based *= 1 - hp[g_user, item, qualified]
+                
+                if(inverted_hybrid_based == 0):
+                    print("--------------------------------")
+                    print(f"{g_user}, {item}, {qualified}: {hp[g_user, item, qualified]}")
+                    raise
 
             group_prediction_hf[item, qualified] = (hybrid_based) / (hybrid_based + inverted_hybrid_based)
 
