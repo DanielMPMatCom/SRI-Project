@@ -151,6 +151,8 @@ class NBCF:
                     )
 
                     self.prediction[user, movie, qualified] = left * right
+                    if self.prediction[user, movie, qualified] == 0:
+                        print("user", user, "movie", movie, "qualified", qualified)
 
 
 def attempt(value, expected, test_name=""):
