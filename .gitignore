@@ -4,3 +4,6 @@ model
 **/__pycache__/
 **/*.pyc
 db
+hybrid_prediction_ft_data_test.npy
+hybrid_prediction_ft_data_train.npy
+ratings.csv
