@@ -28,43 +28,51 @@ def main():
     # Crear grupo de prueba
     g = (0, groups[(0, 5)])
 
-    print(g)
+    print(" == = = = == = =  ", len(g[1]))
 
     # Eliminar datos del rating principal
-    for user in g[1]:
+    for user in g[1][:50]:
         rating[user][g[0]] = -1
 
-    print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    nbcf_instance = NBCF(
-        rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
-    )
-    np.save(
-        "./db/prediction",
-        nbcf_instance.prediction,
-    )
-    np.save(
-        "./db/test",
-        test,
-    )
+  
 
-    duration = time.time() - duration
+    # print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    # nbcf_instance = NBCF(
+    #     rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
+    # )
+    # np.save(
+    #     "./db/prediction",
+    #     nbcf_instance.prediction,
+    # )
+    # np.save(
+    #     "./db/test",
+    #     test,
+    # )
 
-    print(f"⏰ Tiempo de ejecución : {duration} ")
+    # duration = time.time() - duration
+
+    # print(f"⏰ Tiempo de ejecución : {duration} ")
 
     hybrid_prediction = np.load("./db/prediction.npy")
     test = np.load("./db/test.npy")
 
     print("Iniciando test...")
-    for u, m, r in test:
-        u, m = int(u), int(m)
-        print(
-            f"\033[93mPredicción: u, p = ({u},{m}): {hybrid_prediction[u, m].argmax() + 1}, Real: {r}\033[0m"
-        )
+    # for u, m, r in test:
+    #     u, m = int(u), int(m)
+    #     print(
+    #         f"\033[93mPredicción: u, p = ({u},{m}): {hybrid_prediction[u, m].argmax() + 1}, Real: {r}\033[0m"
+    #     )
 
     from extended_naive_bayes.nbp import group_prediction
 
     prediction = group_prediction(rating, g[1], hybrid_prediction, qualified)
-    print(prediction[0])
+    print(sorted([ (i + 1, v) for i, v in enumerate(prediction[0])], key=lambda x : x[1] ,reverse=True))
+    print(prediction[0].argmax() + 1)
+    print("NBCF le daria por usuario")
+    for i in g[1]:
+        print(
+            f"\033[93mPredicción: u, p = ({i},{0}): {hybrid_prediction[i, 0].argmax() + 1}\033[0m"
+        )
 
     # # load the model
     # t = time.time()
