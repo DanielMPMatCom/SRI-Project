@@ -15,15 +15,13 @@ class FilmTrustProcessing:
         self._ratings["userId"], user_index = pd.factorize(self._ratings["userId"])
         self._ratings["movieId"], movie_index = pd.factorize(self._ratings["movieId"])
 
-        self._ratings.to_csv("ratings.csv", index=False)
-
     def get_ratings(self) -> pd.DataFrame:
         return self._ratings
 
     def separate_data_for_test(self, percent: float = 0.2):
         self._ratings = self._ratings.sample(frac=1)
         n = int(len(self._ratings) * percent)
-        
+
         test = self._ratings[:n].to_numpy()
         test = np.array([[int(u), int(m), r * 2] for u, m, r in test])
 

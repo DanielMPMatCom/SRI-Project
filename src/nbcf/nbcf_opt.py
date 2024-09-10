@@ -5,7 +5,7 @@ import time
 class NBCF:
     EPSILON = np.finfo(float).eps
 
-    def __init__(self, rating, alpha, r, qualified_array, load=False) -> None:
+    def __init__(self, rating, alpha, r, qualified_array) -> None:
         self.rating: np.ndarray = rating
         self.alpha: float = alpha
         self.r: float = r
