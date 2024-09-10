@@ -5,6 +5,7 @@ from nbcf.nbcf_opt import NBCF
 from ml_processing.ml_procesing import MovieLensProcessing
 from ft_processing.ft_procesing import FilmTrustProcessing
 import time
+import os
 
 
 def main():
@@ -38,6 +39,10 @@ def main():
     nbcf_instance = NBCF(
         rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
     )
+    
+    if not os.path.exists("./db"):
+        os.makedirs("./db")
+    
     np.save(
         "./db/prediction",
         nbcf_instance.prediction,

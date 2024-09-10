@@ -100,22 +100,20 @@ class NBCF:
         self.THREADS = 0
         for user in range(self.users):
             print("user", user)
-            for movie in range(self.movies):
-                # Create a new Thread for this processing
-                thread = threading.Thread(
-                    target=self.calculate_predictions, args=(user, movie)
-                )
-                thread.start()
+            # Create a new Thread for this processing
+            thread = threading.Thread(target=self.calculate_predictions, args=[user])
+            thread.start()
 
-        while self.THREADS != self.users * self.movies:
+        while self.THREADS != self.users:
             print(self.THREADS)
             pass
 
         print(time.time() - d, "⏰ Calculated Predictions ...")
 
-    def calculate_predictions(self, user, movie):
-
-        if self.rating[user][movie] == -1:
+    def calculate_predictions(self, user):
+        for movie in range(self.movies):
+            if self.rating[user][movie] != -1:
+                continue
             for qualified in self.qualified_array:
                 # Item based prediction
                 tmp = self.pi[movie, qualified]
