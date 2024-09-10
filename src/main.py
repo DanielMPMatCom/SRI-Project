@@ -20,32 +20,32 @@ def main():
     # Iniciar la medición del tiempo
     duration = time.time()
 
-    # Crear grupos
-    groups = generate_groups(rating, 50)
+    # # Crear grupos
+    # groups = generate_groups(rating, 50)
     # [print(f"{movie}: {len(x)}") for (movie, _), x in groups.items()]
     # print(f"Created {len(groups)} groups")
 
-    # Crear grupo de prueba
-    g = (0, groups[(0, 5)])
+    # # Crear grupo de prueba
+    # g = (0, groups[(0, 5)])
 
-    print(g)
+    # print(g)
 
-    # Eliminar datos del rating principal
-    for user in g[1]:
-        rating[user][g[0]] = -1
+    # # Eliminar datos del rating principal
+    # for user in g[1]:
+    #     rating[user][g[0]] = -1
 
-    # print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    # nbcf_instance = NBCF(
-    #     rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
-    # )
-    # np.save(
-    #     "./db/prediction",
-    #     nbcf_instance.prediction,
-    # )
-    # np.save(
-    #     "./db/test",
-    #     test,
-    # )
+    print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    nbcf_instance = NBCF(
+        rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
+    )
+    np.save(
+        "./db/prediction",
+        nbcf_instance.prediction,
+    )
+    np.save(
+        "./db/test",
+        test,
+    )
 
     duration = time.time() - duration
 
@@ -61,15 +61,10 @@ def main():
             f"\033[93mPredicción: u, p = ({u},{m}): {hybrid_prediction[u, m].argmax() + 1}, Real: {r}\033[0m"
         )
 
-    from extended_naive_bayes.nbp import group_prediction
+    # from extended_naive_bayes.nbp import group_prediction
 
-    prediction = group_prediction(rating, g[1], hybrid_prediction, qualified)
-    print(prediction[0])
-
-    # # load the model
-    # t = time.time()
-    # hybrid_prediction = torch.load("hybrid_prediction_ft.pt")
-    # print("Modelo cargado en ", time.time() - t)
+    # prediction = group_prediction(rating, g[1], hybrid_prediction, qualified)
+    # print(prediction[0])
 
 
 if __name__ == "__main__":
