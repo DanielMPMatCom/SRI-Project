@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  3 SEP 2024 18:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  9 SEP 2024 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -604,8 +604,17 @@ Underfull \hbox (badness 2460) in paragraph at lines 792--793
  []
 
 [6]
+Underfull \hbox (badness 1430) in paragraph at lines 798--799
+[]\OT1/cmr/m/n/10 J. Gol-beck, J. Hendler, \FilmTrust: movie rec-
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 798--799
+\OT1/cmr/m/n/10 ni-ca-tions and Net-work-ing Con-fer-ence, 2006, DOI:
+ []
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 805.
- [7
+[7
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 805.
@@ -625,7 +634,7 @@ Here is how much of TeX's memory you used:
  40 hyphenation exceptions out of 8191
  48i,11n,46p,487b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on build/report.pdf (7 pages, 244750 bytes).
+Output written on build/report.pdf (7 pages, 244920 bytes).
 PDF statistics:
  253 PDF objects out of 1000 (max. 8388607)
  222 compressed objects within 3 object streams

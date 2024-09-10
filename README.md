@@ -1,5 +1,7 @@
 # Hibridación de Técnicas en Sistemas de Recomendación: Ventajas del Enfoque Probabilístico y Expansión del Algoritmo NBCF
 
+![Logo](report/assets/logo.jpeg)
+
 ## Autores
 
 - **Daniel Machado Pérez** - [@DanielMPMatCom](https://github.com/DanielMPMatCom)
@@ -16,7 +18,7 @@ Para superar estas limitaciones, se ha propuesto el uso de enfoques **probabilí
 
 Este proyecto tiene como objetivo la implementación y evaluación de un sistema de recomendación híbrido que combina técnicas probabilísticas y de filtrado colaborativo, con un enfoque especial en la adaptabilidad y explicabilidad de las recomendaciones. Se basa en el trabajo previo desarrollado en varias tesis doctorales y artículos académicos, que exploran las ventajas de los enfoques probabilísticos , proporcionando una base sólida para la investigación y desarrollo de sistemas de recomendación más robustos y adaptativos. Siguiendo la sugerencia de una de las tesis analizadas, se propondrá un método para expandir el NBCF y realizar recomendaciones a grupos de usuarios combinándolo con una técnica existente en la literatura (NBP).
 
-Se utilizará el dataset **MovieLens**, ampliamente reconocido en la comunidad de investigación, para validar el rendimiento del sistema propuesto y compararlo con enfoques tradicionales.
+Se utilizará el dataset **FilmTrust**, ampliamente reconocido en la comunidad de investigación, para validar el rendimiento del sistema propuesto y compararlo con enfoques tradicionales.
 
 ## Requerimientos
 
