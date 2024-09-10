@@ -1,6 +1,6 @@
 import numpy as np
 from extended_naive_bayes.nbp import group_prediction
-from nbcf.nbcf_opt import nbcf, predict_hybrid
+from nbcf.nbcf_opt import NBCF
 from ml_processing.ml_procesing import MovieLensProcessing
 from ft_processing.ft_procesing import FilmTrustProcessing
 import time
@@ -20,26 +20,16 @@ def main():
     duration = time.time()
 
     print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    user_prediction, item_prediction, user_map, movie_map = nbcf(
-        rating=rating, alpha=alpha, r=r, qualified_array=qualified
-    )
-
-    hybrid_prediction = predict_hybrid(
-        rating=rating,
-        r=r,
-        user_prediction=user_prediction,
-        item_prediction=item_prediction,
-        user_map=user_map,
-        movie_map=movie_map,
-        qualified_array=qualified,
+    nbcf_instance = NBCF(
+        rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
     )
     # return
     np.save(
-        "hybrid_prediction_ft_data_train.npy",
-        hybrid_prediction,
+        "./db/prediction.npy",
+        nbcf_instance.prediction,
     )
     np.save(
-        "hybrid_prediction_ft_data_test.npy",
+        "./db/test.npy",
         test,
     )
 
@@ -49,10 +39,9 @@ def main():
     duration = time.time() - duration
 
     print(f"⏰ Tiempo de ejecución : {duration} ")
-    hybrid_prediction = np.load(
-        "hybrid_prediction_ft_data_train.npy",
-    )
-    test = np.load("hybrid_prediction_ft_data_test.npy")
+
+    hybrid_prediction = np.load("./db/prediction.npy")
+    test = np.load("./db/test.npy")
 
     print("Iniciando test...")
     for u, m, r in test:

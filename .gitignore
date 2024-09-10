@@ -3,3 +3,4 @@ papers
 model
 **/__pycache__/
 **/*.pyc
+db
