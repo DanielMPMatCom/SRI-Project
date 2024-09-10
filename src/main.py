@@ -34,18 +34,18 @@ def main():
     for user in g[1]:
         rating[user][g[0]] = -1
 
-    # print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    # nbcf_instance = NBCF(
-    #     rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
-    # )
-    # np.save(
-    #     "./db/prediction",
-    #     nbcf_instance.prediction,
-    # )
-    # np.save(
-    #     "./db/test",
-    #     test,
-    # )
+    print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    nbcf_instance = NBCF(
+        rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
+    )
+    np.save(
+        "./db/prediction",
+        nbcf_instance.prediction,
+    )
+    np.save(
+        "./db/test",
+        test,
+    )
 
     duration = time.time() - duration
 
