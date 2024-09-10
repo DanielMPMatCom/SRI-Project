@@ -13,27 +13,27 @@ def main():
     rating, qualified = preprocessing.numpy_user_movie_matrix(remove_data=test)
 
     # Create recommenders
-    alpha = 0.001
-    r = qualified[-1] + 1
+    alpha = 0.01
+    r = 8
 
     # Iniciar la medición del tiempo
     duration = time.time()
 
     print("Iniciando el entrenamiento del modelo ...", rating.shape)
-    pi, pu, user_map, movie_map = nbcf(
+    user_prediction, item_prediction, user_map, movie_map = nbcf(
         rating=rating, alpha=alpha, r=r, qualified_array=qualified
     )
 
     hybrid_prediction = predict_hybrid(
         rating=rating,
         r=r,
-        predict_item=pi,
-        predict_user=pu,
+        user_prediction=user_prediction,
+        item_prediction=item_prediction,
         user_map=user_map,
         movie_map=movie_map,
         qualified_array=qualified,
     )
-
+    # return
     np.save(
         "hybrid_prediction_ft_data_train.npy",
         hybrid_prediction,
@@ -58,7 +58,7 @@ def main():
     for u, m, r in test:
         u, m = int(u), int(m)
         print(
-            f"\033[93mPredicción para el usuario {u}, pelicula {m}: {hybrid_prediction[u, m].argmax()}, Real: {r}\033[0m"
+            f"\033[93mPredicción: u, p = ({u},{m}): {hybrid_prediction[u, m].argmax() + 1}, Real: {r}\033[0m"
         )
 
     # # load the model

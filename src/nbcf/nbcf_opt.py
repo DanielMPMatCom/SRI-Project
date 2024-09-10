@@ -7,8 +7,8 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
     users, movies = rating.shape
     r_alpha = r * alpha
 
-    pu = np.zeros((users, r))
-    pi = np.zeros((movies, r))
+    pu = np.zeros((users, r), float)
+    pi = np.zeros((movies, r), float)
 
     m_collaborative_filtering = {}
 
@@ -30,6 +30,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
 
     print(time.time() - d, "⏰ Mapped movies and users ...")
     d = time.time()
+
     # Prior probability user based
     for movie in range(movies):
         d = len(movie_map[movie]) + r_alpha
@@ -64,6 +65,7 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
     for user in range(users):
         print(user, " of ", users)
         for movie in range(movies):
+            
             if rating[user][movie] != -1:
                 continue
 
@@ -111,26 +113,31 @@ def nbcf(rating: np.ndarray, alpha: float, r: int, qualified_array: np.ndarray):
 def predict_hybrid(
     rating: np.ndarray,
     r,
-    predict_item,
-    predict_user,
+    user_prediction,
+    item_prediction,
     user_map,
     movie_map,
     qualified_array,
 ):
     users, movies = rating.shape
-    prediction = np.zeros((users, movies, r))
+    prediction = np.zeros((users, movies, r), float)
     for user in range(users):
         for movie in range(movies):
-            if rating[user][movie] != -1:
-                continue
+            # if rating[user][movie] != -1:
+            #     continue
             ui = len(movie_map[movie])
             iu = len(user_map[user])
             for qualified in qualified_array:
-                prediction[user, movie, qualified] = predict_user[
+                if item_prediction[user, movie, qualified] == 0:
+                    print("Error:", user, movie, qualified)
+                    print("el usuario ha calificado la película?", rating[user, movie])
+
+                prediction[user, movie, qualified] = user_prediction[
                     user, movie, qualified
-                ] ** (1 / (1 + ui)) * predict_item[user, movie, qualified] ** (
+                ] ** (1 / (1 + ui)) * item_prediction[user, movie, qualified] ** (
                     1 / (1 + iu)
                 )
+
     return prediction
 
 
@@ -159,14 +166,14 @@ rating = np.array(
 ALPHA = 0.01
 R = 5
 
-pu, pi, um, mm = nbcf(
+user_prediction, item_prediction, um, mm = nbcf(
     rating=rating, alpha=ALPHA, r=R, qualified_array=[i for i in range(R)]
 )
 
 
 # print(pi[0, 0])
 print(
-    pi[0, 0]
+    item_prediction[0, 0]
     - np.array(
         [1.13551245e-05, 3.16049383e-08, 7.89407449e-11, 3.16049383e-08, 3.75908309e-12]
     )
@@ -174,7 +181,7 @@ print(
 
 attempt(
     np.allclose(
-        pi[0, 0],
+        item_prediction[0, 0],
         [
             1.13551245e-05,
             3.16049383e-08,
@@ -188,10 +195,10 @@ attempt(
 )
 
 
-print(pu[0, 0])
+print(user_prediction[0, 0])
 attempt(
     np.allclose(
-        pu[0, 0],
+        user_prediction[0, 0],
         [
             1.19040964e-07,
             1.24921748e-05,
@@ -208,8 +215,8 @@ attempt(
 ph = predict_hybrid(
     rating=rating,
     r=R,
-    predict_item=pi,
-    predict_user=pu,
+    user_prediction=user_prediction,
+    item_prediction=item_prediction,
     user_map=um,
     movie_map=mm,
     qualified_array=[i for i in range(R)],
