@@ -2,8 +2,8 @@ import numpy as np
 from utils.create_grups import generate_groups
 from extended_naive_bayes.nbp import group_prediction
 from nbcf.nbcf_opt import NBCF
-from ml_processing.ml_procesing import MovieLensProcessing
-from ft_processing.ft_procesing import FilmTrustProcessing
+from src.ml_processing.ml_processing import MovieLensProcessing
+from src.ft_processing.ft_processing import FilmTrustProcessing
 import time
 
 
@@ -25,8 +25,7 @@ def main():
     # [print(f"{movie}: {len(x)}") for (movie, _), x in groups.items()]
     # print(f"Created {len(groups)} groups")
 
-   
-    # Crear grupos finales 
+    # Crear grupos finales
     final_groups = {}
 
     np.random.seed(42)
@@ -35,7 +34,6 @@ def main():
 
         for user in final_groups[movie, q]:
             rating[user, movie] = -1
-  
 
     print("Iniciando el entrenamiento del modelo ...", rating.shape)
     nbcf_instance = NBCF(
@@ -49,40 +47,19 @@ def main():
         "./db/test",
         test,
     )
-    
+
     np.save(
         "./db/rating",
         rating,
     )
-    
 
     # duration = time.time() - duration
 
     # print(f"⏰ Tiempo de ejecución : {duration} ")
 
-    # for user in range(nbcf_instance.users):
-    #     for movie in range(nbcf_instance.movies):
-    #         if rating[user][movie] == -1:
-    #             for q in qualified:
-    #                 if(nbcf_instance.prediction[user,movie,q] == 0):
-    #                     print(user, movie, q)
-
     hybrid_prediction = np.load("./db/prediction.npy")
     test = np.load("./db/test.npy")
     rating = np.load("./db/rating.npy")
-
-
-    # print([nbcf_instance.prediction[911, 2, r ] for r in qualified],' - - - - - - - - - -- - - - - - - - -')
-    # print([hybrid_prediction[911, 2, r ] for r in qualified],' - - - - - - - - - -- - - - - - - - -')
-
-    # for user in range(nbcf_instance.users):
-    #     for movie in range(nbcf_instance.movies):
-    #         if rating[user][movie] == -1:
-    #             for q in qualified:
-    #                 if(nbcf_instance.prediction[user,movie,q] == 0):
-    #                     print("Failed preload ", user, movie, q)
-    #                 if(hybrid_prediction[user, movie, q] == 0):
-    #                     print("Failed preload ", user, movie, q)
 
     print("Iniciando test...")
     # for u, m, r in test:
@@ -96,19 +73,20 @@ def main():
     prediction = {}
 
     for (movie, q), group in final_groups.items():
-        prediction[movie, q] = group_prediction(rating, group, hybrid_prediction, qualified, movie)[movie]
-        # print("++++++++++++++++++")
-        # print(prediction[movie, q][movie])
-        # print("++++++++++++++++++")
+        prediction[movie, q] = group_prediction(
+            rating, group, hybrid_prediction, qualified, movie
+        )[movie]
 
     for movie, q in final_groups.keys():
         print(f"Movie: {movie}")
-        print(f"Expected {q}, recived {prediction[movie, q].argmax() + 1}, distribution {prediction[movie, q]}")
-    
+        print(
+            f"Expected {q}, recived {prediction[movie, q].argmax() + 1}, distribution {prediction[movie, q]}"
+        )
+
     # print(sorted([ (i + 1, v) for i, v in enumerate(prediction[0])], key=lambda x : x[1] ,reverse=True))
     # print(prediction[0].argmax() + 1)
     # print("NBCF le daria por usuario")
-    
+
     # for i in g[1]:
     #     print(
     #         f"\033[93mPredicción: u, p = ({i},{0}): {hybrid_prediction[i, 0].argmax() + 1}\033[0m"
