@@ -22,7 +22,7 @@ def main():
     with left_co:
         st.image(
             "./report/assets/logo.jpeg",
-            caption="Proyecto Investigativo de SRI. Facultad de Matemática y Ciencia de la Computación. Universidad de La Habana. 2024",
+            caption="Proyecto Investigativo de SRI. Facultad de Matemática y Computación. Universidad de La Habana. 2024",
             use_column_width=True,
         )
     with right_co:
@@ -104,6 +104,13 @@ def main():
     )
     st.code(
         "bash startup.sh",
+        language="shell",
+    )
+    st.write(
+        "O puede ejecutar la interfaz de usuario con: "
+    )
+    st.code(
+        "bash streamlit_startup.sh",
         language="shell",
     )
     st.write(

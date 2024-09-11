@@ -4,4 +4,4 @@
 pip install -r requirements.txt
 
 # Run main.py
-streamlit run main.py
+streamlit run App.py

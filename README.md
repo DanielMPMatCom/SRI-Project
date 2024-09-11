@@ -39,4 +39,7 @@ No se utilizan APIs en este proyecto. En cambio se utiliza el framework de Strea
 
 Para ejecutar la aplicación, se debe abrir una terminal en la carpeta raíz del proyecto y ejecutar el siguiente comando:
 
-```bash startup.sh```
+- Para ejecutar el archivo `main.py`: ```bash startup.sh```
+- Para ejecutar la interfaz de usuario: ```bash streamlit_startup.sh```
+
+También puede seguir el siguiente enlace: [StreamlitApp](https://nbcfextended.streamlit.app/) 

@@ -470,12 +470,12 @@ utiliza los siguientes conceptos de probabilidades:"""
             """
         * **Error Medio Absoluto (MAE)**
         * **Precisión y Recall**
-        * **Ganancia acumulada descontada normalizada (nDCG)"""
+        * **Ganancia acumulada descontada normalizada (nDCG)**"""
         )
         st.write(
             """
         Se compararon los siguientes enfoques:
-        """
+        """ 
         )
         st.write(
             """
@@ -494,7 +494,7 @@ utiliza los siguientes conceptos de probabilidades:"""
             "- **MovieLens**: El enfoque híbrido de NBCF ha mostrado mejoras significativas en medidas de MAE, precisión y recall, así como el enfoque basado en ítems fue mejor en la nDCG en comparación con enfoques tradicionales.\n"
         )
         st.write(
-            "- **FilTrust**: el MAE de NBCF (híbrido) logra mejores resultados que los otros dos enfoques propuestos, mientras que la precisión y recall son mejores con NBCF (ítems) y NBCF (usuario). Por otro lado, cuando aumenta el número de recomendaciones, nDCG es mejor con el enfoque NBCF (híbrido).\n"
+            "- **FilmTrust**: el MAE de NBCF (híbrido) logra mejores resultados que los otros dos enfoques propuestos, mientras que la precisión y recall son mejores con NBCF (ítems) y NBCF (usuario). Por otro lado, cuando aumenta el número de recomendaciones, nDCG es mejor con el enfoque NBCF (híbrido).\n"
         )
         st.write(
             "- **Yahoo**: nDCG es mejor en NBCF (híbrido) en comparación con NBCF (ítem) y NBCF (usuario). Además, la precisión y el recall de los tres enfoques propuestos presentan un resultado casi similar entre ellos. Así mismo, hay una superioridad lograda en MAE de NBCF (híbrido) con respecto a los otros enfoques propuestos.\n"
