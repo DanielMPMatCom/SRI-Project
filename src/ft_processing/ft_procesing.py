@@ -21,7 +21,7 @@ class FilmTrustProcessing:
         return self._ratings
 
     def separate_data_for_test(self, percent: float = 0.2):
-        self._ratings = self._ratings.sample(frac=1)
+        self._ratings = self._ratings.sample(frac=1, random_state=42)
         n = int(len(self._ratings) * percent)
         
         test = self._ratings[:n].to_numpy()
