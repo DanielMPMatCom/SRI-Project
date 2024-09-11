@@ -1,13 +1,13 @@
 import numpy as np
-from utils.create_grups import generate_groups
-from extended_naive_bayes.nbp import group_prediction
-from nbcf.nbcf_opt import NBCF
-from ft_processing.ft_procesing import FilmTrustProcessing
+from src.utils.create_grups import generate_groups
+from src.extended_naive_bayes.nbp import group_prediction
+from src.nbcf.nbcf_opt import NBCF
+from src.ft_processing.ft_procesing import FilmTrustProcessing
 import time
 
-from utils.statistics import *
-from extended_naive_bayes.nbp import group_prediction
-from utils.plots import create_table, create_excel, create_differences_plot
+from src.utils.statistics import *
+from src.extended_naive_bayes.nbp import group_prediction
+from src.utils.plots import create_table, create_excel, create_differences_plot
 
 
 def main():
@@ -30,8 +30,8 @@ def main():
     print(len(groups))
 
     # return
-   
-    # Crear grupos finales 
+
+    # Crear grupos finales
     final_groups = {}
 
     print(len(groups))
@@ -42,7 +42,6 @@ def main():
 
         for user in final_groups[movie, q]:
             rating[user, movie] = -1
-  
 
     print("Iniciando el entrenamiento del modelo ...", rating.shape)
     nbcf_instance = NBCF(
@@ -113,11 +112,12 @@ def main():
     #         if rating[user, movie] != -1:
     #             print("+++++++++++++++++++++++++++++")
 
-
     for (movie, q), group in final_groups.items():
-        prediction[movie, q] = group_prediction(rating, group, hybrid_prediction, qualified, movie)[movie]
-        
-        to_export["Users"].append(', '.join(map(str, group)))
+        prediction[movie, q] = group_prediction(
+            rating, group, hybrid_prediction, qualified, movie
+        )[movie]
+
+        to_export["Users"].append(", ".join(map(str, group)))
         to_export["Movie"].append(movie)
         to_export["Expected"].append(q)
         to_export["Recieved"].append(prediction[movie, q].argmax() + 1)
@@ -125,7 +125,6 @@ def main():
         # to_plot.append([movie, q, prediction[movie, q].argmax() + 1])
         # differences.append(q - prediction[movie, q].argmax() - 1)
         # abs_differences.append(np.abs(q - prediction[movie, q].argmax() - 1))
-
 
     # for movie, q in final_groups.keys():
     #     print(f"Movie: {movie}")
@@ -145,7 +144,7 @@ def main():
     # print(sorted([ (i + 1, v) for i, v in enumerate(prediction[0])], key=lambda x : x[1] ,reverse=True))
     # print(prediction[0].argmax() + 1)
     # print("NBCF le daria por usuario")
-    
+
     # for i in g[1]:
     #     print(
     #         f"\033[93mPredicción: u, p = ({i},{0}): {hybrid_prediction[i, 0].argmax() + 1}\033[0m"
