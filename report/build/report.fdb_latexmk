@@ -1,8 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1726015160 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1726015161
+["makeindex build/report.idx"] 1726021449 "build/report.idx" "build/report.ind" "build/report" 1726023762
+  "build/report.idx" 1726023761 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  (generated)
+  "build/report.ind"
+  "build/report.ilg"
+["pdflatex"] 1726023760 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1726023762
   "/etc/texmf/web2c/texmf.cnf" 1680493193 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1725126041 11524 38ee159fd2a2343870490c70e5b60d25 ""
-  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1726015159 40819 80bff990afd6caf2a3171b856109a085 ""
+  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1726023759 44715 eaf2250a3b1e7502b01054f1fda587dc ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -71,6 +76,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty" 1576191570 19336 ce7ae9438967282886b3b036cfad1e4d ""
   "/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty" 1576625391 3935 57aa3c3e203a5c2effb4d2bd2efbc323 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1580683321 20023 e427dd9e17e239bf926ef3aab67fe35e ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty" 1580683321 1940 dd4f2aa11c89855a3c47d09758782ba5 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1580683321 8446 9874cccac5fee462272c582807dbbf56 ""
   "/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty" 1325892463 47295 de48b7f8ebf4b54709a2f6b2c7106dd5 ""
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1578175482 57350 70b0c251b0022f1db12ad7dd4c1aa547 ""
@@ -116,11 +122,18 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1685568860 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1710446285 4850205 dce2d7021669d03cb436ec914d5b521e ""
-  "build/report.aux" 1726015161 5688 e78677f22e9ed272ac97ff5a52b9a117 "pdflatex"
-  "build/report.out" 1726015161 2183 e35d27b4273300e586bb2d3df20ffaac "pdflatex"
-  "report.tex" 1726015159 40819 80bff990afd6caf2a3171b856109a085 ""
+  "assets/Diferencias678.png" 1726019971 60900 1ad7d0b0752f88ba47f5634944fa47ea ""
+  "assets/absolutas678.png" 1726019959 54598 1bc96687b96dc5f5fbbef02d9d5e52d0 ""
+  "assets/tabla678.png" 1726017899 35245 8c8fec6d43afe288b94af8e987cc3e98 ""
+  "build/report.aux" 1726023762 7052 250d2daa92b254af33a03aa77ad8d1c3 "pdflatex"
+  "build/report.ind" 1726021449 0 d41d8cd98f00b204e9800998ecf8427e "makeindex build/report.idx"
+  "build/report.out" 1726023762 2319 fa6a16a5a4085631d65d73842e1eb0e9 "pdflatex"
+  "build/report.toc" 1726023762 2803 16f0e44d4c49f2dd941d663ed58f28e8 "pdflatex"
+  "report.tex" 1726023759 44715 eaf2250a3b1e7502b01054f1fda587dc ""
   (generated)
-  "build/report.out"
+  "build/report.toc"
+  "build/report.idx"
+  "build/report.pdf"
   "build/report.log"
   "build/report.aux"
-  "build/report.pdf"
+  "build/report.out"

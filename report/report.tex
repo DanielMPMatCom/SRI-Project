@@ -14,6 +14,8 @@
 \usepackage{subcaption}
 \usepackage{comment}
 \usepackage{enumitem}
+\usepackage{makeidx}
+\makeindex
 \usepackage{cuted}
 \usepackage{sectsty} % Allows customizing section commands
 \usepackage{xcolor} % For colored text
@@ -25,6 +27,8 @@
     urlcolor=blue,
     }
 \allsectionsfont{\normalfont \normalsize \scshape} % Section names in small caps and normal fonts
+
+\addto\captionsenglish{\renewcommand{\contentsname}{Índice}}
 
 \renewenvironment{abstract} % Change how the abstract look to remove margins
  {\small
@@ -82,6 +86,8 @@ Osvaldo R. Moreno Prieto - osvaldo020213@gmail.com}
 
 \twocolumn[ \maketitle ]
 
+
+
 % --------------- ABSTRACT
 \begin{abstract}
     El presente trabajo explora la hibridación de 
@@ -132,12 +138,16 @@ Osvaldo R. Moreno Prieto - osvaldo020213@gmail.com}
     recommendations to both individuals and groups.
 \end{englishabstract}
 
+\rule{\linewidth}{0.5pt}
+
 % --------------- KEYWORDS
 \noindent \textbf{Palabras Clave}: Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), \textit{Naive Pooling} (NBP).
 
-\rule{\linewidth}{0.5pt}
+
 
 % --------------- MAIN CONTENT
+
+\tableofcontents
 
 \section{Introducción}
 
@@ -802,7 +812,7 @@ Para ello, se ha seleccionado el dataset \textit{FilmTrust}
  \subsubsection{Confección de los grupos de usuarios}
  A partir de cada película en el dataset, se forma un grupo compuesto por todos los usuarios que le han asignado la misma calificación. Este proceso garantiza que los grupos compartan una opinión similar sobre el ítem en cuestión, lo que es relevante para medir la coherencia del sistema de recomendación en entornos colaborativos. Una vez conformados los grupos iniciales, de cada uno se selecciona aleatoriamente un subconjunto de usuarios, que constituirá uno de los grupos finales sobre los que se realizarán las evaluaciones.
 
-En particular, se pone énfasis en la evaluación de la eficacia del método para grupos que hayan otorgado altas calificaciones a las películas (valores de 6, 7 u 8 en la escala de votos). Esto permite analizar el rendimiento del algoritmo en escenarios donde existe un fuerte consenso positivo entre los usuarios, lo que representa un caso de uso frecuente en las recomendaciones de contenido audiovisual para grupos de amigos o familiares.
+En particular, se pone énfasis en la evaluación de la eficacia del método para grupos que hayan otorgado altas calificaciones a las películas (valores de 6, 7 u 8 en la escala de votos) y bajas calificaciones (1, 2, 3). Esto permite analizar el rendimiento del algoritmo en escenarios donde existe un fuerte consenso positivo entre los usuarios, lo que representa un caso de uso frecuente en las recomendaciones de contenido audiovisual para grupos de amigos o familiares.
 Es válido señalar que de esta forma de armar los grupos, pueden existir intersecciones entre ellos, lo cual se ajusta a los escenarios reales y no provoca dificultades para el desempeño del método propuesto. La semilla para replicar los experimentos fue 42.
  
 \subsubsection{Procedimiento}
@@ -811,9 +821,60 @@ Una vez conformados los grupos de usuarios que han calificado de manera idéntic
 
 Es importante destacar que la razón de la selección de subconjuntos de usuarios de los grupos iniciales es evitar la pérdida completa de la información relacionada con los votos de la película. De esta manera, se conserva parte de la información del ítem en cuestión, lo que nos permite continuar utilizando el resto de las interacciones de los usuarios con otras películas en el proceso de recomendación.
 
-El objetivo de este procedimiento es evaluar si, bajo la suposición de que los usuarios del grupo no han visto la película, el sistema es capaz de predecir una calificación grupal similar a la calificación inicial. Dado que los miembros del grupo han otorgado una calificación uniforme a la película antes de eliminar esta información, se espera que el sistema de recomendación prediga un voto grupal consistente con las valoraciones originales. Además, al aplicar este procedimiento a películas que recibieron calificaciones altas (6, 7 u 8), se puede evaluar la capacidad del modelo para recomendar este tipo de películas en escenarios donde los usuarios no las hayan visto.
+El objetivo de este procedimiento es evaluar si, bajo la suposición de que los usuarios del grupo no han visto la película, el sistema es capaz de predecir una calificación grupal similar a la calificación inicial. Dado que los miembros del grupo han otorgado una calificación uniforme a la película antes de eliminar esta información, se espera que el sistema de recomendación prediga un voto grupal consistente con las valoraciones originales. Además, al aplicar este procedimiento a películas que recibieron calificaciones altas (6, 7 u 8), se puede evaluar la capacidad del modelo para recomendar este tipo de películas en escenarios donde los usuarios no las hayan visto. De la misma forma al comprobar el rendimiento con las bajas calificaciones (1, 2, 3) se analiza su efectividad para no recomendar películas que no serían bien calificadas por los integrantes del grupo.
 
-\subsubsection{Resultados}
+\subsubsection{Resultados con votaciones altas (6, 7, 8)}
+
+\textbf{Diferencias}
+
+En la Figura \ref{fig:diferencias}, se muestran las diferencias entre las recomendaciones sugeridas por el sistema y las expectativas del usuario. Este gráfico permite identificar las desviaciones del sistema con respecto a las preferencias reales, lo que ofrece una visión clara de las áreas donde se puede mejorar la precisión de las recomendaciones.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/Diferencias678.png}
+    \caption{Gráfico de diferencias entre las recomendaciones del sistema y las preferencias reales del usuario.}
+    \label{fig:diferencias}
+\end{figure}
+
+El análisis de estas diferencias sugiere que, si bien el sistema tiende a alinearse con las preferencias de los usuarios en un número considerable de casos, persisten desviaciones en ciertos grupos.
+
+\textbf{Diferencias absolutas}
+
+La Figura \ref{fig:absolutas} muestra las diferencias absolutas, es decir, el valor absoluto de la desviación entre las recomendaciones sugeridas y las expectativas del usuario. Esta representación visual permite observar cuán grandes son las desviaciones sin tener en cuenta la dirección (positiva o negativa) de la diferencia.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/absolutas678.png}
+    \caption{Gráfico de diferencias absolutas entre las recomendaciones del sistema y las preferencias del usuario.}
+    \label{fig:absolutas}
+\end{figure}
+
+Lo observado permite concluir que el sistema, en general, ofrece recomendaciones razonablemente precisas en la mayoría de los casos.
+
+\textbf{Tabla de Resultados}
+
+Finalmente, se presenta en la Tabla \ref{tab:resultados} 
+un resumen cuantitativo de los resultados. Se muestran 
+las predicciones, valores reales, diferencias y 
+diferencias absolutas para 25 grupos confeccionados y 
+las películas seleccionadas. Los resultados completos 
+pueden verse en el archivo \textbf{Grupos678.xlsx} en la ruta \textbf{report/assets/} a partir del directorio raíz del repositorio de GitHub.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/tabla678.png}
+    \caption{Resumen cuantitativo de los resultados del sistema de recomendación.}
+    \label{tab:resultados}
+\end{figure}
+
+\textbf{Otras métricas}:
+\begin{itemize}
+    \item \textbf{MSE (Error Cuadrático Medio): 0.657}: Este valor indica el promedio de los errores al cuadrado entre las predicciones del sistema y los valores reales. El MSE es sensible a errores grandes, ya que estos se amplifican al ser elevados al cuadrado. Un valor de 0.657 implica que, en promedio, las diferencias entre las recomendaciones del sistema y las preferencias reales de los usuarios son moderadamente bajas. Sin embargo, aún existen algunos errores significativos que deben ser corregidos para mejorar la precisión del sistema de recomendación.
+    \item \textbf{MAE (Error Medio Absoluto): 0.486}: Esta métrica refleja el error medio absoluto entre las predicciones y los valores reales, lo cual ofrece una interpretación más intuitiva de la precisión del modelo. En este caso, el valor de 0.486 indica que, en promedio, la desviación entre la predicción y las preferencias reales de los usuarios es de aproximadamente 0.49 unidades. Este valor es más fácil de interpretar que el MSE, y nos muestra que las predicciones del sistema son razonablemente precisas, aunque pueden ser perfeccionadas.
+\end{itemize}
+
+\subsubsection{Resultados con votaciones altas (1, 2, 3)}
+
 
 \subsubsection{Limitaciones}
 
@@ -844,6 +905,5 @@ El objetivo de este procedimiento es evaluar si, bajo la suposición de que los 
 \end{thebibliography}
     
     
-
 
 \end{document}

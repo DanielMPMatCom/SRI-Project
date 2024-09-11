@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  10 SEP 2024 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  10 SEP 2024 23:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -261,7 +261,15 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box51
 \enit@count@id=\count287
 \enitdp@description=\count288
-) (/usr/share/texlive/texmf-dist/tex/latex/sttools/cuted.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+\@indexfile=\write4
+\openout4 = `report.idx'.
+
+
+Writing index file report.idx
+(/usr/share/texlive/texmf-dist/tex/latex/sttools/cuted.sty
 Package: cuted 2012/10/04 v1.5 Mixing onecolumn and twocolumn modes
 \At@ViperColsBreak=\toks31
 \v@aaa=\box52
@@ -398,7 +406,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip74
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 26.
+Package hyperref Info: Option `colorlinks' set `true' on input line 28.
 
 
 LaTeX Warning: Unused global option(s):
@@ -407,22 +415,22 @@ LaTeX Warning: Unused global option(s):
 (build/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -481,7 +489,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring ON on input line 81.
+Package hyperref Info: Link coloring ON on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -491,157 +499,188 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count307
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 85.
+LaTeX Info: Redefining \pageref on input line 85.
+LaTeX Info: Redefining \nameref on input line 85.
  (build/report.out) (build/report.out)
-\@outlinefile=\write4
-\openout4 = `report.out'.
+\@outlinefile=\write5
+\openout5 = `report.out'.
 
-
-Underfull \hbox (badness 2828) in paragraph at lines 146--157
-\OT1/cmr/m/n/10 Los sis-temas de re-comen-daci^^Son se han con-sol-i-dado
- []
-
-
-Underfull \hbox (badness 1127) in paragraph at lines 146--157
-\OT1/cmr/m/n/10 de in-for-maci^^Son y pre-sen-tar a los usuar-ios el-e-men-tos
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--157
-
- []
-
-
-Underfull \hbox (badness 1577) in paragraph at lines 171--183
-\OT1/cmr/m/n/10 Dentro del fil-trado co-lab-o-ra-tivo basado en mod-e-los,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 171--183
-
+ (build/report.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 2894) in paragraph at lines 14--14
+ [][] [][][]\OT1/cmr/m/n/10 Formulaci^^Son Matem^^Satica del Al-go-ritmo 
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-Underfull \hbox (badness 1215) in paragraph at lines 197--209
+])
+\tf@toc=\write6
+\openout6 = `report.toc'.
+
+
+Underfull \hbox (badness 2828) in paragraph at lines 156--167
+\OT1/cmr/m/n/10 Los sis-temas de re-comen-daci^^Son se han con-sol-i-dado
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 156--167
+\OT1/cmr/m/n/10 de in-for-maci^^Son y pre-sen-tar a los usuar-ios el-e-men-tos
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--167
+
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 181--193
+\OT1/cmr/m/n/10 Dentro del fil-trado co-lab-o-ra-tivo basado en mod-e-los,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--193
+
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 207--219
 \OT1/cmr/m/n/10 sis-temas de re-comen-daci^^Son, desta-cando su ca-paci-dad
  []
 
 
-Underfull \hbox (badness 2080) in paragraph at lines 197--209
+Underfull \hbox (badness 2080) in paragraph at lines 207--219
 \OT1/cmr/m/n/10 re-sul-ta-dos prom-ete-dores en t^^Serminos de pre-cisi^^Son y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--209
+Underfull \hbox (badness 10000) in paragraph at lines 207--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--220
+Underfull \hbox (badness 10000) in paragraph at lines 220--230
 
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 238--250
+Underfull \hbox (badness 1939) in paragraph at lines 248--260
 \OT1/cmr/m/n/10 del al-go-ritmo NBCF, se ha se-lec-cionado el dataset
  []
 
 [2]
-Underfull \hbox (badness 1303) in paragraph at lines 341--359
+Underfull \hbox (badness 1303) in paragraph at lines 351--369
 []\OT1/cmr/bx/n/10 Factorizaci^^Son Ma-tri-cial\OT1/cmr/m/n/10 : Esta t^^Secnica ha de-
  []
 
 [3]
-Underfull \hbox (badness 3068) in paragraph at lines 456--456
+Underfull \hbox (badness 3068) in paragraph at lines 466--466
 []\OT1/cmr/m/sc/10 Formulaci[]on Matem[]atica del Al-go-ritmo
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 486.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 486.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 484--493
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--503
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 595--596
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 []\OT1/cmr/m/n/10 Ganancia acu-mu-lada de-scon-tada nor-mal-izada
  []
 
 
-Underfull \hbox (badness 1776) in paragraph at lines 610--616
+Underfull \hbox (badness 1776) in paragraph at lines 620--626
 []\OT1/cmr/bx/n/10 MovieLens\OT1/cmr/m/n/10 : El en-foque h^^S^^Pbrido de NBCF ha
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 616--622
+Underfull \hbox (badness 1509) in paragraph at lines 626--632
 \OT1/cmr/m/n/10 cuando au-menta el n^^Sumero de re-comen-da-ciones,
  []
 
-
-Underfull \hbox (badness 1048) in paragraph at lines 629--638
+[5]
+Underfull \hbox (badness 1048) in paragraph at lines 639--648
 \OT1/cmr/m/n/10 proveen mejores re-sul-ta-dos para nDCG en com-
  []
 
-[5]
-Underfull \hbox (badness 2653) detected at line 685
+
+Underfull \hbox (badness 2653) detected at line 695
  []$[]  \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 ) = []$ [][]  
  []
 
+[6]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
-(Font)              using `OT1/cmr/m/it' instead on input line 783.
+(Font)              using `OT1/cmr/m/it' instead on input line 793.
 
-[6]
-Underfull \hbox (badness 2460) in paragraph at lines 836--837
+[7]
+<assets/Diferencias678.png, id=244, 1357.07pt x 753.81625pt>
+File: assets/Diferencias678.png Graphic file (type png)
+<use assets/Diferencias678.png>
+Package pdftex.def Info: assets/Diferencias678.png  used on input line 834.
+(pdftex.def)             Requested size: 251.55872pt x 139.72987pt.
+<assets/absolutas678.png, id=247, 1353.055pt x 742.775pt>
+File: assets/absolutas678.png Graphic file (type png)
+<use assets/absolutas678.png>
+Package pdftex.def Info: assets/absolutas678.png  used on input line 847.
+(pdftex.def)             Requested size: 251.55872pt x 138.09125pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<assets/tabla678.png, id=249, 595.22375pt x 469.755pt>
+File: assets/tabla678.png Graphic file (type png)
+<use assets/tabla678.png>
+Package pdftex.def Info: assets/tabla678.png  used on input line 865.
+(pdftex.def)             Requested size: 251.55872pt x 198.52863pt.
+[8 <./assets/Diferencias678.png> <./assets/absolutas678.png> <./assets/tabla678.png>]
+Underfull \hbox (badness 2460) in paragraph at lines 897--898
 []\OT1/cmr/m/n/10 Valdiviezo, P. M. (2019). Sis-tema re-comen-dador
  []
 
-[7]
-Underfull \hbox (badness 1430) in paragraph at lines 842--843
+
+Underfull \hbox (badness 1430) in paragraph at lines 903--904
 []\OT1/cmr/m/n/10 J. Gol-beck, J. Hendler, \FilmTrust: movie rec-
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 842--843
+Underfull \hbox (badness 1748) in paragraph at lines 903--904
 \OT1/cmr/m/n/10 ni-ca-tions and Net-work-ing Con-fer-ence, 2006, DOI:
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 849.
-[8
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 909.
+[9
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 849.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 909.
  (build/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 909.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 909.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: E35D27B4273300E586BB2D3DF20FFAAC;2183.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 849.
+(rerunfilecheck)             Checksum: FA6A16A5A4085631D65D73842E1EB0E9;2319.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 909.
  ) 
 Here is how much of TeX's memory you used:
- 10135 strings out of 483121
- 161303 string characters out of 5964354
- 548421 words of memory out of 5000000
- 24912 multiletter control sequences out of 15000+600000
+ 10186 strings out of 483121
+ 162247 string characters out of 5964354
+ 549866 words of memory out of 5000000
+ 24945 multiletter control sequences out of 15000+600000
  537489 words of font info for 43 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 48i,11n,46p,844b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,12n,46p,1005b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on build/report.pdf (8 pages, 252751 bytes).
+Output written on build/report.pdf (9 pages, 409149 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 250 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 342 PDF objects out of 1000 (max. 8388607)
+ 302 compressed objects within 4 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 248 words of extra memory for PDF output out of 10000 (max. 10000000)
 
