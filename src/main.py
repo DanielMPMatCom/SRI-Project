@@ -2,7 +2,6 @@ import numpy as np
 from utils.create_grups import generate_groups
 from extended_naive_bayes.nbp import group_prediction
 from nbcf.nbcf_opt import NBCF
-from ml_processing.ml_procesing import MovieLensProcessing
 from ft_processing.ft_procesing import FilmTrustProcessing
 import time
 
