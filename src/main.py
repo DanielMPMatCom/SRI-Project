@@ -139,11 +139,9 @@ def main():
 
     mse = calcular_mse(to_export["Expected"], to_export["Recieved"])
     mae = calcular_mae(to_export["Expected"], to_export["Recieved"])
-    ndcg = calcular_ndcg(to_export["Expected"], to_export["Recieved"])
 
     print(f"MSE: {mse}")
     print(f"MAE: {mae}")
-    print(f"nDCG: {ndcg}")
 
     # print(sorted([ (i + 1, v) for i, v in enumerate(prediction[0])], key=lambda x : x[1] ,reverse=True))
     # print(prediction[0].argmax() + 1)
