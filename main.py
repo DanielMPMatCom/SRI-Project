@@ -43,7 +43,7 @@ def main():
         for user in final_groups[movie, q]:
             rating[user, movie] = -1
 
-    print("Iniciando el entrenamiento del modelo ...", rating.shape)
+    print("Iniciando el modelo ...", rating.shape)
     nbcf_instance = NBCF(
         rating=rating, alpha=alpha, r=r, qualified_array=qualified, load=True
     )
