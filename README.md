@@ -31,3 +31,12 @@ Para ejecutar este proyecto, se requiere tener instalado **Python 3.8** o superi
 - [time](https://docs.python.org/3/library/time.html) : `pip install time`
 - [random](https://docs.python.org/3/library/random.html) : `pip install random`
   
+## APIs utilizadas
+
+No se utilizan APIs en este proyecto. En cambio se utiliza el framework de Streamlit para la creación de la interfaz gráfica.
+
+## Modo de uso
+
+Para ejecutar la aplicación, se debe abrir una terminal en la carpeta raíz del proyecto y ejecutar el siguiente comando:
+
+```bash startup.sh```
