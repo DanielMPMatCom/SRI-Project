@@ -3,9 +3,53 @@ import time
 
 
 class NBCF:
+    """
+    NBCF (Naive Bayes Collaborative Filtering) class for recommendation system.
+
+    Args:
+        rating (np.ndarray): Matrix of user ratings.
+        alpha (float): Smoothing parameter for prior probabilities.
+        r (float): Regularization parameter.
+        qualified_array (list[int]): List of qualified ratings.
+        load (bool, optional): Whether to load pre-trained model. Defaults to False.
+
+    Attributes:
+        rating (np.ndarray): Matrix of user ratings.
+        alpha (float): Smoothing parameter for prior probabilities.
+        r (float): Regularization parameter.
+        qualified_array (list[int]): List of qualified ratings.
+        users (int): Number of users.
+        movies (int): Number of movies.
+        pu (np.ndarray): User-based prior probability matrix.
+        pi (np.ndarray): Item-based prior probability matrix.
+        m_collaborative_filtering (dict): Collaborative filtering dictionary for movies.
+        u_collaborative_filtering (dict): Collaborative filtering dictionary for users.
+        user_map (list[set]): Mapping of movies for each user.
+        movie_map (list[set]): Mapping of users for each movie.
+        r_alpha (float): Regularization parameter multiplied by alpha.
+        item_prediction (np.ndarray): Item-based prediction matrix.
+        user_prediction (np.ndarray): User-based prediction matrix.
+        prediction (np.ndarray): Hybrid prediction matrix.
+
+    Methods:
+        nbcf(): Performs NBCF algorithm.
+        predict_hybrid(): Performs hybrid prediction using NBCF.
+
+    """
+
     EPSILON = np.finfo(float).eps
 
     def __init__(self, rating, alpha, r, qualified_array, load=False) -> None:
+        """
+        Initialize the NBCF class.
+
+        Args:
+            rating (np.ndarray): Matrix of user ratings.
+            alpha (float): Smoothing parameter for prior probabilities.
+            r (float): Regularization parameter.
+            qualified_array (list[int]): List of qualified ratings.
+            load (bool, optional): Whether to load pre-trained model. Defaults to False.
+        """
         self.rating: np.ndarray = rating
         self.alpha: float = alpha
         self.r: float = r
@@ -38,6 +82,9 @@ class NBCF:
         self.predict_hybrid()
 
     def nbcf(self):
+        """
+        Performs the NBCF algorithm.
+        """
 
         d = time.time()
         print("0 ⏰ Mapping movies and users ...")
@@ -133,6 +180,17 @@ class NBCF:
         print(time.time() - d, "⏰ Calculated Predictions ...")
 
     def predict_hybrid(self):
+        """
+        Predicts the ratings for unrated movies using a hybrid approach.
+
+        This method iterates over each user and each movie in the dataset. If a rating for a particular user-movie pair is not available (indicated by -1), it calculates the prediction using a hybrid approach. The hybrid approach combines user-based and item-based predictions.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        """
         for user in range(self.users):
             for movie in range(self.movies):
                 if self.rating[user][movie] != -1:
@@ -153,6 +211,9 @@ class NBCF:
                     self.prediction[user, movie, qualified] = left * right
                     if self.prediction[user, movie, qualified] == 0:
                         print("user", user, "movie", movie, "qualified", qualified)
+
+
+# Test function for the NBCF class
 
 
 def attempt(value, expected, test_name=""):

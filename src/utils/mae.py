@@ -1,7 +1,21 @@
 import numpy as np
 
+# This class is under development and is not yet used in the project.
+# The purpose of this class is check result of nbcf paper.
+
 
 def user_mae(hybrid_prediction: np.ndarray, test, user):
+    """
+    Calculate the Mean Absolute Error (MAE) for a specific user.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+    user (int): The user ID.
+
+    Returns:
+    float: The MAE for the specific user.
+    """
     mae = 0
     user_test = [x for x in test if x[0] == user]
     for u, m, r in user_test:
@@ -9,7 +23,17 @@ def user_mae(hybrid_prediction: np.ndarray, test, user):
     return mae / len(user_test)
 
 
-def mae(hybrid_prediction: np.ndarray, test):  # revisar esto
+def mae(hybrid_prediction: np.ndarray, test):
+    """
+    Calculate the Mean Absolute Error (MAE) for all users.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+
+    Returns:
+    float: The MAE for all users.
+    """
     mae = 0
     users = np.unique([x[0] for x in test])
     for user in users:
@@ -18,6 +42,18 @@ def mae(hybrid_prediction: np.ndarray, test):  # revisar esto
 
 
 def user_precision(hybrid_prediction: np.ndarray, test, user, troubleshoot_value=3):
+    """
+    Calculate the precision for a specific user.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+    user (int): The user ID.
+    troubleshoot_value (int, optional): The threshold value for troubleshooting. Defaults to 3.
+
+    Returns:
+    float: The precision for the specific user.
+    """
     precision = 0
     user_test = [x for x in test if x[0] == user]
     N = 0
@@ -31,6 +67,17 @@ def user_precision(hybrid_prediction: np.ndarray, test, user, troubleshoot_value
 
 
 def precision(hybrid_prediction: np.ndarray, test, troubleshoot_value=3):
+    """
+    Calculate the precision of a hybrid prediction model.
+
+    Parameters:
+    - hybrid_prediction (np.ndarray): The hybrid prediction array.
+    - test: The test data.
+    - troubleshoot_value (int): The value used for troubleshooting.
+
+    Returns:
+    - float: The precision value.
+    """
     precision = 0
     users = np.unique([x[0] for x in test])
     for user in users:
@@ -39,6 +86,19 @@ def precision(hybrid_prediction: np.ndarray, test, troubleshoot_value=3):
 
 
 def user_recall(hybrid_prediction: np.ndarray, test, user, troubleshoot_value=3):
+    """
+    Calculate the recall metric for a given user in a recommendation system.
+
+    Parameters:
+    - hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    - test: The test dataset.
+    - user: The user for whom to calculate the recall.
+    - troubleshoot_value (int): The minimum rating value to consider for recall calculation.
+
+    Returns:
+    - float: The recall metric for the given user.
+    """
+
     recall = 0
     N = 0
     user_test = [x for x in test if x[0] == user]
@@ -55,6 +115,17 @@ def user_recall(hybrid_prediction: np.ndarray, test, user, troubleshoot_value=3)
 
 
 def DCGu(hybrid_prediction: np.ndarray, test, user):
+    """
+    Calculate the Discounted Cumulative Gain (DCG) for a specific user.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+    user (int): The user ID.
+
+    Returns:
+    float: The DCG for the specific user.
+    """
     user_hybrid_movie_scores = []
     for u, m, r in test:
         if u == user:
@@ -73,6 +144,16 @@ def DCGu(hybrid_prediction: np.ndarray, test, user):
 
 
 def IDCGu(test, user):
+    """
+    Calculate the Ideal Discounted Cumulative Gain (IDCG) for a specific user.
+
+    Parameters:
+    test (list): The test dataset.
+    user (int): The user ID.
+
+    Returns:
+    float: The IDCG for the specific user.
+    """
     real_scores = []
     for u, _, r in test:
         if u == user:
@@ -91,6 +172,17 @@ def IDCGu(test, user):
 
 
 def nDCGu(hybrid_prediction: np.ndarray, test, troubleshoot_value=3):
+    """
+    Calculate the normalized Discounted Cumulative Gain (nDCG) for all users.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+    troubleshoot_value (int, optional): The threshold value for troubleshooting. Defaults to 3.
+
+    Returns:
+    float: The nDCG for all users.
+    """
     nDCGu = 0
     users = np.unique([x[0] for x in test])
     for user in users:
@@ -101,6 +193,17 @@ def nDCGu(hybrid_prediction: np.ndarray, test, troubleshoot_value=3):
 
 
 def NDCG(hybrid_prediction: np.ndarray, test, troubleshoot_value=3):
+    """
+    Calculate the normalized Discounted Cumulative Gain (nDCG) for all users.
+
+    Parameters:
+    hybrid_prediction (np.ndarray): The hybrid prediction matrix.
+    test (list): The test dataset.
+    troubleshoot_value (int, optional): The threshold value for troubleshooting. Defaults to 3.
+
+    Returns:
+    float: The nDCG for all users.
+    """
     nDCG = 0
     users = np.unique([x[0] for x in test])
     for user in users:

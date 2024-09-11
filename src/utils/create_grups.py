@@ -1,7 +1,14 @@
-import numpy as np
-
 def generate_groups(rating, threshold, rated):
-    
+    """
+    Generate groups based on the given rating matrix, threshold, and list of rated items.
+    Parameters:
+    rating (numpy.ndarray): The rating matrix.
+    threshold (int): The minimum number of users required in a group.
+    rated (list): The list of posible rates.
+    Returns:
+    dict: A dictionary containing groups as keys and the corresponding users as values.
+    """
+
     groups = {}
 
     for u in range(rating.shape[0]):
@@ -16,8 +23,4 @@ def generate_groups(rating, threshold, rated):
         if len(users) > threshold:
             ans[key] = users
 
-    
-
     return ans
-
-

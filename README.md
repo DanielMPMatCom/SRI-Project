@@ -22,6 +22,12 @@ Se utilizará el dataset **FilmTrust**, ampliamente reconocido en la comunidad d
 
 ## Requerimientos
 
-## APIs utilizadas
+Para ejecutar este proyecto, se requiere tener instalado **Python 3.8** o superior y las siguientes librerías:
 
-## Modo de uso
+- [streamlit](https://streamlit.io/): `pip install streamlit`
+- [numpy](https://numpy.org/) : `pip install numpy`
+- [pandas](https://pandas.pydata.org/) : `pip install pandas`
+- [matplotlib](https://matplotlib.org/) : `pip install matplotlib`
+- [time](https://docs.python.org/3/library/time.html) : `pip install time`
+- [random](https://docs.python.org/3/library/random.html) : `pip install random`
+  

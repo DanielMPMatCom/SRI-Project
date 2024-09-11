@@ -1,25 +1,37 @@
 import numpy as np
 
+# This class is under development and is not yet used in the project.
+# The purpose of this class is to implement the Group Recommendation algorithm.
+# User to Group Similarity (UGS) is calculated using the Jaccard index.
+
 class GroupRecomendation:
 
     def __init__(self, rating, group):
         self.rating = rating
         self.rating_normalized = self.normalized_rating()
 
-        self.movie_users = [self.rating[:, movie] != -1 for movie in range(self.rating.shape[1])]
-        self.user_movies = [self.rating[user, :] != -1 for user in range(self.rating.shape[0])]
+        self.movie_users = [
+            self.rating[:, movie] != -1 for movie in range(self.rating.shape[1])
+        ]
+        self.user_movies = [
+            self.rating[user, :] != -1 for user in range(self.rating.shape[0])
+        ]
 
         self.pi = [self.unpopular(movie) for movie in range(self.rating.shape[1])]
 
         self.set_group(group)
 
-
     def set_group(self, group):
         self.group = group
-        self.movie_users_in_group = [[user for user in group if self.rating[user][movie] != -1] for movie in range(self.rating.shape[1])]
+        self.movie_users_in_group = [
+            [user for user in group if self.rating[user][movie] != -1]
+            for movie in range(self.rating.shape[1])
+        ]
         self.group_movies = self._all_group_movies()
-        self.group_movie = [[u for u in self.group if self.rating[u, movie] != -1] for movie in range(self.rating.shape[1])]
-
+        self.group_movie = [
+            [u for u in self.group if self.rating[u, movie] != -1]
+            for movie in range(self.rating.shape[1])
+        ]
 
     def unpopular(self, movie: int):  # pi
         """
@@ -33,7 +45,6 @@ class GroupRecomendation:
         float: The unpopularity score of the movie, ranging from 0 to 1.
         """
         return 1 - np.sum(self.rating[:, movie] != -1) / self.rating.shape[0]
-
 
     def _all_group_movies(self):
         """
@@ -51,7 +62,6 @@ class GroupRecomendation:
             group_movies = np.logical_or(group_movies, self.rating[u, :] != -1)
         return group_movies
 
-
     def interception_movies_group_user(self, user: int):
         """
         Returns a boolean array indicating whether each movie in the group is rated by the given user.
@@ -64,16 +74,13 @@ class GroupRecomendation:
         Returns:
         np.ndarray: A boolean array indicating whether each movie in the group is rated by the given user.
         """
-    
+
         group_movies = self.group_movies
         user_movies = self.user_movies[user]
 
         return np.logical_and(user_movies, group_movies)
 
-
-    def user_group_similarity(
-        self, user: int
-    ):  # Xgu Jacard index
+    def user_group_similarity(self, user: int):  # Xgu Jacard index
         """
         Calculates the similarity between a user and a group based on their movie ratings.
 
@@ -92,15 +99,8 @@ class GroupRecomendation:
         union = np.logical_or(user_movies, group_movies)
 
         return np.sum(
-            [
-                self.pi[i]
-                for i in range(self.rating.shape[1])
-                if interception[i]
-            ]
-        ) / np.sum(
-            [self.pi[i] for i in range(self.rating.shape[1]) if union[i]]
-        )
-
+            [self.pi[i] for i in range(self.rating.shape[1]) if interception[i]]
+        ) / np.sum([self.pi[i] for i in range(self.rating.shape[1]) if union[i]])
 
     def user_singularity(self, user: int, movie: int):
         """
@@ -117,9 +117,10 @@ class GroupRecomendation:
         movie_users = self.movie_users[movie]
 
         return np.sum(
-            np.logical_and(movie_users, self.rating[:, movie] != self.rating[user, movie])
+            np.logical_and(
+                movie_users, self.rating[:, movie] != self.rating[user, movie]
+            )
         ) / np.sum(movie_users)
-
 
     def item_group_singularity(self, movie: int):
         """
@@ -150,7 +151,6 @@ class GroupRecomendation:
             else 0
         )
 
-
     def normalized_rating(self):
         """
         Normalize the given rating array.
@@ -167,10 +167,7 @@ class GroupRecomendation:
         normalized[self.rating == -1] = -1  # Restaurar los valores -1
         return normalized
 
-
-    def mean_square_difference_group_rating(
-        self, user: int, movie: int
-    ):
+    def mean_square_difference_group_rating(self, user: int, movie: int):
         """
         Calculate the mean square difference of the group ratings for a specific movie.
 
@@ -191,11 +188,14 @@ class GroupRecomendation:
 
         return np.sum(
             [
-                np.power(self.rating_normalized[u, movie] - self.rating_normalized[user, movie], 2)
+                np.power(
+                    self.rating_normalized[u, movie]
+                    - self.rating_normalized[user, movie],
+                    2,
+                )
                 for u in group_movie
             ]
         ) / len(group_movie)
-
 
     def singularity_dot(self, user: int, movie: int):
         """
@@ -211,13 +211,12 @@ class GroupRecomendation:
         - float: The singularity dot product.
         """
         group_movie = self.group_movie[movie]
-        
+
         return (
             self.user_singularity(user=user, movie=movie)
             * self.item_group_singularity(movie=movie)
             * len(group_movie)
         )
-
 
     def smgu(
         self,
