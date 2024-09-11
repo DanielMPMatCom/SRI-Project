@@ -10,9 +10,11 @@ def main():
     st.sidebar.info("Seleccione una sección para continuar")
     st.sidebar.write(
         """
-        ## Secciones
+        ## Tabla de Contenidos
         1. [Descripción del problema](#f640d096)
         2. [Requerimientos](#requerimientos)
+        3. [APIs utilizadas](#apis-utilizadas)
+        4. [Modo de uso](#modo-de-uso)
         """
     )
 
@@ -48,14 +50,16 @@ def main():
         st.write("## Tabla de Contenidos")
         st.write(
             """
-        1. [Descripción del problema](#f640d096)
+        1. [Descripción del problema](#sobre-el-problema)
         2. [Requerimientos](#requerimientos)
+        3. [APIs utilizadas](#apis-utilizadas)
+        4. [Modo de uso](#modo-de-uso)
         """
         )
 
         st.divider()
 
-    st.write("# Descripción del problema")
+    st.write("# Sobre el problema")
     st.write(
         """
         En la era digital contemporánea, la sobrecarga de información es uno de los principales desafíos a los que se enfrentan los usuarios al interactuar con plataformas que ofrecen una gran cantidad de contenidos, como servicios de streaming, bibliotecas digitales, y tiendas de comercio electrónico. Los sistemas de recomendación han surgido como una solución eficaz a este problema, permitiendo a los usuarios descubrir y acceder a productos que se alinean con sus intereses y preferencias.
@@ -70,6 +74,7 @@ def main():
         """
     )
 
+    st.divider()
     st.write("# Requerimientos")
     st.write(
         """
@@ -82,13 +87,37 @@ def main():
         - [random](https://docs.python.org/3/library/random.html) : `pip install random`
         """
     )
+    st.divider()
+    st.write("# APIs utilizadas")
+    st.write(
+        """
+        No se utilizan APIs en este proyecto. En cambio se utiliza el framework de Streamlit para la creación de la interfaz gráfica.
+        """
+    )
+    st.divider()
+    st.write("# Modo de uso")
+    st.write(
+        """
+        Para ejecutar la aplicación, se debe abrir una terminal en la carpeta raíz del proyecto y ejecutar el siguiente comando:
+        ```bash startup.sh```
+        """
+    )
+    st.code(
+        "bash startup.sh",
+        language="shell",
+    )
+    st.write(
+        """
+        Esto iniciará el servidor de Streamlit y abrirá la aplicación en el navegador web predeterminado. A partir de ahí, se puede interactuar con la aplicación y explorar las diferentes funcionalidades y visualizaciones proporcionadas.
+        """
+    )
 
 
 if __name__ == "__main__":
 
     st.set_page_config(
         page_title="SRI",
-        page_icon="",
+        page_icon=":bar_chart:",
         layout="wide",
         initial_sidebar_state="expanded",
     )
