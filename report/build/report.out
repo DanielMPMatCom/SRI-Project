@@ -19,4 +19,10 @@
 \BOOKMARK [2][-]{subsection.4.2}{Ventajas y Desventajas de NBP}{section.4}% 19
 \BOOKMARK [2][-]{subsection.4.3}{Aplicaci\363n del Algoritmo NBP en la Expansi\363n de NBCF}{section.4}% 20
 \BOOKMARK [1][-]{section.5}{Evaluaci\363n de los resultados}{}% 21
-\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{Descripci\363n del dataset FilmTrust}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.2}{Dise\361o del test}{section.5}% 23
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Confecci\363n de los grupos de usuarios}{subsection.5.2}% 24
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Procedimiento}{subsection.5.2}% 25
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Resultados}{subsection.5.2}% 26
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Limitaciones}{subsection.5.2}% 27
+\BOOKMARK [1][-]{section.6}{Conclusiones}{}% 28

@@ -21,10 +21,12 @@ def main():
     duration = time.time()
 
     # Crear grupos
-    groups = generate_groups(rating, 100, [1, 2, 3])
+    groups = generate_groups(rating, 25, [1, 2, 3])
     # [print(f"{movie}: {len(x)}") for (movie, _), x in groups.items()]
     # print(f"Created {len(groups)} groups")
+    print(len(groups))
 
+    # return
    
     # Crear grupos finales 
     final_groups = {}

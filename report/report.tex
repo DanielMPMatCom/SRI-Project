@@ -773,6 +773,50 @@ personalización grupal es esencial.
 
 \section{Evaluación de los resultados}
 
+En esta sección se presentará la evaluación del 
+rendimiento de la expansión del algoritmo NBCF para 
+la recomendación a grupos utilizando el algoritmo NBP. 
+Para ello, se ha seleccionado el dataset \textit{FilmTrust}
+ por sus características particulares y su amplio uso 
+ en investigaciones de sistemas de recomendación.
+
+ \subsection{Descripción del dataset \textit{FilmTrust}}
+
+ El dataset \textit{FilmTrust} contiene información 
+ sobre la interacción de usuarios con películas, 
+ lo cual lo convierte en un recurso valioso para el 
+ análisis de sistemas de recomendación. 
+ Sus características principales son las siguientes:
+ \begin{itemize}
+    \item \textbf{1508 usuarios}: Cada usuario ha 
+    evaluado uno o varios ítems (películas) del conjunto.
+    \item \textbf{2071 ítems}: El conjunto de ítems representa las películas que los usuarios han visto y valorado.
+    \item \textbf{35494 votos}: Los usuarios han emitido un total de 35,494 calificaciones sobre las películas del conjunto.
+    \item \textbf{Escala de votación}: Las calificaciones originales varían entre 0.5 y 4, con incrementos de 0.5. Para simplificar la indexación y el procesamiento en la implementación del sistema, se ha multiplicado la escala por 2, de modo que las calificaciones oscilan entre 1 y 8, con incrementos de 1. Esto permite una mayor precisión y facilidad a la hora de manejar los datos.
+    \item \textbf{Sparsity del dataset}: El valor de sparsity (dispersión de los datos) de este conjunto es del 98.86\%. Esto significa que la mayoría de las posibles combinaciones entre usuarios e ítems no tienen una calificación registrada, lo que introduce un desafío significativo para el modelo de recomendación. La sparsity es una medida que refleja el nivel de dispersión de los datos en una matriz de interacciones usuario-ítem, donde un valor elevado indica que muchas de las posiciones en la matriz están vacías, es decir, no contienen interacciones registradas. Este fenómeno es común en sistemas de recomendación, y requiere el uso de modelos capaces de manejar eficazmente la falta de datos.
+ \end{itemize}
+
+ \subsection{Diseño del test}
+ Dado que no se encontró un dataset disponible que incluyera información sobre recomendaciones realizadas a grupos de usuarios, surgió la necesidad de diseñar un test propio que permitiera evaluar la efectividad del método propuesto para recomendaciones grupales. El enfoque adoptado utiliza el conjunto de datos de \textit{FilmTrust}, donde se ha adaptado la estructura del dataset para generar grupos de usuarios con características comunes.
+
+ \subsubsection{Confección de los grupos de usuarios}
+ A partir de cada película en el dataset, se forma un grupo compuesto por todos los usuarios que le han asignado la misma calificación. Este proceso garantiza que los grupos compartan una opinión similar sobre el ítem en cuestión, lo que es relevante para medir la coherencia del sistema de recomendación en entornos colaborativos. Una vez conformados los grupos iniciales, de cada uno se selecciona aleatoriamente un subconjunto de usuarios, que constituirá uno de los grupos finales sobre los que se realizarán las evaluaciones.
+
+En particular, se pone énfasis en la evaluación de la eficacia del método para grupos que hayan otorgado altas calificaciones a las películas (valores de 6, 7 u 8 en la escala de votos). Esto permite analizar el rendimiento del algoritmo en escenarios donde existe un fuerte consenso positivo entre los usuarios, lo que representa un caso de uso frecuente en las recomendaciones de contenido audiovisual para grupos de amigos o familiares.
+Es válido señalar que de esta forma de armar los grupos, pueden existir intersecciones entre ellos, lo cual se ajusta a los escenarios reales y no provoca dificultades para el desempeño del método propuesto. La semilla para replicar los experimentos fue 42.
+ 
+\subsubsection{Procedimiento}
+
+Una vez conformados los grupos de usuarios que han calificado de manera idéntica una película en particular, se procede a eliminar la información de los votos emitidos por esos usuarios hacia dicha película. Este paso es fundamental para simular un escenario en el que los miembros del grupo no han visto la película, lo cual nos permite evaluar la capacidad del sistema de realizar recomendaciones grupales efectivas.
+
+Es importante destacar que la razón de la selección de subconjuntos de usuarios de los grupos iniciales es evitar la pérdida completa de la información relacionada con los votos de la película. De esta manera, se conserva parte de la información del ítem en cuestión, lo que nos permite continuar utilizando el resto de las interacciones de los usuarios con otras películas en el proceso de recomendación.
+
+El objetivo de este procedimiento es evaluar si, bajo la suposición de que los usuarios del grupo no han visto la película, el sistema es capaz de predecir una calificación grupal similar a la calificación inicial. Dado que los miembros del grupo han otorgado una calificación uniforme a la película antes de eliminar esta información, se espera que el sistema de recomendación prediga un voto grupal consistente con las valoraciones originales. Además, al aplicar este procedimiento a películas que recibieron calificaciones altas (6, 7 u 8), se puede evaluar la capacidad del modelo para recomendar este tipo de películas en escenarios donde los usuarios no las hayan visto.
+
+\subsubsection{Resultados}
+
+\subsubsection{Limitaciones}
+
 \section{Conclusiones}
 
 \renewcommand\refname{Referencias}
