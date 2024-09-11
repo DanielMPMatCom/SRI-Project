@@ -27,4 +27,4 @@
 \contentsline {subsubsection}{\numberline {5.2.3}Resultados con votaciones altas (6, 7, 8)}{8}{subsubsection.5.2.3}%
 \contentsline {subsubsection}{\numberline {5.2.4}Resultados con votaciones altas (1, 2, 3)}{9}{subsubsection.5.2.4}%
 \contentsline {subsubsection}{\numberline {5.2.5}Limitaciones}{9}{subsubsection.5.2.5}%
-\contentsline {section}{\numberline {6}Conclusiones}{9}{section.6}%
+\contentsline {section}{\numberline {6}Conclusiones}{10}{section.6}%

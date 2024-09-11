@@ -832,7 +832,7 @@ En la Figura \ref{fig:diferencias}, se muestran las diferencias entre las recome
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{assets/Diferencias678.png}
-    \caption{Gráfico de diferencias entre las recomendaciones del sistema y las preferencias reales del usuario.}
+    \caption{Gráfico de diferencias entre las recomendaciones del sistema y las preferencias reales del usuario. Calificaciones 6, 7, 8.}
     \label{fig:diferencias}
 \end{figure}
 
@@ -845,7 +845,7 @@ La Figura \ref{fig:absolutas} muestra las diferencias absolutas, es decir, el va
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{assets/absolutas678.png}
-    \caption{Gráfico de diferencias absolutas entre las recomendaciones del sistema y las preferencias del usuario.}
+    \caption{Gráfico de diferencias absolutas entre las recomendaciones del sistema y las preferencias del usuario. Calificaciones 6, 7, 8.}
     \label{fig:absolutas}
 \end{figure}
 
@@ -853,7 +853,7 @@ Lo observado permite concluir que el sistema, en general, ofrece recomendaciones
 
 \textbf{Tabla de Resultados}
 
-Finalmente, se presenta en la Tabla \ref{tab:resultados} 
+En la Tabla \ref{tab:resultados} se presenta
 un resumen cuantitativo de los resultados. Se muestran 
 las predicciones, valores reales, diferencias y 
 diferencias absolutas para 25 grupos confeccionados y 
@@ -863,7 +863,7 @@ pueden verse en el archivo \textbf{Grupos678.xlsx} en la ruta \textbf{report/ass
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{assets/tabla678.png}
-    \caption{Resumen cuantitativo de los resultados del sistema de recomendación.}
+    \caption{Resumen cuantitativo de los resultados del sistema de recomendación. Calificaciones 6, 7, 8.}
     \label{tab:resultados}
 \end{figure}
 
@@ -875,10 +875,77 @@ pueden verse en el archivo \textbf{Grupos678.xlsx} en la ruta \textbf{report/ass
 
 \subsubsection{Resultados con votaciones altas (1, 2, 3)}
 
+\textbf{Diferencias}
+
+En la Figura \ref{fig:diferencias2}, se muestran las diferencias entre las recomendaciones sugeridas por el sistema y las expectativas del usuario al analizar las películas con calificaciones bajas (1, 2, 3). 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/Diferencias123.png}
+    \caption{Gráfico de diferencias entre las recomendaciones del sistema y las preferencias reales del usuario. Calificaciones 1, 2, 3.}
+    \label{fig:diferencias2}
+\end{figure}
+
+El análisis indica que el método manifiesta un rendimiendo no tan bueno a la hora de predecir las calificaciones de estas películas, pues en los experimentos siempre predijo valores superiores a los reales. Sin embargo se observa que en algunos casos las diferencias son pequeñas.
+
+\textbf{Diferencias absolutas}
+
+La Figura \ref{fig:absolutas2} muestra las diferencias absolutas, que como en este caso todas las diferencias son negativas, se comporta como mismo la gráfica \ref{fig:diferencias2}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/absolutas123.png}
+    \caption{Gráfico de diferencias absolutas entre las recomendaciones del sistema y las preferencias del usuario. Calificaciones 1, 2, 3.}
+    \label{fig:absolutas2}
+\end{figure}
+
+\textbf{Tabla de Resultados}
+
+La Tabla \ref{tab:resultados2} muestra el resumen cuantitativo de los resultados para este conjunto de calificaciones. Los resultados completos 
+pueden verse en el archivo \textbf{Grupos123.xlsx} en la ruta \textbf{report/assets/} a partir del directorio raíz del repositorio de GitHub.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{assets/tabla123.png}
+    \caption{Resumen cuantitativo de los resultados del sistema de recomendación. Calificaciones 1, 2, 3.}
+    \label{tab:resultados2}
+\end{figure}
+
+\textbf{Otras métricas}:
+\begin{itemize}
+    \item \textbf{MSE (Error Cuadrático Medio): 9.222}: Este valor elevado del MSE indica que el sistema de recomendación está generando errores significativos al comparar las predicciones con los valores reales. Dado que el MSE eleva al cuadrado las diferencias entre los valores predichos y los valores reales, un valor de 9.222 refleja la presencia de desviaciones grandes en las predicciones. Este resultado es preocupante, ya que significa que, en algunos casos, el sistema está haciendo predicciones muy alejadas de lo que realmente deberían ser.
+    \item \textbf{MAE (Error Medio Absoluto): 2.778}: El MAE de 2.778 también es considerablemente alto, lo que sugiere que, en promedio, el sistema se está desviando casi 3 unidades en sus predicciones. Esto implica que las recomendaciones del sistema no están siendo lo suficientemente precisas para ajustarse a las expectativas de los usuarios, lo que puede resultar en una experiencia insatisfactoria para ellos.
+\end{itemize}
 
 \subsubsection{Limitaciones}
 
+A pesar de los resultados obtenidos, el sistema de recomendación presenta algunas limitaciones que es importante destacar. Una de las principales dificultades observadas es la capacidad del modelo para realizar predicciones precisas en películas que se espera tengan calificaciones bajas. Este tipo de películas tienden a recibir menos atención de los usuarios, lo que genera un sesgo en los datos disponibles para su análisis y, en consecuencia, afecta la precisión de las predicciones. Esto es especialmente notable cuando se trabaja con conjuntos de datos que no cuentan con suficientes ejemplos de estas películas, dificultando la generalización de las recomendaciones.
+
+Otra limitación importante se refiere a la velocidad de la implementación. Durante la primera ejecución del algoritmo, el procesamiento de los datos y el cálculo de las probabilidades resulta lento debido a la necesidad de precomputar una gran cantidad de información. Sin embargo, una vez que estos cálculos iniciales se han realizado, el sistema es capaz de ejecutar las recomendaciones de manera mucho más eficiente. Esta característica hace que el sistema sea más adecuado para implementarse en computadoras con buenos recursos computacionales, donde la fase de precomputación puede realizarse sin afectar la experiencia del usuario final.
+
 \section{Conclusiones}
+
+El presente trabajo se centró en la hibridación de 
+técnicas en sistemas de recomendación, específicamente 
+comparando el enfoque probabilístico con la 
+factorización matricial en el contexto del filtrado 
+colaborativo. Los resultados permiten extraer las 
+siguientes conclusiones relevantes:
+
+\begin{itemize}
+    \item El enfoque probabilístico, materializado a través del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF), no solo demuestra una capacidad comparable en términos de precisión frente a la factorización matricial, sino que también ofrece ventajas adicionales en cuanto a la interpretabilidad de las recomendaciones. Este aspecto resulta fundamental en aplicaciones donde la transparencia es clave para mejorar la experiencia del usuario.
+    
+    \item La implementación del algoritmo NBCF y su expansión a la recomendación grupal mediante la técnica de \textit{Naive Pooling} (NBP) resuelve de manera eficiente el problema de personalización colectiva. Los resultados experimentales mostraron que este enfoque proporciona recomendaciones coherentes tanto a nivel individual como grupal, lo que es particularmente útil en escenarios de recomendación para familias o grupos de amigos.
+
+    \item En la evaluación sobre el dataset \textit{FilmTrust}, se observó que el enfoque NBCF hibridado mejoró las métricas de rendimiento clave como el error cuadrático medio (MSE) y el error medio absoluto (MAE), especialmente en grupos con votaciones positivas. No obstante, en contextos de votaciones negativas, el rendimiento fue menor, lo que apunta a posibles áreas de mejora en el tratamiento de conjuntos de datos escasos.
+
+    \item A pesar de los buenos resultados en general, el sistema de recomendación presenta limitaciones en la velocidad inicial de procesamiento y en su capacidad para predecir con precisión películas con bajas calificaciones, lo que sugiere la necesidad de optimizaciones adicionales tanto en la fase de precomputación como en la gestión de la dispersión de datos (\textit{sparsity}) del conjunto.
+
+    \item Finalmente, se destaca la flexibilidad del enfoque probabilístico para integrar nuevas variables y su potencial para aplicaciones futuras en diferentes dominios, extendiendo así las capacidades actuales de los sistemas de recomendación colaborativos.
+
+\end{itemize}
+
+La investigación confirma que la hibridación de técnicas de recomendación, en particular el enfoque probabilístico, ofrece una alternativa robusta y explicativa frente a la factorización matricial, mejorando la capacidad de personalización tanto a nivel individual como grupal, con oportunidades claras de optimización en áreas específicas. Se propuso la extensión del método NBCF para realizar recomendaciones a grupos mediando su hibridación con el método NBP.
 
 \renewcommand\refname{Referencias}
 
