@@ -28,7 +28,7 @@ def main():
         _, test = preprocessing.separate_data_for_test()
         rating, qualified = preprocessing.numpy_user_movie_matrix(remove_data=test)
 
-        with st.spinner("Generando NBCF"):
+        with st.spinner("Generando NBCF..."):
             duration = time.time()
 
             st.info("Iniciando test...\nGenerando Grupos con calificaciones [6,7,8]")
@@ -37,11 +37,11 @@ def main():
 
             print(len(groups))
 
-            st.info(f"Se crearon {len(groups)}")
+            st.info(f"Se crearon {len(groups)} grupos.")
 
             st.session_state.final_groups = {}
 
-            st.info(f"Creando grupos finales")
+            st.info(f"Creando grupos finales...")
 
             np.random.seed(42)
 
@@ -53,7 +53,7 @@ def main():
                     rating[user, movie] = -1
 
             st.info(
-                f"Iniciando el modelo con {rating.shape[0]} usuarios y {rating.shape[1]} películas"
+                f"Iniciando el modelo con {rating.shape[0]} usuarios y {rating.shape[1]} películas..."
             )
 
             nbcf_instance = NBCF(
@@ -81,7 +81,7 @@ def main():
         to_plot = []
         differences = []
         abs_differences = []
-        st.info("Calculando las predicciones para los grupos")
+        st.info("Calculando las predicciones para los grupos...")
         for (movie, q), group in st.session_state.final_groups.items():
             prediction[movie, q] = group_prediction(
                 rating, group, st.session_state.hybrid_prediction, qualified, movie
