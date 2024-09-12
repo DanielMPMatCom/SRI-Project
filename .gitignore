@@ -1,4 +1,6 @@
-datasets
+datasets/**
+!datasets/film-trust/
+!datasets/film-trust/**
 papers
 model
 **/__pycache__/
