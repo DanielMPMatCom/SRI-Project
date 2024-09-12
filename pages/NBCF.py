@@ -25,8 +25,8 @@ def main():
         alpha = 0.01
         r = 8
         preprocessing = FilmTrustProcessing()
-        _, test = preprocessing.separate_data_for_test()
-        rating, qualified = preprocessing.numpy_user_movie_matrix(remove_data=test)
+        # _, test = preprocessing.separate_data_for_test()
+        rating, qualified = preprocessing.numpy_user_movie_matrix()
 
         with st.spinner("Generando NBCF..."):
             duration = time.time()

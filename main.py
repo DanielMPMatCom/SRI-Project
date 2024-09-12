@@ -51,10 +51,10 @@ def main():
         "./db/prediction",
         nbcf_instance.prediction,
     )
-    np.save(
-        "./db/test",
-        test,
-    )
+    # np.save(
+    #     "./db/test",
+    #     test,
+    # )
     np.save(
         "./db/rating",
         rating,
@@ -72,7 +72,7 @@ def main():
     #                     print(user, movie, q)
 
     hybrid_prediction = np.load("./db/prediction.npy")
-    test = np.load("./db/test.npy")
+    # test = np.load("./db/test.npy")
     rating = np.load("./db/rating.npy")
 
     # print([nbcf_instance.prediction[911, 2, r ] for r in qualified],' - - - - - - - - - -- - - - - - - - -')

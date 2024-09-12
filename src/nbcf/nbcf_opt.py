@@ -148,7 +148,7 @@ class NBCF:
         for user in range(self.users):
             if self.loading_streamlit_bootstrap is not None:
                 self.loading_streamlit_bootstrap.progress(user / self.users)
-
+            print("user", user)
             for movie in range(self.movies):
 
                 if self.rating[user][movie] != -1:
