@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import streamlit as st
 
 
 class NBCF:
@@ -23,13 +24,14 @@ class NBCF:
         pu (np.ndarray): User-based prior probability matrix.
         pi (np.ndarray): Item-based prior probability matrix.
         m_collaborative_filtering (dict): Collaborative filtering dictionary for movies.
-        u_collaborative_filtering (dict): Collaborative filtering dictionary for users.
+        u_collaborative_filtering (dict): CollFalseaborative filtering dictionary for users.
         user_map (list[set]): Mapping of movies for each user.
         movie_map (list[set]): Mapping of users for each movie.
         r_alpha (float): Regularization parameter multiplied by alpha.
         item_prediction (np.ndarray): Item-based prediction matrix.
         user_prediction (np.ndarray): User-based prediction matrix.
         prediction (np.ndarray): Hybrid prediction matrix.
+        loading_streamlit_bootstrap : Streamlit progress bar.
 
     Methods:
         nbcf(): Performs NBCF algorithm.
@@ -39,7 +41,15 @@ class NBCF:
 
     EPSILON = np.finfo(float).eps
 
-    def __init__(self, rating, alpha, r, qualified_array, load=False) -> None:
+    def __init__(
+        self,
+        rating,
+        alpha,
+        r,
+        qualified_array,
+        load=False,
+        loading_streamlit_bootstrap=None,
+    ) -> None:
         """
         Initialize the NBCF class.
 
@@ -50,6 +60,7 @@ class NBCF:
             qualified_array (list[int]): List of qualified ratings.
             load (bool, optional): Whether to load pre-trained model. Defaults to False.
         """
+        self.loading_streamlit_bootstrap = loading_streamlit_bootstrap
         self.rating: np.ndarray = rating
         self.alpha: float = alpha
         self.r: float = r
@@ -135,7 +146,9 @@ class NBCF:
         # Calculate predictions
 
         for user in range(self.users):
-            print(user, " of ", self.users)
+            if self.loading_streamlit_bootstrap is not None:
+                self.loading_streamlit_bootstrap.progress(user / self.users)
+
             for movie in range(self.movies):
 
                 if self.rating[user][movie] != -1:
@@ -176,7 +189,9 @@ class NBCF:
                         tmp *= (numerator + self.alpha) / (denominator + self.r_alpha)
 
                     self.user_prediction[user, movie, qualified] = tmp
-
+        if self.loading_streamlit_bootstrap is not None:
+            self.loading_streamlit_bootstrap.empty()
+            st.info("Listo para calcular predicciones...")
         print(time.time() - d, "⏰ Calculated Predictions ...")
 
     def predict_hybrid(self):
@@ -192,6 +207,8 @@ class NBCF:
             None
         """
         for user in range(self.users):
+            if self.loading_streamlit_bootstrap is not None:
+                self.loading_streamlit_bootstrap.progress(user / self.users)
             for movie in range(self.movies):
                 if self.rating[user][movie] != -1:
                     continue
@@ -211,6 +228,9 @@ class NBCF:
                     self.prediction[user, movie, qualified] = left * right
                     if self.prediction[user, movie, qualified] == 0:
                         print("user", user, "movie", movie, "qualified", qualified)
+        if self.loading_streamlit_bootstrap is not None:
+            self.loading_streamlit_bootstrap.empty()
+            st.info("Predicciones calculadas")
 
 
 # Test function for the NBCF class
