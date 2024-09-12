@@ -122,18 +122,18 @@ def main():
         to_export["Expected"].append(q)
         to_export["Recieved"].append(prediction[movie, q].argmax() + 1)
 
-        # to_plot.append([movie, q, prediction[movie, q].argmax() + 1])
-        # differences.append(q - prediction[movie, q].argmax() - 1)
-        # abs_differences.append(np.abs(q - prediction[movie, q].argmax() - 1))
+        to_plot.append([movie, q, prediction[movie, q].argmax() + 1])
+        differences.append(q - prediction[movie, q].argmax() - 1)
+        abs_differences.append(np.abs(q - prediction[movie, q].argmax() - 1))
 
     # for movie, q in final_groups.keys():
     #     print(f"Movie: {movie}")
     #     print(f"Expected {q}, recived {prediction[movie, q].argmax() + 1}, distribution {prediction[movie, q]}")
 
     # create_excel(to_export)
-    # create_table(("Movie", "Expected", "Recieved"), to_plot)
-    # create_differences_plot(differences, 'Diferencia por grupo entre el valor esperado y el valor de la predicción')
-    # create_differences_plot(abs_differences, 'Diferencia absoluta por grupo entre el valor esperado y el valor de la predicción')
+    create_table(("Movie", "Expected", "Recieved"), to_plot)
+    create_differences_plot(differences, 'Diferencia por grupo entre el valor esperado y el valor de la predicción')
+    create_differences_plot(abs_differences, 'Diferencia absoluta por grupo entre el valor esperado y el valor de la predicción')
 
     mse = calcular_mse(to_export["Expected"], to_export["Recieved"])
     mae = calcular_mae(to_export["Expected"], to_export["Recieved"])
