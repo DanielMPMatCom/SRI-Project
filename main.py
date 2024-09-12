@@ -13,8 +13,8 @@ from src.utils.plots import create_table, create_excel, create_differences_plot
 def main():
     # Load data
     preprocessing = FilmTrustProcessing()
-    _, test = preprocessing.separate_data_for_test()
-    rating, qualified = preprocessing.numpy_user_movie_matrix(remove_data=test)
+    # _, test = preprocessing.separate_data_for_test()
+    rating, qualified = preprocessing.numpy_user_movie_matrix()
 
     # Create recommenders
     alpha = 0.01
