@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  12 SEP 2024 23:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  13 SEP 2024 00:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -403,55 +403,48 @@ LaTeX Info: Redefining \% on input line 272.
 LaTeX Info: Redefining \. on input line 345.
 LaTeX Info: Redefining \% on input line 345.
  [5]
-Overfull \hbox (1.04048pt too wide) in paragraph at lines 364--386
-[]\OT1/cmr/m/n/10 En el pa-per ti-tu-la-do \OT1/cmr/m/it/10 .[]tended Na^^?^^Pve Ba-yes for Group Ba-sed Clas-si-fi-ca-tion"\OT1/cmr/m/n/10 [[]],
- []
-
-LaTeX Info: Redefining \. on input line 426.
-LaTeX Info: Redefining \% on input line 426.
-[6]
+LaTeX Info: Redefining \. on input line 409.
+LaTeX Info: Redefining \% on input line 409.
+ [6]
 Underfull \hbox (badness 10000) in paragraph at lines 455--464
 
  []
 
-LaTeX Info: Redefining \. on input line 491.
-LaTeX Info: Redefining \% on input line 491.
+LaTeX Info: Redefining \. on input line 476.
+LaTeX Info: Redefining \% on input line 476.
 [7]
 Overfull \hbox (95.0727pt too wide) detected at line 512
 []\OML/cmm/m/it/9 P\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 r[] \OT1/cmr/m/n/9 = \OML/cmm/m/it/9 y\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9 / []  [][] []  ^^A [][][]
  []
 
-LaTeX Info: Redefining \. on input line 566.
-LaTeX Info: Redefining \% on input line 566.
+LaTeX Info: Redefining \. on input line 558.
+LaTeX Info: Redefining \% on input line 558.
 [8]
-LaTeX Info: Redefining \. on input line 642.
-LaTeX Info: Redefining \% on input line 642.
+LaTeX Info: Redefining \. on input line 625.
+LaTeX Info: Redefining \% on input line 625.
  [9]
-LaTeX Info: Redefining \. on input line 698.
-LaTeX Info: Redefining \% on input line 698.
+LaTeX Info: Redefining \. on input line 683.
+LaTeX Info: Redefining \% on input line 683.
  [10]
-LaTeX Info: Redefining \. on input line 764.
-LaTeX Info: Redefining \% on input line 764.
+LaTeX Info: Redefining \. on input line 755.
+LaTeX Info: Redefining \% on input line 755.
  [11]
-LaTeX Info: Redefining \. on input line 780.
-LaTeX Info: Redefining \% on input line 780.
+LaTeX Info: Redefining \. on input line 777.
+LaTeX Info: Redefining \% on input line 777.
  [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 791.
 
-<assets/Diferencias678.png, id=269, 1357.07pt x 753.81625pt>
+LaTeX Info: Redefining \. on input line 794.
+LaTeX Info: Redefining \% on input line 794.
+[13]
+<assets/Diferencias678.png, id=273, 1357.07pt x 753.81625pt>
 File: assets/Diferencias678.png Graphic file (type png)
 <use assets/Diferencias678.png>
 Package pdftex.def Info: assets/Diferencias678.png  used on input line 797.
 (pdftex.def)             Requested size: 347.12354pt x 192.81297pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 807.
-LaTeX Info: Redefining \% on input line 807.
-[13]
-<assets/absolutas678.png, id=278, 1353.055pt x 742.775pt>
+<assets/absolutas678.png, id=276, 1353.055pt x 742.775pt>
 File: assets/absolutas678.png Graphic file (type png)
 <use assets/absolutas678.png>
 Package pdftex.def Info: assets/absolutas678.png  used on input line 810.
@@ -460,7 +453,7 @@ Package pdftex.def Info: assets/absolutas678.png  used on input line 810.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/tabla678.png, id=280, 595.22375pt x 469.755pt>
+<assets/tabla678.png, id=278, 595.22375pt x 469.755pt>
 File: assets/tabla678.png Graphic file (type png)
 <use assets/tabla678.png>
 Package pdftex.def Info: assets/tabla678.png  used on input line 828.
@@ -468,14 +461,14 @@ Package pdftex.def Info: assets/tabla678.png  used on input line 828.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 837.
-LaTeX Info: Redefining \% on input line 837.
+LaTeX Info: Redefining \. on input line 836.
+LaTeX Info: Redefining \% on input line 836.
 [14 <./assets/Diferencias678.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 841.
 
-<assets/Diferencias123.png, id=293, 1370.11874pt x 759.83875pt>
+<assets/Diferencias123.png, id=292, 1370.11874pt x 759.83875pt>
 File: assets/Diferencias123.png Graphic file (type png)
 <use assets/Diferencias123.png>
 Package pdftex.def Info: assets/Diferencias123.png  used on input line 847.
@@ -483,15 +476,19 @@ Package pdftex.def Info: assets/Diferencias123.png  used on input line 847.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/absolutas123.png, id=296, 1346.02875pt x 750.805pt>
+LaTeX Info: Redefining \. on input line 854.
+LaTeX Info: Redefining \% on input line 854.
+[15 <./assets/absolutas678.png>]
+<assets/absolutas123.png, id=301, 1346.02875pt x 750.805pt>
 File: assets/absolutas123.png Graphic file (type png)
 <use assets/absolutas123.png>
 Package pdftex.def Info: assets/absolutas123.png  used on input line 860.
 (pdftex.def)             Requested size: 347.12354pt x 193.62372pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/tabla123.png, id=298, 568.1225pt x 216.81pt>
+<assets/tabla123.png, id=303, 568.1225pt x 216.81pt>
 File: assets/tabla123.png Graphic file (type png)
 <use assets/tabla123.png>
 Package pdftex.def Info: assets/tabla123.png  used on input line 872.
@@ -501,20 +498,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Info: Redefining \. on input line 880.
 LaTeX Info: Redefining \% on input line 880.
-[15 <./assets/absolutas678.png>]
-LaTeX Info: Redefining \. on input line 886.
-LaTeX Info: Redefining \% on input line 886.
- [16 <./assets/tabla678.png>]
-LaTeX Info: Redefining \. on input line 900.
-LaTeX Info: Redefining \% on input line 900.
+[16 <./assets/tabla678.png>]
+LaTeX Info: Redefining \. on input line 889.
+LaTeX Info: Redefining \% on input line 889.
  [17 <./assets/Diferencias123.png>]
-LaTeX Info: Redefining \. on input line 912.
-LaTeX Info: Redefining \% on input line 912.
+LaTeX Info: Redefining \. on input line 904.
+LaTeX Info: Redefining \% on input line 904.
  [18 <./assets/absolutas123.png>]
+LaTeX Info: Redefining \. on input line 931.
+LaTeX Info: Redefining \% on input line 931.
+ [19 <./assets/tabla123.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 939.
 LaTeX Info: Redefining \. on input line 939.
 LaTeX Info: Redefining \% on input line 939.
- [19 <./assets/tabla123.png>]
+ [20]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 939.
  (build/report.aux
 LaTeX Info: Redefining \. on input line 24.
@@ -527,18 +524,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 939.
  ) 
 Here is how much of TeX's memory you used:
- 7269 strings out of 483121
- 107084 string characters out of 5964354
+ 7258 strings out of 483121
+ 106921 string characters out of 5964354
  380305 words of memory out of 5000000
- 22089 multiletter control sequences out of 15000+600000
- 540866 words of font info for 56 fonts, out of 8000000 for 9000
+ 22078 multiletter control sequences out of 15000+600000
+ 540517 words of font info for 55 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 34i,6n,35p,1005b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on build/report.pdf (19 pages, 542362 bytes).
+ 34i,6n,35p,1005b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on build/report.pdf (20 pages, 535407 bytes).
 PDF statistics:
  424 PDF objects out of 1000 (max. 8388607)
  332 compressed objects within 4 object streams
- 68 named destinations out of 1000 (max. 500000)
+ 69 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 
