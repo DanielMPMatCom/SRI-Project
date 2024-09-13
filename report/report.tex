@@ -1,163 +1,124 @@
-\documentclass[twocolumn, fontsize=10pt]{article}
-\usepackage[margin=0.70in]{geometry}
-\usepackage{lipsum,mwe,abstract}
-\usepackage[english]{babel} 
-\usepackage{fancyhdr} % Custom headers and footers
-\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
-\fancyhead{} 
-\fancyfoot[C]{\thepage} % Page numbering for right footer
-\setlength\parindent{0pt} 
-\usepackage{amsmath,amsfonts,amsthm} % Math packages
-\usepackage{wrapfig}
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
 \usepackage{graphicx}
-\usepackage{float}
-\usepackage{subcaption}
-\usepackage{comment}
-\usepackage{enumitem}
-\usepackage{makeidx}
-\makeindex
-\usepackage{cuted}
-\usepackage{sectsty} % Allows customizing section commands
-\usepackage{xcolor} % For colored text
-\usepackage{hyperref} % Package for links
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
-    }
-\allsectionsfont{\normalfont \normalsize \scshape} % Section names in small caps and normal fonts
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 
-\addto\captionsenglish{\renewcommand{\contentsname}{Índice}}
+\usepackage{url}
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+\renewcommand{\keywordname}{\textbf{Palabras clave}:}
 
-\renewenvironment{abstract} % Change how the abstract look to remove margins
- {\small
-  \begin{center}
-  \bfseries Resumen \vspace{-.5em}\vspace{0pt}
-  \end{center}
-  \list{}{%
-    \setlength{\leftmargin}{0mm}
-    \setlength{\rightmargin}{\leftmargin}%
-  }
-  \item\relax}
- {\endlist}
-
- \newenvironment{englishabstract} % Abstract en inglés
- {\small
-  \begin{center}
-  \bfseries Abstract \vspace{-.5em}\vspace{0pt}
-  \end{center}
-  \list{}{%
-    \setlength{\leftmargin}{0mm}
-    \setlength{\rightmargin}{\leftmargin}%
-  }
-  \item\relax}
- {\endlist}
- 
-\makeatletter
-\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt} % Change how the title looks like
-\begin{flushleft}
-  \begin{center}
-    {\color{black} \Large Facultad de Matemática y Computación. Universidad de La Habana. \\
-    \color{black} Sistemas de Recuperación de Información. \\ \vspace{10pt}}
-    \href{https://github.com/DanielMPMatCom/SRI-Project.git}{Repositorio del Proyecto en GitHub} % Add GitHub link here
-    \vspace{10pt}
-  \end{center}
-  \textbf{\@title}
-  \@author \\ 
-  \@date
-\end{flushleft}\egroup
+\newenvironment{englishabstract}{%
+    \renewcommand{\abstractname}{Abstract}% Cambiar el nombre del abstract
+    \begin{abstract}%
+}{%
+    \end{abstract}%
 }
-\makeatother
-
-%% ------------------------------------------------------------------- 
-
-\title{
-
-\Large Hibridación de técnicas de Sistemas de Recomendación. Ventajas del enfoque probabilístico en comparación con la factorización matricial. Implementación del algoritmo Naive Bayes Collaborative Filtering y su expansión para realizar recomendaciones a grupos de usuarios.  \\
-[10pt] 
-}
-\date{\today}
-\author{Daniel Machado Pérez - daniel.machado.0206@gmail.com \\
-Daniel Toledo Martínez - daniel020126@gmail.com \\
-Osvaldo R. Moreno Prieto - osvaldo020213@gmail.com}
 
 \begin{document}
 
-\twocolumn[ \maketitle ]
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Hibridación de técnicas de Sistemas de Recomendación. Ventajas del enfoque probabilístico en comparación con la factorización matricial. Implementación del algoritmo Naive Bayes Collaborative Filtering y su expansión para realizar recomendaciones a grupos de usuarios.}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{Hibridación de Técnicas en Sistemas de Recomendación}
+
+
+\author{Daniel Machado Pérez\\
+Osvaldo R. Moreno Prieto\\
+Daniel Toledo Martínez}
+
+\authorrunning{\textit{Naive Bayes Collaborative Filtering} expandido con \textit{Naive Pooling}}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+
+\institute{Facultad de Matemática y Computación, Universidad de La Habana, Cuba.\\
+\url{https://github.com/DanielMPMatCom/SRI-Project.git}}
 
 
 
-% --------------- ABSTRACT
+\maketitle
+
+
 \begin{abstract}
-    El presente trabajo explora la hibridación de 
-    técnicas en sistemas de recomendación, centrándose 
-    en las ventajas del enfoque probabilístico frente a 
-    la factorización matricial en cuanto a filtrado colaborativo. Se destaca cómo el 
-    enfoque probabilístico, al proporcionar una 
-    representación explícita de las incertidumbres, 
-    mejora la interpretabilidad y explicación de las 
-    recomendaciones generadas. En particular, 
-    se implementa el algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF), 
-    que combina la simplicidad del modelo \textit{Naive Bayes} 
-    con el poder del filtrado colaborativo, 
-    permitiendo recomendaciones precisas y explicativas. 
-    Además, se expande este algoritmo para adaptarse 
-    a la recomendación a grupos de usuarios, 
-    abordando un área clave en la personalización 
-    colectiva de contenidos. Los resultados demuestran 
-    que el enfoque probabilístico no solo ofrece una 
-    alternativa robusta a la factorización matricial, 
-    sino que también potencia la capacidad del sistema 
-    para ofrecer recomendaciones personalizadas y 
-    comprensibles, tanto a individuos como a grupos.
+  El presente trabajo explora la hibridación de 
+  técnicas en sistemas de recomendación, centrándose 
+  en las ventajas del enfoque probabilístico frente a 
+  la factorización matricial en cuanto a filtrado colaborativo. Se destaca cómo el 
+  enfoque probabilístico, al proporcionar una 
+  representación explícita de las incertidumbres, 
+  mejora la interpretabilidad y explicación de las 
+  recomendaciones generadas. En particular, 
+  se implementa el algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF), 
+  que combina la simplicidad del modelo \textit{Naive Bayes} 
+  con el poder del filtrado colaborativo, 
+  permitiendo recomendaciones precisas y explicativas. 
+  Además, se expande este algoritmo para adaptarse 
+  a la recomendación a grupos de usuarios, 
+  abordando un área clave en la personalización 
+  colectiva de contenidos. Los resultados demuestran 
+  que el enfoque probabilístico no solo ofrece una 
+  alternativa robusta a la factorización matricial, 
+  sino que también potencia la capacidad del sistema 
+  para ofrecer recomendaciones personalizadas y 
+  comprensibles, tanto a individuos como a grupos.
+\keywords{Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), \textit{Naive Pooling} (NBP).}
+
 \end{abstract}
 
 \begin{englishabstract}
-    This work explores the hybridization of techniques 
-    in recommendation systems, focusing on the 
-    advantages of the probabilistic approach over 
-    matrix factorization in collaborative filtering. 
-    It highlights how the probabilistic approach, 
-    by providing an explicit representation of 
-    uncertainties, improves the interpretability and 
-    explanation of the generated recommendations. 
-    In particular, the Naive Bayes Collaborative 
-    Filtering (NBCF) algorithm is implemented, 
-    combining the simplicity of the Naive Bayes model 
-    with the power of collaborative filtering, 
-    allowing for precise and explanatory 
-    recommendations. Additionally, this algorithm is 
-    expanded to adapt to group recommendations, 
-    addressing a key area in the collective 
-    personalization of content. The results 
-    demonstrate that the probabilistic approach not 
-    only offers a robust alternative to matrix 
-    factorization but also enhances the system's 
-    ability to deliver personalized and understandable 
-    recommendations to both individuals and groups.
+  This work explores the hybridization of techniques 
+  in recommendation systems, focusing on the 
+  advantages of the probabilistic approach over 
+  matrix factorization in collaborative filtering. 
+  It highlights how the probabilistic approach, 
+  by providing an explicit representation of 
+  uncertainties, improves the interpretability and 
+  explanation of the generated recommendations. 
+  In particular, the Naive Bayes Collaborative 
+  Filtering (NBCF) algorithm is implemented, 
+  combining the simplicity of the Naive Bayes model 
+  with the power of collaborative filtering, 
+  allowing for precise and explanatory 
+  recommendations. Additionally, this algorithm is 
+  expanded to adapt to group recommendations, 
+  addressing a key area in the collective 
+  personalization of content. The results 
+  demonstrate that the probabilistic approach not 
+  only offers a robust alternative to matrix 
+  factorization but also enhances the system's 
+  ability to deliver personalized and understandable 
+  recommendations to both individuals and groups.
 \end{englishabstract}
-
-\rule{\linewidth}{0.5pt}
-
-% --------------- KEYWORDS
-\noindent \textbf{Palabras Clave}: Sistemas de Recomendación (RS), Filtrado Colaborativo (CF), Enfoque Probabilístico, Factorización Matricial, \textit{Naive Bayes Collaborative Filtering} (NBCF), \textit{Naive Pooling} (NBP).
-
-
-
-% --------------- MAIN CONTENT
-
-\tableofcontents
 
 \section{Introducción}
 
+
+En la era de la información, el acceso a 
+grandes volúmenes de datos ha transformado la 
+manera en que los usuarios interactúan con los 
+contenidos en línea. Plataformas como servicios 
+de \textit{streaming}, comercio electrónico, 
+redes sociales y sitios de reseñas, enfrentan el 
+desafío de presentar información relevante de manera 
+eficiente y personalizada. Ante este reto, los 
+sistemas de recomendación han emergido como una 
+herramienta clave para filtrar y personalizar las interacciones de los usuarios, facilitando la identificación de productos, servicios o contenidos acordes a sus preferencias.
+
+A lo largo de los años, diversas técnicas de recomendación han sido desarrolladas y perfeccionadas para abordar este problema, desde enfoques clásicos como el filtrado colaborativo, hasta métodos más sofisticados que combinan varios enfoques en un esquema híbrido. En este contexto, el presente trabajo explora un área crítica dentro de los sistemas de recomendación: la hibridación de técnicas, con un enfoque especial en la comparación entre la factorización matricial y los modelos probabilísticos aplicados al filtrado colaborativo.
+
+Este informe también extiende la aplicación del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF) para abordar un aspecto poco explorado en la literatura: la recomendación grupal, un desafío clave en la personalización colectiva de contenidos. A continuación, se describe en detalle el contexto de la investigación, así como las principales técnicas y métodos utilizados.
+
 \subsection{Descripción del tema y Técnicas de Recomendación}
 
-Los sistemas de recomendación se han consolidado como 
-herramientas esenciales en la personalización de 
-contenidos en diversas plataformas digitales, 
-desde servicios de \textit{streaming} hasta comercio electrónico. 
-Estos sistemas tienen como objetivo filtrar grandes 
+Los sistemas de recomendación tienen como objetivo 
+filtrar grandes 
 volúmenes de información y presentar a los usuarios 
 elementos relevantes según sus preferencias. 
 Entre las técnicas de recomendación más utilizadas, 
@@ -501,9 +462,9 @@ utiliza los siguientes conceptos de probabilidades:
     calificación $y$ de cualquier usuario $u$, 
     denotado como $P (r_i = y)$.\\
 
-    \begin{multline}
+    \begin{equation}
         P(r_i = y) = \frac{|\{u \in U|r_{u,i} = y\}| + \alpha}{|\{u \in U|r_{u,i} \neq \bullet\}| + |R|*\alpha}
-    \end{multline} \cite{tesis_sistema_recomendador_hibrido}
+    \end{equation} \cite{tesis_sistema_recomendador_hibrido}
 
     Donde:
     \begin{itemize}
@@ -528,9 +489,9 @@ utiliza los siguientes conceptos de probabilidades:
     basado en usuarios, se calcula el \textit{likelihood} 
     correspondiente $P(r_j = k|r_i = y)$.
 
-    \begin{multline}
+    \begin{equation}
         P(r_j = k|r_i = y) =  \\ \frac{|\{u \in U|r_{u,j} = k  \land  r_{u,i} = y\}|+ \alpha}{|\{u \in U|r_{u,j} \neq \bullet \land r_{u,i} = y|\} + |R|*\alpha}
-    \end{multline} \cite{tesis_sistema_recomendador_hibrido}
+    \end{equation} \cite{tesis_sistema_recomendador_hibrido}
 
 
     
@@ -544,11 +505,13 @@ utiliza los siguientes conceptos de probabilidades:
     $P(r_{u,i} = y)$ representa el valor de
     probabilidad de que el usuario $u$ vote el ítem $i$ 
     con el voto $y$:
-
-    \begin{multline}
+\begin{small}
+    \begin{equation}
         P(r_{u,i} = y) \propto \\ \left( P(r_u = y) \cdot \prod_{v \in Ui} P(r_v = r_{v,i} | r_u = y) \right)^{\frac{1}{1+|Ui|}} \\
         \cdot \left( P(r_i = y) \cdot \prod_{j \in Iu} P(r_j = r_{u,j} | r_i = y) \right)^{\frac{1}{1+|Iu|}}
-    \end{multline} \cite{tesis_sistema_recomendador_hibrido}
+    \end{equation} \cite{tesis_sistema_recomendador_hibrido}
+    
+\end{small}
 
     Donde:
     \begin{itemize}
@@ -600,9 +563,9 @@ múltiples conjuntos de datos públicos
 varias métricas clave a los métodos de referencia más 
 utilizados en el campo:
 \begin{itemize}
-    \item Error Medio Absoluto (MAE)
-    \item Precisión y \textit{Recall}
-    \item Ganancia acumulada descontada normalizada (nDCG)
+    \item Error Medio Absoluto (MAE) \cite{tesis_sistema_recomendador_hibrido}
+    \item Precisión y \textit{Recall} \cite{tesis_sistema_recomendador_hibrido}
+    \item Ganancia acumulada descontada normalizada (nDCG) \cite{tesis_sistema_recomendador_hibrido}
 \end{itemize}
 Se compararon los siguientes enfoques:
 \begin{itemize}
@@ -690,9 +653,9 @@ Matemáticamente, la probabilidad conjunta para un
 grupo $G$ de $n$ usuarios con respecto a una clase $C_l$ 
 se puede expresar como:
 
-\begin{multline}
+\begin{equation}
     P(C_l) = \frac{\prod_{k=1}^{n} P(C_l|x_k)}{\prod_{k=1}^{n} P(c_l|x_k) + \prod_{k=1}^{n} (1-P(c_l|x_k))}
-\end{multline} \cite{nbp}
+\end{equation} \cite{nbp}
 
 Donde:
 \begin{itemize}
@@ -803,7 +766,7 @@ Para ello, se ha seleccionado el dataset \textit{FilmTrust}
     \item \textbf{2071 ítems}: El conjunto de ítems representa las películas que los usuarios han visto y valorado.
     \item \textbf{35494 votos}: Los usuarios han emitido un total de 35,494 calificaciones sobre las películas del conjunto.
     \item \textbf{Escala de votación}: Las calificaciones originales varían entre 0.5 y 4, con incrementos de 0.5. Para simplificar la indexación y el procesamiento en la implementación del sistema, se ha multiplicado la escala por 2, de modo que las calificaciones oscilan entre 1 y 8, con incrementos de 1. Esto permite una mayor precisión y facilidad a la hora de manejar los datos.
-    \item \textbf{Sparsity del dataset}: El valor de sparsity (dispersión de los datos) de este conjunto es del 98.86\%. Esto significa que la mayoría de las posibles combinaciones entre usuarios e ítems no tienen una calificación registrada, lo que introduce un desafío significativo para el modelo de recomendación. La sparsity es una medida que refleja el nivel de dispersión de los datos en una matriz de interacciones usuario-ítem, donde un valor elevado indica que muchas de las posiciones en la matriz están vacías, es decir, no contienen interacciones registradas. Este fenómeno es común en sistemas de recomendación, y requiere el uso de modelos capaces de manejar eficazmente la falta de datos.
+    \item \textbf{Dispersión del dataset}: El valor de dispersión (\textit{sparsity}) de este conjunto es del 98.86\%. Esto significa que la mayoría de las posibles combinaciones entre usuarios e ítems no tienen una calificación registrada, lo que introduce un desafío significativo para el modelo de recomendación. La sparsity es una medida que refleja el nivel de dispersión de los datos en una matriz de interacciones usuario-ítem, donde un valor elevado indica que muchas de las posiciones en la matriz están vacías, es decir, no contienen interacciones registradas. Este fenómeno es común en sistemas de recomendación, y requiere el uso de modelos capaces de manejar eficazmente la falta de datos.
  \end{itemize}
 
  \subsection{Diseño del test}
@@ -823,7 +786,7 @@ Es importante destacar que la razón de la selección de subconjuntos de usuario
 
 El objetivo de este procedimiento es evaluar si, bajo la suposición de que los usuarios del grupo no han visto la película, el sistema es capaz de predecir una calificación grupal similar a la calificación inicial. Dado que los miembros del grupo han otorgado una calificación uniforme a la película antes de eliminar esta información, se espera que el sistema de recomendación prediga un voto grupal consistente con las valoraciones originales. Además, al aplicar este procedimiento a películas que recibieron calificaciones altas (6, 7 u 8), se puede evaluar la capacidad del modelo para recomendar este tipo de películas en escenarios donde los usuarios no las hayan visto. De la misma forma al comprobar el rendimiento con las bajas calificaciones (1, 2, 3) se analiza su efectividad para no recomendar películas que no serían bien calificadas por los integrantes del grupo.
 
-\subsubsection{Resultados con votaciones altas (6, 7, 8)}
+\subsubsection{Resultados con votaciones altas (6, 7, 8)\\}
 
 \textbf{Diferencias}
 
@@ -869,11 +832,11 @@ pueden verse en el archivo \textbf{Grupos678.xlsx} en la ruta \textbf{report/ass
 
 \textbf{Otras métricas}:
 \begin{itemize}
-    \item \textbf{MSE (Error Cuadrático Medio): 0.657}: Este valor indica el promedio de los errores al cuadrado entre las predicciones del sistema y los valores reales. El MSE es sensible a errores grandes, ya que estos se amplifican al ser elevados al cuadrado. Un valor de 0.657 implica que, en promedio, las diferencias entre las recomendaciones del sistema y las preferencias reales de los usuarios son moderadamente bajas. Sin embargo, aún existen algunos errores significativos que deben ser corregidos para mejorar la precisión del sistema de recomendación.
-    \item \textbf{MAE (Error Medio Absoluto): 0.486}: Esta métrica refleja el error medio absoluto entre las predicciones y los valores reales, lo cual ofrece una interpretación más intuitiva de la precisión del modelo. En este caso, el valor de 0.486 indica que, en promedio, la desviación entre la predicción y las preferencias reales de los usuarios es de aproximadamente 0.49 unidades. Este valor es más fácil de interpretar que el MSE, y nos muestra que las predicciones del sistema son razonablemente precisas, aunque pueden ser perfeccionadas.
+    \item \textbf{MSE (Error Cuadrático Medio): 0.657}: Este valor indica el promedio de los errores al cuadrado entre las predicciones del sistema y los valores reales. El MSE es sensible a errores grandes, ya que estos se amplifican al ser elevados al cuadrado. Un valor de 0.657 implica que, en promedio, las diferencias entre las recomendaciones del sistema y las preferencias reales de los usuarios son moderadamente bajas. Sin embargo, aún existen algunos errores significativos que deben ser corregidos para mejorar la precisión del sistema de recomendación. \cite{tesis_sistema_recomendador_hibrido}
+    \item \textbf{MAE (Error Medio Absoluto): 0.486}: Esta métrica refleja el error medio absoluto entre las predicciones y los valores reales, lo cual ofrece una interpretación más intuitiva de la precisión del modelo. En este caso, el valor de 0.486 indica que, en promedio, la desviación entre la predicción y las preferencias reales de los usuarios es de aproximadamente 0.49 unidades. Este valor es más fácil de interpretar que el MSE, y nos muestra que las predicciones del sistema son razonablemente precisas, aunque pueden ser perfeccionadas. \cite{tesis_sistema_recomendador_hibrido}
 \end{itemize}
 
-\subsubsection{Resultados con votaciones altas (1, 2, 3)}
+\subsubsection{Resultados con votaciones altas (1, 2, 3)\\}
 
 \textbf{Diferencias}
 
@@ -949,7 +912,7 @@ La investigación confirma que la hibridación de técnicas de recomendación, e
 
 \renewcommand\refname{Referencias}
 
-\begin{thebibliography}{}
+\begin{thebibliography}{4}
 
     \bibitem{nbcf}
     Valdiviezo-Diaz, P., Ortega, F., Cobos, E., \& Lara-Cabrera, R. (2019). A collaborative filtering approach based on Naïve Bayes classifier. IEEE Access, 7, 108581-108592.
@@ -971,6 +934,6 @@ La investigación confirma que la hibridación de técnicas de recomendación, e
     
 \end{thebibliography}
     
-    
+
 
 \end{document}

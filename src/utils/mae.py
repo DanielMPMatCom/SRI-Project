@@ -1,6 +1,5 @@
 import numpy as np
 
-# This class is under development and is not yet used in the project.
 # The purpose of this class is check result of nbcf paper.
 
 

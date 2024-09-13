@@ -18,7 +18,6 @@ def calcular_mse(valores_esperados, valores_resultantes):
     
     return mse
 
-# Calcular MAE (Error Medio Absoluto)
 def calcular_mae(valores_esperados, valores_resultantes):
     """
     Calculates the Mean Absolute Error (MAE) between the expected values and the resulting values.

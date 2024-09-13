@@ -20,10 +20,8 @@ def main():
     alpha = 0.01
     r = 8
 
-    # Iniciar la medición del tiempo
     duration = time.time()
 
-    # Crear grupos
     groups = generate_groups(rating, 100, [6, 7, 8])
     # [print(f"{movie}: {len(x)}") for (movie, _), x in groups.items()]
     # print(f"Created {len(groups)} groups")
@@ -31,7 +29,6 @@ def main():
 
     # return
 
-    # Crear grupos finales
     final_groups = {}
 
     print(len(groups))

@@ -1,6 +1,5 @@
 import numpy as np
 
-# This class is under development and is not yet used in the project.
 # The purpose of this class is to implement the Group Recommendation algorithm.
 # User to Group Similarity (UGS) is calculated using the Jaccard index.
 

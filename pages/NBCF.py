@@ -14,13 +14,13 @@ from src.utils.plots import create_table_st, create_excel_st, create_differences
 
 
 def main():
-    st.markdown("# Implementación de NBCF y NBP")
+    st.markdown("# NBCF and NBP Implementation.")
 
     st.warning(
-        "Advertencia: Recomendamos ejecutar el script `main.py` para obtener los resultados con mayor rapidez"
+        "Note: For faster results, it is recommended to run the main.py script."
     )
 
-    if st.button("Cargar modelo nbcf y nbp"):
+    if st.button("Load NBCF and NBP models."):
 
         alpha = 0.01
         r = 8
@@ -28,20 +28,20 @@ def main():
         # _, test = preprocessing.separate_data_for_test()
         rating, qualified = preprocessing.numpy_user_movie_matrix()
 
-        with st.spinner("Generando NBCF..."):
+        with st.spinner("Generating NBCF..."):
             duration = time.time()
 
-            st.info("Iniciando test...\nGenerando Grupos con calificaciones [6,7,8]")
+            st.info("Initializing test...\Generating Groups with Ratings [6,7,8]")
 
             groups = generate_groups(rating, 100, [6, 7, 8])
 
             print(len(groups))
 
-            st.info(f"Se crearon {len(groups)} grupos.")
+            st.info(f"{len(groups)} groupes have been created.")
 
             st.session_state.final_groups = {}
 
-            st.info(f"Creando grupos finales...")
+            st.info(f"Creating final groupes...")
 
             np.random.seed(42)
 
@@ -53,7 +53,7 @@ def main():
                     rating[user, movie] = -1
 
             st.info(
-                f"Iniciando el modelo con {rating.shape[0]} usuarios y {rating.shape[1]} películas..."
+                f"Initializing model with {rating.shape[0]} users and {rating.shape[1]} movies..."
             )
 
             nbcf_instance = NBCF(
@@ -62,14 +62,14 @@ def main():
                 r=r,
                 qualified_array=qualified,
                 load=True,
-                loading_streamlit_bootstrap=st.progress(0, "Cargando..."),
+                loading_streamlit_bootstrap=st.progress(0, "Loading..."),
             )
 
             st.session_state.hybrid_prediction = nbcf_instance.prediction
 
             duration = time.time() - duration
 
-            st.info(f"⏰ Tiempo de ejecución : {duration} ")
+            st.info(f"⏰ Execution Time : {duration} ")
 
         prediction = {}
         to_export = {
@@ -81,7 +81,7 @@ def main():
         to_plot = []
         differences = []
         abs_differences = []
-        st.info("Calculando las predicciones para los grupos...")
+        st.info("Calculating predictions for groupes...")
         for (movie, q), group in st.session_state.final_groups.items():
             prediction[movie, q] = group_prediction(
                 rating, group, st.session_state.hybrid_prediction, qualified, movie
@@ -99,18 +99,18 @@ def main():
         create_table_st(("Movie", "Expected", "Recieved"), to_plot)
         create_differences_plot_st(
             differences,
-            "Diferencia por grupo entre el valor esperado y el valor de la predicción",
+            "Difference in predicted versus expected values by group.",
         )
         create_differences_plot_st(
             abs_differences,
-            "Diferencia absoluta por grupo entre el valor esperado y el valor de la predicción",
+            "Absolute difference in predicted versus expected values by group.",
         )
 
         mse = calcular_mse(to_export["Expected"], to_export["Recieved"])
         mae = calcular_mae(to_export["Expected"], to_export["Recieved"])
 
-        st.info(f"El MSE obtenido fue: {mse}")
-        st.info(f"El MAE obtenido fue: {mae}")
+        st.info(f"The obteined MSE was: {mse}")
+        st.info(f"The obteined MAE was: {mae}")
 
 
 if __name__ == "__main__":
