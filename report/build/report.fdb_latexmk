@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1726201657 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1726201659
+["pdflatex"] 1727123665 "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" "build/report.pdf" "report" 1727123667
   "/etc/texmf/web2c/texmf.cnf" 1680493193 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1725126041 11524 38ee159fd2a2343870490c70e5b60d25 ""
-  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1726201656 51947 542542a313ca26a8ea80f9a3c3b53f77 ""
+  "/media/danielhp/DATA/Escuela/C. Computación/Tercer Año/SRI/Proyecto/SRI-Project/report/report.tex" 1727123665 51037 d166a06d289309dccacb2ac4697f2fba ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -109,13 +109,13 @@
   "assets/absolutas678.png" 1726023903 54598 1bc96687b96dc5f5fbbef02d9d5e52d0 ""
   "assets/tabla123.png" 1726023903 18178 bac4b35bb0853bf871451eecf5bdbd4f ""
   "assets/tabla678.png" 1726023903 35245 8c8fec6d43afe288b94af8e987cc3e98 ""
-  "build/report.aux" 1726201659 9066 740d4d7834daad56dfabb0099d322983 "pdflatex"
-  "build/report.out" 1726201659 2750 60080262282205874a93d659b940d48e "pdflatex"
+  "build/report.aux" 1727123667 8774 771075463a208a572d84c6117539f36c "pdflatex"
+  "build/report.out" 1727123667 2478 83d8f410c4d68490a0d98d3e47d5e809 "pdflatex"
   "llncs.cls" 1726201024 41641 6a6c51faad90e8746b73ae5f4684b060 ""
   "remreset.sty" 1726201024 1096 6a75275ca00e32428c6f059d2f618ea7 ""
-  "report.tex" 1726201656 51947 542542a313ca26a8ea80f9a3c3b53f77 ""
+  "report.tex" 1727123665 51037 d166a06d289309dccacb2ac4697f2fba ""
   (generated)
   "build/report.aux"
+  "build/report.pdf"
   "build/report.out"
   "build/report.log"
-  "build/report.pdf"

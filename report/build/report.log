@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  13 SEP 2024 00:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.3.14)  23 SEP 2024 16:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -373,169 +373,148 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 120--128
-
- []
-
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 142--154
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--180
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 181--191
-
- []
-
-LaTeX Info: Redefining \. on input line 206.
-LaTeX Info: Redefining \% on input line 206.
-[3]
-LaTeX Info: Redefining \. on input line 272.
-LaTeX Info: Redefining \% on input line 272.
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
+ [2]
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
+ [3]
+LaTeX Info: Redefining \. on input line 191.
+LaTeX Info: Redefining \% on input line 191.
  [4]
-LaTeX Info: Redefining \. on input line 345.
-LaTeX Info: Redefining \% on input line 345.
+LaTeX Info: Redefining \. on input line 245.
+LaTeX Info: Redefining \% on input line 245.
  [5]
-LaTeX Info: Redefining \. on input line 409.
-LaTeX Info: Redefining \% on input line 409.
- [6]
-Underfull \hbox (badness 10000) in paragraph at lines 455--464
+Underfull \hbox (badness 10000) in paragraph at lines 290--299
 
  []
 
-LaTeX Info: Redefining \. on input line 476.
-LaTeX Info: Redefining \% on input line 476.
-[7]
-Overfull \hbox (95.0727pt too wide) detected at line 512
+LaTeX Info: Redefining \. on input line 308.
+LaTeX Info: Redefining \% on input line 308.
+[6]
+Overfull \hbox (95.0727pt too wide) detected at line 347
 []\OML/cmm/m/it/9 P\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 r[] \OT1/cmr/m/n/9 = \OML/cmm/m/it/9 y\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9 / []  [][] []  ^^A [][][]
  []
 
-LaTeX Info: Redefining \. on input line 558.
-LaTeX Info: Redefining \% on input line 558.
-[8]
-LaTeX Info: Redefining \. on input line 625.
-LaTeX Info: Redefining \% on input line 625.
+LaTeX Info: Redefining \. on input line 392.
+LaTeX Info: Redefining \% on input line 392.
+[7]
+LaTeX Info: Redefining \. on input line 460.
+LaTeX Info: Redefining \% on input line 460.
+ [8]
+LaTeX Info: Redefining \. on input line 523.
+LaTeX Info: Redefining \% on input line 523.
  [9]
-LaTeX Info: Redefining \. on input line 683.
-LaTeX Info: Redefining \% on input line 683.
+LaTeX Info: Redefining \. on input line 607.
+LaTeX Info: Redefining \% on input line 607.
  [10]
-LaTeX Info: Redefining \. on input line 755.
-LaTeX Info: Redefining \% on input line 755.
+LaTeX Info: Redefining \. on input line 636.
+LaTeX Info: Redefining \% on input line 636.
  [11]
-LaTeX Info: Redefining \. on input line 777.
-LaTeX Info: Redefining \% on input line 777.
+LaTeX Info: Redefining \. on input line 650.
+LaTeX Info: Redefining \% on input line 650.
  [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 791.
+(hyperref)                removing `\\' on input line 653.
 
-LaTeX Info: Redefining \. on input line 794.
-LaTeX Info: Redefining \% on input line 794.
-[13]
-<assets/Diferencias678.png, id=273, 1357.07pt x 753.81625pt>
+<assets/Diferencias678.png, id=260, 1357.07pt x 753.81625pt>
 File: assets/Diferencias678.png Graphic file (type png)
 <use assets/Diferencias678.png>
-Package pdftex.def Info: assets/Diferencias678.png  used on input line 797.
+Package pdftex.def Info: assets/Diferencias678.png  used on input line 659.
 (pdftex.def)             Requested size: 347.12354pt x 192.81297pt.
-<assets/absolutas678.png, id=276, 1353.055pt x 742.775pt>
+<assets/absolutas678.png, id=263, 1353.055pt x 742.775pt>
 File: assets/absolutas678.png Graphic file (type png)
 <use assets/absolutas678.png>
-Package pdftex.def Info: assets/absolutas678.png  used on input line 810.
+Package pdftex.def Info: assets/absolutas678.png  used on input line 672.
 (pdftex.def)             Requested size: 347.12354pt x 190.5555pt.
 
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/tabla678.png, id=278, 595.22375pt x 469.755pt>
+LaTeX Info: Redefining \. on input line 679.
+LaTeX Info: Redefining \% on input line 679.
+[13 <./assets/Diferencias678.png>]
+<assets/tabla678.png, id=273, 595.22375pt x 469.755pt>
 File: assets/tabla678.png Graphic file (type png)
 <use assets/tabla678.png>
-Package pdftex.def Info: assets/tabla678.png  used on input line 828.
+Package pdftex.def Info: assets/tabla678.png  used on input line 690.
 (pdftex.def)             Requested size: 347.12354pt x 273.949pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 836.
-LaTeX Info: Redefining \% on input line 836.
-[14 <./assets/Diferencias678.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 841.
+(hyperref)                removing `\\' on input line 703.
 
-<assets/Diferencias123.png, id=292, 1370.11874pt x 759.83875pt>
+LaTeX Info: Redefining \. on input line 705.
+LaTeX Info: Redefining \% on input line 705.
+[14 <./assets/absolutas678.png>]
+<assets/Diferencias123.png, id=285, 1370.11874pt x 759.83875pt>
 File: assets/Diferencias123.png Graphic file (type png)
 <use assets/Diferencias123.png>
-Package pdftex.def Info: assets/Diferencias123.png  used on input line 847.
+Package pdftex.def Info: assets/Diferencias123.png  used on input line 709.
 (pdftex.def)             Requested size: 347.12354pt x 192.50993pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 854.
-LaTeX Info: Redefining \% on input line 854.
-[15 <./assets/absolutas678.png>]
-<assets/absolutas123.png, id=301, 1346.02875pt x 750.805pt>
+<assets/absolutas123.png, id=288, 1346.02875pt x 750.805pt>
 File: assets/absolutas123.png Graphic file (type png)
 <use assets/absolutas123.png>
-Package pdftex.def Info: assets/absolutas123.png  used on input line 860.
+Package pdftex.def Info: assets/absolutas123.png  used on input line 722.
 (pdftex.def)             Requested size: 347.12354pt x 193.62372pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<assets/tabla123.png, id=303, 568.1225pt x 216.81pt>
+<assets/tabla123.png, id=290, 568.1225pt x 216.81pt>
 File: assets/tabla123.png Graphic file (type png)
 <use assets/tabla123.png>
-Package pdftex.def Info: assets/tabla123.png  used on input line 872.
+Package pdftex.def Info: assets/tabla123.png  used on input line 734.
 (pdftex.def)             Requested size: 347.12354pt x 132.47556pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 880.
-LaTeX Info: Redefining \% on input line 880.
-[16 <./assets/tabla678.png>]
-LaTeX Info: Redefining \. on input line 889.
-LaTeX Info: Redefining \% on input line 889.
- [17 <./assets/Diferencias123.png>]
-LaTeX Info: Redefining \. on input line 904.
-LaTeX Info: Redefining \% on input line 904.
- [18 <./assets/absolutas123.png>]
-LaTeX Info: Redefining \. on input line 931.
-LaTeX Info: Redefining \% on input line 931.
- [19 <./assets/tabla123.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 939.
-LaTeX Info: Redefining \. on input line 939.
-LaTeX Info: Redefining \% on input line 939.
- [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 939.
+LaTeX Info: Redefining \. on input line 742.
+LaTeX Info: Redefining \% on input line 742.
+[15 <./assets/tabla678.png>]
+LaTeX Info: Redefining \. on input line 750.
+LaTeX Info: Redefining \% on input line 750.
+ [16 <./assets/Diferencias123.png>]
+LaTeX Info: Redefining \. on input line 764.
+LaTeX Info: Redefining \% on input line 764.
+ [17 <./assets/absolutas123.png>]
+LaTeX Info: Redefining \. on input line 782.
+LaTeX Info: Redefining \% on input line 782.
+ [18 <./assets/tabla123.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 808.
+LaTeX Info: Redefining \. on input line 808.
+LaTeX Info: Redefining \% on input line 808.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 808.
  (build/report.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 939.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 939.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 808.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 808.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 60080262282205874A93D659B940D48E;2750.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 939.
+(rerunfilecheck)             Checksum: 83D8F410C4D68490A0D98D3E47D5E809;2478.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 808.
  ) 
 Here is how much of TeX's memory you used:
- 7258 strings out of 483121
- 106921 string characters out of 5964354
- 380305 words of memory out of 5000000
- 22078 multiletter control sequences out of 15000+600000
+ 7255 strings out of 483121
+ 106930 string characters out of 5964354
+ 380401 words of memory out of 5000000
+ 22077 multiletter control sequences out of 15000+600000
  540517 words of font info for 55 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 34i,6n,35p,1005b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,6n,35p,1158b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/danielhp/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on build/report.pdf (20 pages, 535407 bytes).
+Output written on build/report.pdf (19 pages, 532550 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 332 compressed objects within 4 object streams
- 69 named destinations out of 1000 (max. 500000)
- 271 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 320 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 247 words of extra memory for PDF output out of 10000 (max. 10000000)
 

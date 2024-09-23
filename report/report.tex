@@ -99,314 +99,149 @@ Daniel Toledo Martínez}
 
 \section{Introducción}
 
+En la era de la información, el acceso a grandes volúmenes de datos ha transformado la manera en que los usuarios interactúan con los contenidos en línea. Plataformas como servicios de \textit{streaming}, comercio electrónico, redes sociales y sitios de reseñas, enfrentan el desafío de presentar información relevante de manera eficiente y personalizada. Ante este reto, los sistemas de recomendación han emergido como una herramienta clave para filtrar y personalizar las interacciones de los usuarios, facilitando la identificación de productos, servicios o contenidos acordes a sus preferencias.
 
-En la era de la información, el acceso a 
-grandes volúmenes de datos ha transformado la 
-manera en que los usuarios interactúan con los 
-contenidos en línea. Plataformas como servicios 
-de \textit{streaming}, comercio electrónico, 
-redes sociales y sitios de reseñas, enfrentan el 
-desafío de presentar información relevante de manera 
-eficiente y personalizada. Ante este reto, los 
-sistemas de recomendación han emergido como una 
-herramienta clave para filtrar y personalizar las interacciones de los usuarios, facilitando la identificación de productos, servicios o contenidos acordes a sus preferencias.
+A lo largo de los años, diversas técnicas de recomendación han sido desarrolladas y perfeccionadas para abordar este problema, desde enfoques clásicos como el filtrado colaborativo, hasta métodos más sofisticados que combinan varios enfoques en un esquema híbrido. Sin embargo, muchos de estos enfoques, en particular la factorización matricial, presentan limitaciones en términos de explicabilidad, lo que dificulta la interpretación de las recomendaciones ofrecidas.
 
-A lo largo de los años, diversas técnicas de recomendación han sido desarrolladas y perfeccionadas para abordar este problema, desde enfoques clásicos como el filtrado colaborativo, hasta métodos más sofisticados que combinan varios enfoques en un esquema híbrido. En este contexto, el presente trabajo explora un área crítica dentro de los sistemas de recomendación: la hibridación de técnicas, con un enfoque especial en la comparación entre la factorización matricial y los modelos probabilísticos aplicados al filtrado colaborativo.
+En este contexto, el presente trabajo se enfoca en la hibridación de técnicas de recomendación, comparando las ventajas del enfoque probabilístico frente a la factorización matricial en sistemas de filtrado colaborativo. El enfoque probabilístico, a través del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF), no solo ofrece una mayor capacidad para manejar incertidumbres en las predicciones, sino que también proporciona explicaciones más comprensibles para los usuarios, mejorando la confianza en las recomendaciones. 
 
-Este informe también extiende la aplicación del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF) para abordar un aspecto poco explorado en la literatura: la recomendación grupal, un desafío clave en la personalización colectiva de contenidos. A continuación, se describe en detalle el contexto de la investigación, así como las principales técnicas y métodos utilizados.
+El objetivo de este trabajo es implementar y evaluar un sistema de recomendación que combine técnicas probabilísticas y de filtrado colaborativo, con una extensión particular para abordar las recomendaciones a grupos de usuarios, un área poco explorada pero de creciente relevancia en la personalización colectiva.
 
-\subsection{Descripción del tema y Técnicas de Recomendación}
-
-Los sistemas de recomendación tienen como objetivo 
-filtrar grandes 
-volúmenes de información y presentar a los usuarios 
-elementos relevantes según sus preferencias. 
-Entre las técnicas de recomendación más utilizadas, 
-se destacan el filtrado colaborativo, el filtrado 
-basado en contenido, el filtrado demográfico y los enfoques híbridos que 
-combinan estos métodos.\\
-
-El filtrado colaborativo, en particular, 
-ha sido ampliamente adoptado debido a su capacidad 
-para identificar patrones de comportamiento entre 
-usuarios y ofrecer recomendaciones basadas en 
-similitudes en sus interacciones previas. 
-Este enfoque se puede implementar mediante técnicas 
-basadas en memoria, que utilizan directamente las 
-interacciones pasadas de los usuarios, o mediante 
-técnicas basadas en modelos, que crean representaciones 
-abstractas de las relaciones entre usuarios e ítems.
-
-\subsection{Enfoques de Filtrado Colaborativo Basado en Modelos}
-
-Dentro del filtrado colaborativo basado en modelos, 
-dos enfoques destacan por su eficacia y popularidad: 
-la factorización matricial y los modelos probabilísticos. 
-La factorización matricial, como lo demuestra el 
-algoritmo de descomposición en valores singulares (SVD), 
-es una técnica poderosa para descomponer la matriz de 
-interacciones usuario-ítem en factores latentes, 
-permitiendo predicciones precisas de las preferencias 
-de los usuarios. No obstante, su principal limitación 
-radica en la falta de interpretabilidad de los factores 
-latentes, lo que dificulta la explicación de las 
-recomendaciones generadas.\\
-
-En contraste, los modelos probabilísticos, 
-como el \textit{Naive Bayes Collaborative Filtering} (NBCF), 
-ofrecen una alternativa que, si bien puede alcanzar 
-niveles de precisión similares a los de la 
-factorización matricial, presenta la ventaja adicional 
-de proporcionar interpretaciones más claras de las 
-recomendaciones. El enfoque probabilístico permite 
-modelar explícitamente la incertidumbre en las 
-preferencias de los usuarios, lo que facilita la 
-explicación del porqué de cada recomendación.
-
-\subsection{Antecedentes y Justificación}
-
-La elección del enfoque probabilístico como base de 
-esta investigación se sustenta en los hallazgos 
-presentados en la tesis doctoral titulada 
-``Sistema recomendador híbrido basado en modelos 
-probabilísticos''. Esta tesis profundiza en las ventajas 
-de utilizar modelos probabilísticos en sistemas de 
-recomendación, destacando su capacidad para superar 
-las limitaciones de los enfoques tradicionales de 
-factorización matricial. Además, se presenta una 
-implementación del algoritmo NBCF, que ha mostrado 
-resultados prometedores en términos de precisión y 
-explicabilidad.\\
-
-Sin embargo, un área poco explorada en esta tesis es 
-la capacidad de estos modelos para realizar 
-recomendaciones a grupos de usuarios, una 
-característica esencial en contextos como la 
-recomendación de contenido para familias, grupos de 
-amigos o equipos de trabajo. Esta investigación se 
-propone expandir el algoritmo NBCF, siguiendo las 
-recomendaciones de la tesis doctoral, para adaptarlo 
-a la recomendación grupal, un desafío significativo 
-en la personalización colectiva.\\
-
-Para extender el algoritmo NBCF a la recomendación de 
-grupos, se adoptará la idea del \textit{Naive Pooling} (NBP) 
-propuesta en el artículo ``\textit{Extended Naïve Bayes for 
-Group Based Classification}''\cite{nbp}. El método NBP utiliza 
-las probabilidades calculadas (en nuestro caso las ya 
-con NBCF) y las 
-combina de manera que se maximice la probabilidad 
-conjunta para un grupo de usuarios, permitiendo así 
-una clasificación efectiva de grupos con una alta 
-coherencia en las recomendaciones. Este enfoque se 
-considera particularmente adecuado para garantizar 
-que todos los miembros del grupo reciban 
-recomendaciones que reflejen tanto las preferencias 
-individuales como las del colectivo.
-
-\subsection{Dataset Seleccionado}
-
-Para la evaluación de la implementación y expansión 
-del algoritmo NBCF, se ha seleccionado el dataset 
-FilmTrust\cite{filmtrust}, un conjunto de datos ampliamente utilizado 
-en la investigación de sistemas de recomendación. 
-FilmTrust contiene miles de calificaciones de 
-películas proporcionadas por usuarios, lo que lo 
-convierte en un recurso valioso para el análisis y 
-desarrollo de modelos de recomendación. 
-La riqueza y diversidad del dataset permiten probar 
-la eficacia de los algoritmos en un entorno 
-cercano a escenarios del mundo real. 
-Este dataset fue uno de los utilizados en la tesis antes mencionada.
-
-\subsection{Estructura del Trabajo}
-
-El presente informe se estructura en varias secciones 
-que desarrollan en detalle los diferentes aspectos de 
-la investigación:
-
-\begin{itemize} 
-    \item \textbf{Estado del Arte}: Se revisa la literatura existente sobre técnicas de recomendación, con un enfoque en el filtrado colaborativo basado en modelos. 
-    \item \textbf{Algoritmo NBCF}: Se describe la implementación del algoritmo NBCF y su funcionamiento. 
-    \item \textbf{Expansión del Algoritmo NBCF}: Se presenta la adaptación del NBCF para realizar recomendaciones a grupos de usuarios, detallando las modificaciones realizadas. 
-    \item \textbf{Evaluación de los Resultados}: Se analizan los resultados obtenidos tras la implementación y se comparan con enfoques tradicionales. 
-    \item \textbf{Conclusiones}: Se resumen los hallazgos más relevantes de la investigación y se sugieren posibles direcciones futuras. 
+Para cumplir con este objetivo, se pretende:
+\begin{itemize}
+    \item Comparar las ventajas del enfoque probabilístico con la factorización matricial en términos de precisión y explicabilidad.
+    \item Implementar el algoritmo NBCF y extenderlo utilizando el enfoque \textit{Naive Pooling} (NBP) para realizar recomendaciones efectivas a grupos de usuarios.
+    \item Evaluar el rendimiento del sistema propuesto utilizando un conjunto de datos real y métricas estándar de evaluación.
 \end{itemize}
+
+La extensión del NBCF para la recomendación grupal 
+se basa en el método \textit{Naive Pooling}, 
+que combina las probabilidades individuales (que calcularemos 
+con NBCF) para generar una recomendación colectiva coherente. Esta extensión permite realizar recomendaciones que reflejan tanto las preferencias individuales como las del grupo, y es particularmente útil en contextos donde se debe personalizar contenido para familias, grupos de amigos o equipos de trabajo.
+
+El presente informe se estructura de la siguiente manera: en el \textbf{Estado del Arte} se revisa la literatura sobre técnicas de recomendación, con un enfoque en el filtrado colaborativo y los modelos probabilísticos. En la sección \textbf{Algoritmo NBCF} se detalla la implementación del algoritmo, mientras que en \textbf{Expansión del Algoritmo NBCF} se describe cómo se adapta este modelo para realizar recomendaciones a grupos de usuarios. Posteriormente, en \textbf{Evaluación de los Resultados}, se presentan y analizan los resultados obtenidos tras la implementación. Finalmente, en las \textbf{Conclusiones}, se resumen los hallazgos más relevantes y se proponen posibles direcciones para investigaciones futuras.
 
 \section{Estado del Arte}
 
-Los sistemas de recomendación se han vuelto 
-indispensables en la era de la información, 
-donde los usuarios requieren herramientas que les 
-permitan descubrir contenidos relevantes de manera 
-eficiente. Existen diversas técnicas para abordar 
-este problema, cada una con sus propias ventajas y 
-limitaciones. Entre las más destacadas están el 
-filtrado colaborativo, el filtrado basado en contenido, 
-el filtrado demográfico y los enfoques híbridos. 
-En esta sección, se revisarán las principales técnicas 
-de recomendación, con un enfoque particular en el 
-filtrado colaborativo y sus variantes basadas en 
-modelos probabilísticos.
+En la era de la información, los sistemas de 
+recomendación han surgido como herramientas 
+fundamentales para la personalización de contenidos 
+y productos, ofreciendo a los usuarios la 
+capacidad de descubrir ítems relevantes entre un 
+vasto conjunto de opciones. Estos sistemas se han 
+implementado en una variedad de sectores, desde 
+plataformas de \textit{streaming} de video hasta 
+comercios electrónicos, y su evolución ha dado 
+lugar a múltiples enfoques técnicos. Dentro de estos, 
+destacan el filtrado colaborativo, el filtrado basado 
+en contenido, el filtrado demográfico y los enfoques 
+híbridos, cada uno con sus propias ventajas y 
+limitaciones.
+
+En particular, el filtrado colaborativo ha demostrado 
+ser uno de los métodos más efectivos y populares, 
+debido a su capacidad para identificar patrones en 
+las interacciones previas de los usuarios y ofrecer 
+recomendaciones basadas en similitudes. Este enfoque 
+se puede implementar mediante técnicas basadas en 
+memoria o modelos, siendo estas últimas más escalables 
+y precisas. En esta sección se revisan los avances 
+clave en los sistemas de recomendación, con énfasis en 
+los modelos probabilísticos y sus aplicaciones.
 
 \subsection{Técnicas de Recomendación}
 
 \begin{itemize}
     \item \textbf{Filtrado Colaborativo}: 
-    Este enfoque se basa en la idea de que los 
-    usuarios que han compartido preferencias similares 
-    en el pasado probablemente coincidan en sus 
-    elecciones futuras. El filtrado colaborativo puede 
-    implementarse a través de dos métodos: 
-    basado en memoria y basado en modelos. 
-    Los enfoques basados en memoria, como el algoritmo 
-    de k vecinos más cercanos (k-NN), utilizan 
-    directamente la matriz de interacciones 
-    usuario-ítem para realizar recomendaciones. 
-    Por otro lado, los enfoques basados en modelos, 
-    que incluyen técnicas como la factorización 
-    matricial y los modelos probabilísticos, 
-    construyen un modelo predictivo a partir de los 
-    datos disponibles, ofreciendo recomendaciones más 
-    precisas y escalables. \cite{estado_arte_sistemas_recomendacion}
-    \item \textbf{Filtrado Basado en Contenido}: 
-    Este método recomienda ítems a un usuario en 
-    función de la similitud entre los ítems que ha 
-    consumido previamente y otros ítems disponibles. 
-    A diferencia del filtrado colaborativo, se basa en 
-    las características de los ítems, como el género, 
-    el director o los actores en el caso de películas. \cite{estado_arte_sistemas_recomendacion}
-    \item \textbf{Filtrado Demográfico}: 
-    Aunque menos utilizado en comparación con los 
-    métodos anteriores, el filtrado demográfico se 
-    basa en las características personales de los 
-    usuarios, tales como su edad, género o ubicación. 
-    Este enfoque supone que usuarios con 
-    características demográficas similares tienden a 
-    compartir preferencias similares. 
-    Si bien puede ser útil para ciertos contextos, 
-    su efectividad suele ser menor, ya que no tiene 
-    en cuenta las interacciones individuales entre 
-    usuarios e ítems. \cite{estado_arte_sistemas_recomendacion}
-    \item \textbf{Enfoques Híbridos}:
-    Estos combinan dos o más de las técnicas 
-    mencionadas para mejorar la precisión y superar 
-    las limitaciones inherentes a cada uno de los 
-    métodos. Por ejemplo, un sistema híbrido puede 
-    combinar el filtrado colaborativo con el filtrado 
-    basado en contenido para ofrecer recomendaciones 
-    más completas, tanto en precisión como en 
-    diversidad. \cite{estado_arte_sistemas_recomendacion}
+    Este enfoque parte de la premisa de que los 
+    usuarios con preferencias similares en el pasado 
+    coincidirán en sus elecciones futuras. Existen dos 
+    variantes principales: el filtrado colaborativo 
+    basado en memoria y el basado en modelos. Mientras 
+    que el primero utiliza directamente las 
+    interacciones previas para hacer recomendaciones, 
+    el segundo crea representaciones abstractas que 
+    capturan relaciones entre usuarios e ítems, lo que 
+    permite una mayor escalabilidad. \cite{estado_arte_sistemas_recomendacion}
+    
+    \item \textbf{Filtrado Basado en Contenido}: A diferencia del filtrado colaborativo, este método realiza recomendaciones basadas en la similitud entre las características de los ítems que ha consumido previamente un usuario y los ítems disponibles. Esto es común en plataformas que manejan grandes cantidades de datos sobre los atributos de los ítems, como en servicios de streaming de música o video.\cite{estado_arte_sistemas_recomendacion}
+
+    \item \textbf{Filtrado Demográfico}: Aunque menos utilizado, este enfoque se basa en las características personales de los usuarios, como edad, género o ubicación. Si bien puede ser útil en ciertos contextos, su efectividad es limitada al no considerar interacciones directas entre usuarios e ítems.\cite{estado_arte_sistemas_recomendacion}
+
+    \item \textbf{Enfoques Híbridos}: Combinan varios métodos para mejorar la precisión de las recomendaciones. Un ejemplo común es la combinación del filtrado colaborativo con el basado en contenido, lo que permite ofrecer recomendaciones más personalizadas y diversificadas.\cite{estado_arte_sistemas_recomendacion}
 \end{itemize}
 
- 
 \subsection{Filtrado Colaborativo Basado en Modelos}
- 
-El filtrado colaborativo basado en modelos ha 
-demostrado ser especialmente eficaz en sistemas de 
-recomendación a gran escala. Entre los enfoques más 
-destacados se encuentran la factorización matricial y
-los modelos probabilísticos.
+
+Los métodos basados en modelos han emergido como una solución eficiente para el filtrado colaborativo a gran escala. Dentro de esta categoría, destacan la factorización matricial y los enfoques probabilísticos.
 
 \begin{itemize}
-    \item \textbf{Factorización Matricial}:
-    Esta técnica ha demostrado ser una de las más 
-    efectivas para el filtrado colaborativo. 
-    En la factorización matricial, la matriz de 
-    interacciones usuario-ítem se descompone en dos 
-    matrices de menor dimensión que representan 
-    factores latentes tanto para los usuarios como 
-    para los ítems. Estos factores latentes permiten 
-    realizar predicciones sobre las preferencias de 
-    los usuarios al capturar características no 
-    observadas explícitamente. Aunque la factorización 
-    matricial, especialmente con algoritmos como la 
-    descomposición en valores singulares (SVD), 
-    ha demostrado ser muy precisa, su principal 
-    limitación radica en la falta de interpretabilidad. 
-    Los factores latentes no siempre son comprensibles
-    o intuitivos para los usuarios, lo que dificulta
-    la explicación de las recomendaciones. \cite{tesis_sistema_recomendador_hibrido}
-    \item \textbf{Modelos Probabilísticos}:
-    En contraste con la factorización matricial, 
-    los modelos probabilísticos proporcionan una 
-    representación más clara de las incertidumbres 
-    en las preferencias de los usuarios. Uno de los 
-    enfoques más representativos es el \textit{Naive Bayes 
-    Collaborative Filtering} (NBCF), que combina la 
-    simplicidad del modelo de \textit{Naive Bayes} con la 
-    estructura del filtrado colaborativo. Este 
-    enfoque permite una mayor interpretabilidad, 
-    ya que ofrece una explicación probabilística de 
-    las recomendaciones. Además, el NBCF ha mostrado 
-    ser altamente adaptable a diferentes escenarios, 
-    permitiendo la incorporación de nuevas variables 
-    sin comprometer su eficiencia. \cite{tesis_sistema_recomendador_hibrido}
+    \item \textbf{Factorización Matricial}: Esta técnica permite descomponer la matriz de interacciones usuario-ítem en matrices de factores latentes, que representan las características no observadas de usuarios e ítems. A pesar de su alta precisión, uno de los desafíos de este enfoque es la falta de interpretabilidad, ya que los factores latentes no siempre son fácilmente comprensibles.\cite{tesis_sistema_recomendador_hibrido}
 
+    \item \textbf{Modelos Probabilísticos}: Una alternativa a la factorización matricial es el uso de modelos probabilísticos, que ofrecen una mayor interpretabilidad al proporcionar explicaciones basadas en probabilidades. Un ejemplo representativo es el \textit{Naive Bayes Collaborative Filtering} (NBCF), que combina la simplicidad del clasificador \textit{Naive Bayes} con el poder del filtrado colaborativo, mostrando resultados prometedores en términos de precisión y eficiencia.\cite{tesis_sistema_recomendador_hibrido}
 \end{itemize}
 
-\subsection{Desarrollo en las Tesis y Papers} 
+\subsection{Desarrollo en las Tesis y Papers}
 
-El enfoque probabilístico ha sido objeto de un 
-estudio detallado en la tesis doctoral titulada 
-``Sistema recomendador híbrido basado en modelos 
-probabilísticos''\cite{tesis_sistema_recomendador_hibrido}. En esta tesis, se aborda la 
-integración de modelos probabilísticos dentro de 
-sistemas de recomendación híbridos, destacando cómo 
-estos modelos no solo permiten una mayor precisión, 
-sino que también aportan una capa de interpretabilidad 
-que los métodos de factorización matricial no ofrecen. 
-El autor propone un enfoque híbrido que combina los 
-beneficios del filtrado colaborativo basado en modelos 
-probabilísticos con técnicas de filtrado basado en 
-contenido.
+El enfoque probabilístico ha sido objeto de un estudio detallado en la tesis doctoral titulada 
+``Sistema recomendador híbrido basado en modelos probabilísticos''\cite{tesis_sistema_recomendador_hibrido}. En esta tesis, se aborda la integración de modelos probabilísticos dentro de sistemas de recomendación híbridos, destacando cómo estos modelos no solo permiten una mayor precisión, sino que también aportan una capa de interpretabilidad que los métodos de factorización matricial no ofrecen. El autor propone un enfoque híbrido que combina los beneficios del filtrado colaborativo basado en modelos probabilísticos con técnicas de filtrado basado en contenido.
 
-En el paper titulado ``\textit{Extended Naïve 
-Bayes for Group Based Classification}''\cite{nbp}, los autores 
-presentan una extensión del clásico modelo 
-\textit{Naive Bayes}, adaptándolo para su aplicación 
-en la clasificación basada en grupos. Uno de los 
-enfoques tratados, 
-denominado \textit{Naive Pooling} (NBP), se centra en la 
-agregación de probabilidades individuales para 
-generar una probabilidad conjunta que permita la 
-clasificación efectiva de grupos de usuarios. La 
-metodología propuesta combina las probabilidades 
-individuales de cada miembro del grupo para maximizar 
-la coherencia y relevancia de la clasificación final. 
-Este método resulta particularmente útil en contextos 
-donde se deben generar recomendaciones o decisiones 
-que reflejen tanto las preferencias individuales 
-como la dinámica grupal. La capacidad de NBP para 
-mantener la simplicidad del modelo Naive Bayes, 
-al tiempo que amplía su aplicabilidad a escenarios 
-grupales, lo convierte en una herramienta poderosa 
-para la personalización colectiva en sistemas de 
-recomendación.
+En el paper titulado ``\textit{Naïve 
+Bayes} Extendido para Clasificación Basada en Grupos''\cite{nbp}, los autores presentan una extensión del clásico modelo \textit{Naive Bayes}, adaptándolo para su aplicación en la clasificación basada en grupos. Uno de los enfoques tratados, denominado \textit{Naive Pooling} (NBP), se centra en la agregación de probabilidades individuales para generar una probabilidad conjunta que permita la clasificación efectiva de grupos de usuarios. La metodología propuesta combina las probabilidades individuales de cada miembro del grupo para maximizar la coherencia y relevancia de la clasificación final. Este método resulta particularmente útil en contextos donde se deben generar recomendaciones o decisiones que reflejen tanto las preferencias individuales como la dinámica grupal. La capacidad de NBP para mantener la simplicidad del modelo Naive Bayes, al tiempo que amplía su aplicabilidad a escenarios grupales, lo convierte en una herramienta poderosa para la personalización colectiva en sistemas de recomendación.
 
-Además, en el paper ``\textit{A Collaborative Filtering 
-Approach Based on Naive Bayes Classifier}''\cite{nbcf}, 
-se profundiza en la implementación del NBCF y se 
-demuestra su viabilidad como alternativa a los 
-métodos tradicionales de filtrado colaborativo. 
-Los resultados obtenidos en este estudio muestran 
-que el NBCF puede igualar o superar el rendimiento de 
-la factorización matricial, especialmente en datasets 
-donde la interpretabilidad es tan importante como la 
-precisión.
+Además, en el paper ``Un Enfoque de Filtrado Colaborativo
+Basado en un Clasificador \textit{Naive Bayes}''\cite{nbcf}, 
+se profundiza en la implementación del NBCF y se demuestra su viabilidad como alternativa a los métodos tradicionales de filtrado colaborativo. Los resultados obtenidos en este estudio muestran que el NBCF puede igualar o superar el rendimiento de la factorización matricial, especialmente en datasets donde la interpretabilidad es tan importante como la precisión.
 
-Finalmente, el trabajo ``\textit{Hybrid Collaborative Filtering 
-Based on Users' Rating Behavior}''\cite{hybrid_collaborative_filtering} presenta un enfoque 
-híbrido que integra el comportamiento de valoración 
-de los usuarios con el filtrado colaborativo. 
-Este enfoque tiene una relevancia particular para 
-nuestro proyecto, ya que permite ajustar las 
-recomendaciones no solo en función de las 
-interacciones pasadas, sino también considerando la 
-manera en que los usuarios valoran los ítems, lo que 
-aporta una capa adicional de personalización.
+Finalmente, el trabajo ``Filtrado Colaborativo Híbrido Basado en Interacciones de Usuarios con el Sistema de Votaciones''\cite{hybrid_collaborative_filtering} presenta un enfoque híbrido que integra el comportamiento de valoración de los usuarios con el filtrado colaborativo. Este enfoque tiene una relevancia particular para 
+nuestro proyecto, ya que permite ajustar las recomendaciones no solo en función de las interacciones pasadas, sino también considerando la manera en que los usuarios valoran los ítems, lo que aporta una capa adicional de personalización.
+
+\subsection{Trabajos Recientes y Aplicaciones Actuales}
+
+En la actualidad, los sistemas de recomendación han 
+expandido su campo de aplicación y han adoptado nuevas 
+tecnologías para mejorar su rendimiento. Una de las 
+áreas emergentes es el uso de \textit{hardware} reconfigurable 
+para acelerar los cálculos necesarios en estos 
+sistemas. Según Pajuelo Holguera \cite{TDUEX_2021_Pajuelo_Holguera}, 
+el uso de FPGAs ha mostrado ser una solución eficiente 
+para reducir los tiempos de procesamiento en sistemas 
+de recomendación, especialmente en escenarios de 
+grandes volúmenes de datos. Su trabajo también explora 
+cómo los sistemas de recomendación pueden ser 
+aplicados en entornos sensoriales para predecir 
+variables ambientales, abriendo nuevas oportunidades 
+en el ámbito de las ciudades inteligentes.
+
+Por otro lado, el trabajo de César 
+Pita \cite{_Cesar_Enrique_Pita_Perez} resalta cómo 
+la combinación de técnicas de \textit{Machine Learning} 
+con sistemas de recomendación híbridos mejora 
+significativamente la predicción de preferencias de 
+usuarios. Al integrar características demográficas, 
+históricas y basadas en contenido, estos modelos 
+ofrecen recomendaciones más ajustadas incluso en 
+escenarios con datos limitados.
+
+Estos trabajos representan un avance importante 
+en la mejora de la eficiencia y precisión de los 
+sistemas de recomendación, abriendo el camino a 
+nuevas aplicaciones en campos como el control 
+ambiental, la interacción sensorial y la 
+personalización grupal en plataformas de alto 
+volumen de datos.
+
 
 \section{Algoritmo NBCF}
+
+El algoritmo NBCF constituye una estrategia eficiente 
+y novedosa dentro del ámbito de los sistemas de 
+recomendación colaborativos. A continuación, se 
+presenta una revisión detallada de los fundamentos 
+teóricos y matemáticos que sustentan este enfoque, 
+así como una descripción de su implementación práctica 
+y los resultados obtenidos en diferentes estudios 
+experimentales.
 
 \subsection{Introducción al Algoritmo NBCF}
 
@@ -625,6 +460,17 @@ recomendación.
 
 \section{Expansión del Algoritmo NBCF}
 
+
+El algoritmo NBP, como extensión del enfoque clásico 
+\textit{Naive Bayes}, permite abordar la recomendación 
+grupal, un desafío creciente en los sistemas de 
+recomendación. A continuación, se describe la 
+formulación matemática del algoritmo y su integración 
+con el modelo NBCF, junto con una discusión de las 
+ventajas, limitaciones y detalles de implementación 
+que hacen posible la recomendación precisa tanto para 
+usuarios individuales como para grupos.
+
 \subsection{Algoritmo NBP. Formulación Matemática}
 En los sistemas de recomendación modernos, la 
 capacidad de realizar recomendaciones efectivas 
@@ -743,6 +589,22 @@ mantenga la calidad en las recomendaciones
 individuales, sino que también pueda satisfacer las 
 necesidades de colectivos en situaciones donde la 
 personalización grupal es esencial.
+
+\subsection{Detalles de Implementación}
+
+Para la evaluación de la implementación y expansión 
+del algoritmo NBCF, se ha seleccionado el dataset 
+FilmTrust\cite{filmtrust}, un conjunto de datos ampliamente utilizado 
+en la investigación de sistemas de recomendación. 
+FilmTrust contiene miles de calificaciones de 
+películas proporcionadas por usuarios, lo que lo 
+convierte en un recurso valioso para el análisis y 
+desarrollo de modelos de recomendación. 
+La riqueza y diversidad del dataset permiten probar 
+la eficacia de los algoritmos en un entorno 
+cercano a escenarios del mundo real. 
+Este dataset fue uno de los utilizados en la tesis antes mencionada.
+
 
 \section{Evaluación de los resultados}
 
@@ -931,6 +793,13 @@ La investigación confirma que la hibridación de técnicas de recomendación, e
 
     \bibitem{filmtrust}
     J. Golbeck, J. Hendler, “FilmTrust: movie recommendations using trust in web-based social networks”, CCNC 2006, 3rd IEEE Consumer Communications and Networking Conference, 2006, DOI: 10.1109/CCNC.2006.1593032 
+
+    \bibitem{TDUEX_2021_Pajuelo_Holguera}
+    Pajuelo Holguera, F. (2021). Sistemas de recomendación basados en filtrado colaborativo: aceleración mediante computación reconfigurable y aplicaciones predictivas sensoriales.
+
+    \bibitem{_Cesar_Enrique_Pita_Perez}
+    Perez, C. E. P. (2021). Proyecto de Sistema de Recomendación de Filtrado Colaborativo basado en Machine Learning. INF-FCPN-PGI Revista PGI, 48-51.
+
     
 \end{thebibliography}
     
