@@ -103,14 +103,14 @@ En la era de la información, el acceso a grandes volúmenes de datos ha transfo
 
 A lo largo de los años, diversas técnicas de recomendación han sido desarrolladas y perfeccionadas para abordar este problema, desde enfoques clásicos como el filtrado colaborativo, hasta métodos más sofisticados que combinan varios enfoques en un esquema híbrido. Sin embargo, muchos de estos enfoques, en particular la factorización matricial, presentan limitaciones en términos de explicabilidad, lo que dificulta la interpretación de las recomendaciones ofrecidas.
 
-En este contexto, el presente trabajo se enfoca en la hibridación de técnicas de recomendación, comparando las ventajas del enfoque probabilístico frente a la factorización matricial en sistemas de filtrado colaborativo. El enfoque probabilístico, a través del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF), no solo ofrece una mayor capacidad para manejar incertidumbres en las predicciones, sino que también proporciona explicaciones más comprensibles para los usuarios, mejorando la confianza en las recomendaciones. 
+En este contexto, el presente trabajo se enfoca en la hibridación de técnicas de recomendación, comparando las ventajas del enfoque probabilístico frente a la factorización matricial en sistemas de filtrado colaborativo. El enfoque probabilístico, a través del algoritmo \textit{Naive Bayes Collaborative Filtering} (NBCF) \cite{nbcf}, no solo ofrece una mayor capacidad para manejar incertidumbres en las predicciones, sino que también proporciona explicaciones más comprensibles para los usuarios, mejorando la confianza en las recomendaciones. 
 
 El objetivo de este trabajo es implementar y evaluar un sistema de recomendación que combine técnicas probabilísticas y de filtrado colaborativo, con una extensión particular para abordar las recomendaciones a grupos de usuarios, un área poco explorada pero de creciente relevancia en la personalización colectiva.
 
 Para cumplir con este objetivo, se pretende:
 \begin{itemize}
     \item Comparar las ventajas del enfoque probabilístico con la factorización matricial en términos de precisión y explicabilidad.
-    \item Implementar el algoritmo NBCF y extenderlo utilizando el enfoque \textit{Naive Pooling} (NBP) para realizar recomendaciones efectivas a grupos de usuarios.
+    \item Implementar el algoritmo NBCF y extenderlo utilizando el enfoque \textit{Naive Pooling} (NBP) \cite{nbp} para realizar recomendaciones efectivas a grupos de usuarios.
     \item Evaluar el rendimiento del sistema propuesto utilizando un conjunto de datos real y métricas estándar de evaluación.
 \end{itemize}
 
@@ -181,7 +181,7 @@ Los métodos basados en modelos han emergido como una solución eficiente para e
     \item \textbf{Modelos Probabilísticos}: Una alternativa a la factorización matricial es el uso de modelos probabilísticos, que ofrecen una mayor interpretabilidad al proporcionar explicaciones basadas en probabilidades. Un ejemplo representativo es el \textit{Naive Bayes Collaborative Filtering} (NBCF), que combina la simplicidad del clasificador \textit{Naive Bayes} con el poder del filtrado colaborativo, mostrando resultados prometedores en términos de precisión y eficiencia.\cite{tesis_sistema_recomendador_hibrido}
 \end{itemize}
 
-\subsection{Desarrollo en las Tesis y Papers}
+\subsection{Avances en Tesis y Publicaciones Científicas}
 
 El enfoque probabilístico ha sido objeto de un estudio detallado en la tesis doctoral titulada 
 ``Sistema recomendador híbrido basado en modelos probabilísticos''\cite{tesis_sistema_recomendador_hibrido}. En esta tesis, se aborda la integración de modelos probabilísticos dentro de sistemas de recomendación híbridos, destacando cómo estos modelos no solo permiten una mayor precisión, sino que también aportan una capa de interpretabilidad que los métodos de factorización matricial no ofrecen. El autor propone un enfoque híbrido que combina los beneficios del filtrado colaborativo basado en modelos probabilísticos con técnicas de filtrado basado en contenido.
